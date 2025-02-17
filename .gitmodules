@@ -1,9 +1,3 @@
-[submodule "sources/effect-io-ai"]
-	path = sources/effect-io-ai
-	url = https://github.com/tim-smart/effect-io-ai.git
-[submodule "sources/effect-website"]
-	path = sources/effect-website
-	url = https://github.com/Effect-TS/website.git
-[submodule "sources/effect"]
-	path = sources/effect
-	url = https://github.com/Effect-TS/effect.git
+[submodule "sources/radix-website"]
+	path = sources/radix-website
+	url = https://github.com/radix-ui/website.git

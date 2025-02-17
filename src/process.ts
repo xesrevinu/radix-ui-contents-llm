@@ -12,9 +12,9 @@ import type {
   Resource,
 } from "./types.ts";
 
-const GITHUB_REPO = "https://github.com/xesrevinu/effect-contents-llm";
+const GITHUB_REPO = "https://github.com/xesrevinu/radix-ui-contents-llm";
 const GITHUB_RAW =
-  "https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main";
+  "https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main";
 
 class FileStats {
   public path: string;

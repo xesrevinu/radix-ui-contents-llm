@@ -1,0 +1,1833 @@
+
+---
+metaTitle: Aliasing
+metaDescription: How to use Radix Colors.
+---
+
+# Aliasing
+
+<Description>
+	A guide to providing semantic aliases for colors.
+</Description>
+
+## Semantic aliases
+
+Referencing color scales by their actual scale name can work well, like `blue` and `red`. But often, creating semantic aliases like `accent`, `primary`, `neutral`, or `brand` can be helpful, especially when it comes to theming.
+
+<Tabs.Root asChild defaultValue="css">
+	<CodeBlock.Root my="5">
+		<CodeBlock.Header>
+			<Tabs.List>
+				<Tabs.Trigger value="css">CSS</Tabs.Trigger>
+				<Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+			</Tabs.List>
+		</CodeBlock.Header>
+
+		<Tabs.Content asChild value="css">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="css">
+						{`/*
+ * Note: Importing from the CDN in production is not recommended.
+ * It's intended for prototyping only.
+ */
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css";
+
+:root {
+	--accent-1: var(--blue-1);
+	--accent-2: var(--blue-2);
+	--accent-3: var(--blue-3);
+	--accent-4: var(--blue-4);
+	--accent-5: var(--blue-5);
+	--accent-6: var(--blue-6);
+	--accent-7: var(--blue-7);
+	--accent-8: var(--blue-8);
+	--accent-9: var(--blue-9);
+	--accent-10: var(--blue-10);
+	--accent-11: var(--blue-11);
+	--accent-12: var(--blue-12);
+
+	--success-1: var(--green-1);
+	--success-2: var(--green-2);
+	/* repeat for all steps */
+
+	--warning-1: var(--yellow-1);
+	--warning-2: var(--yellow-2);
+	/* repeat for all steps */
+
+	--danger-1: var(--red-1);
+	--danger-2: var(--red-2);
+	/* repeat for all steps */
+}
+`}
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
+
+		<Tabs.Content asChild value="css-in-js">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="js">
+{`import {
+	blue,
+	green,
+	yellow,
+	red
+} from "@radix-ui/colors";
+
+const theme = {
+	...blue,
+	...green,
+	...yellow,
+	...red,
+
+	accent1: blue.blue1,
+	accent2: blue.blue2,
+	accent3: blue.blue3,
+	accent4: blue.blue4,
+	accent5: blue.blue5,
+	accent6: blue.blue6,
+	accent7: blue.blue7,
+	accent8: blue.blue8,
+	accent9: blue.blue9,
+	accent10: blue.blue10,
+	accent11: blue.blue11,
+	accent12: blue.blue12,
+
+	success1: green.green1,
+	success2: green.green2,
+	// repeat for all steps
+
+	warning1: yellow.yellow1,
+	warning2: yellow.yellow2,
+	// repeat for all steps
+
+	danger1: red.red1,
+	danger2: red.red2,
+	// repeat for all steps
+};
+`}
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
+
+	</CodeBlock.Root>
+</Tabs.Root>
+
+With this approach, you will likely run into issues where you need to use the same scale for multiple semantics. Common examples include:
+
+- If you map `yellow` to "warning", you might also need `yellow` to communicate "pending".
+- If you map `red` to "danger", you might also need `red` to communicate "error" or "rejected".
+- If you map `green` to "success", you might also need `green` to communicate "valid".
+- If you map `blue` to "accent", you might also need `blue` to communicate "info".
+
+In this scenario, you can choose to define multiple semantic aliases which map to the same scale.
+
+<Tabs.Root asChild defaultValue="css">
+	<CodeBlock.Root my="5">
+		<CodeBlock.Header>
+			<Tabs.List>
+				<Tabs.Trigger value="css">CSS</Tabs.Trigger>
+				<Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+			</Tabs.List>
+		</CodeBlock.Header>
+
+		<Tabs.Content asChild value="css">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="css">
+						{`/*
+ * Note: Importing from the CDN in production is not recommended.
+ * It's intended for prototyping only.
+ */
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css";
+
+:root {
+	--accent-1: var(--blue-1);
+	--accent-2: var(--blue-2);
+	--info-1: var(--blue-1);
+	--info-2: var(--blue-2);
+
+	--success-1: var(--green-1);
+	--success-2: var(--green-2);
+	--valid-1: var(--green-1);
+	--valid-2: var(--green-2);
+
+	--warning-1: var(--yellow-1);
+	--warning-2: var(--yellow-2);
+	--pending-1: var(--yellow-1);
+	--pending-2: var(--yellow-2);
+}
+`}
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
+
+		<Tabs.Content asChild value="css-in-js">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="js">
+{`import {
+	blue,
+	green,
+	yellow
+} from "@radix-ui/colors";
+
+const theme = {
+	...blue,
+	...green,
+	...yellow,
+
+	accent1: blue.blue1,
+	accent2: blue.blue2,
+	info1: blue.blue1,
+	info2: blue.blue2,
+
+	success1: green.green1,
+	success2: green.green2,
+	valid1: green.green1,
+	valid2: green.green2,
+
+	warning1: yellow.yellow1,
+	warning2: yellow.yellow2,
+	pending1: yellow.yellow1,
+	pending2: yellow.yellow2,
+};
+`}
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
+
+	</CodeBlock.Root>
+</Tabs.Root>
+
+Or you can simply recommend that your teammates defer to the original scale name for situations where there is no appropriate semantic alias.
+
+## Use case aliases
+
+Each step in Radix Colors scales is designed for a specific use case. To help your team know which step to use, you can provide aliases based on the designed use cases.
+
+<Tabs.Root asChild defaultValue="css">
+	<CodeBlock.Root my="5">
+		<CodeBlock.Header>
+			<Tabs.List>
+				<Tabs.Trigger value="css">CSS</Tabs.Trigger>
+				<Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+			</Tabs.List>
+		</CodeBlock.Header>
+
+		<Tabs.Content asChild value="css">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="css">
+{`/*
+ * Note: Importing from the CDN in production is not recommended.
+ * It's intended for prototyping only.
+ */
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css";
+
+:root {
+	--accent-base: var(--blue-1);
+	--accent-bg-subtle: var(--blue-2);
+	--accent-bg: var(--blue-3);
+	--accent-bg-hover: var(--blue-4);
+	--accent-bg-active: var(--blue-5);
+	--accent-line: var(--blue-6);
+	--accent-border: var(--blue-7);
+	--accent-border-hover: var(--blue-8);
+	--accent-solid: var(--blue-9);
+	--accent-solid-hover: var(--blue-10);
+	--accent-text: var(--blue-11);
+	--accent-text-contrast: var(--blue-12);
+
+	--success-base: var(--green-1);
+	--success-bg-subtle: var(--green-2);
+	/* repeat for all steps */
+
+	--warning-base: var(--yellow-1);
+	--warning-bg-subtle: var(--yellow-2);
+	/* repeat for all steps */
+
+	--danger-base: var(--red-1);
+	--danger-bg-subtle: var(--red-2);
+	/* repeat for all steps */
+}
+`}
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
+
+		<Tabs.Content asChild value="css-in-js">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="js">
+{`import {
+	blue,
+	green,
+	yellow,
+	red
+} from "@radix-ui/colors";
+
+const theme = {
+	...blue,
+	...green,
+	...yellow,
+	...red,
+
+	accentBase: blue.blue1,
+	accentBgSubtle: blue.blue2,
+	accentBg: blue.blue3,
+	accentBgHover: blue.blue4,
+	accentBgActive: blue.blue5,
+	accentLine: blue.blue6,
+	accentBorder: blue.blue7,
+	accentBorderHover: blue.blue8,
+	accentSolid: blue.blue9,
+	accentSolidHover: blue2.blue10,
+	accentText: blue.blue11,
+	accentTextContrast: blue.blue12,
+
+	successBase: green.green1,
+	successBgSubtle: green.green2,
+	// repeat for all steps
+
+	warningBase: yellow.yellow1,
+	warningBgSubtle: yellow.yellow2,
+	// repeat for all steps
+
+	dangerBase: red.red1,
+	dangerBgSubtle: red.red2,
+	// repeat for all steps
+};
+`}
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
+
+	</CodeBlock.Root>
+</Tabs.Root>
+
+Again, with this approach, you will likely run into issues where you need to use the same step for multiple use cases. Common examples include:
+
+- Step 9 is designed for solid backgrounds, but it also may work for input placeholder text.
+- Step 8 is designed for hovered component borders, but it also works well for focus rings.
+
+In these cases, you can choose to define multiple aliases which map to the same step.
+
+<Tabs.Root asChild defaultValue="css">
+	<CodeBlock.Root my="5">
+		<CodeBlock.Header>
+			<Tabs.List>
+				<Tabs.Trigger value="css">CSS</Tabs.Trigger>
+				<Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+			</Tabs.List>
+		</CodeBlock.Header>
+
+		<Tabs.Content asChild value="css">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="css">
+{`/*
+ * Note: Importing from the CDN in production is not recommended.
+ * It's intended for prototyping only.
+ */
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css";
+
+:root {
+	--gray-solid: var(--gray-9);
+	--gray-placeholder-text: var(--gray-9);
+
+	--accent-border-hover: var(--blue-8);
+	--accent-focus-ring: var(--blue-8);
+}
+`}
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
+
+		<Tabs.Content asChild value="css-in-js">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="js">
+{`import {
+	gray,
+	blue,
+	green,
+	yellow,
+	red
+} from "@radix-ui/colors";
+
+const theme = {
+	...gray,
+	...blue,
+	...green,
+	...yellow,
+	...red,
+
+	graySolid: gray.gray9,
+	grayPlaceholderText: gray.gray9,
+
+	accentBorderHover: blue.blue8,
+	accentFocusRing: blue.blue8,
+};`}
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
+
+	</CodeBlock.Root>
+</Tabs.Root>
+
+Or you can simply recommend that your teammates defer to the original step number for situations where use cases don't have an alias.
+
+## Mutable aliases
+
+When designing for both light and dark modes, you sometimes need to map a variable to one color in light mode, and another color in dark mode. Common examples include:
+
+- Components that have a white background in light mode and a subtle gray background in dark mode. For example, Card, Popover, DropdownMenu, HoverCard, Dialog etc.
+- Components that have a transparent black background in light mode and a transparent white background in dark mode. For example, Tooltip.
+- Shadows that are saturated, transparent gray in light mode, and pure black in dark mode.
+- An overlay that is light transparent black in light mode, and a darker transparent black in dark mode.
+
+<Tabs.Root asChild defaultValue="css">
+	<CodeBlock.Root my="5">
+		<CodeBlock.Header>
+			<Tabs.List>
+				<Tabs.Trigger value="css">CSS</Tabs.Trigger>
+				<Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+			</Tabs.List>
+		</CodeBlock.Header>
+
+		<Tabs.Content asChild value="css">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="css">
+{`/*
+ * Note: Importing from the CDN in production is not recommended.
+ * It's intended for prototyping only.
+ */
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate-alpha.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/white-alpha.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/black-alpha.css";
+
+:root {
+	--panel: white;
+	--panel-contrast: var(--black-a9);
+	--shadow: var(--slate-a3);
+	--overlay: var(--black-a8);
+}
+
+.dark {
+	/* Remap your colors for dark mode */
+	--panel: var(--slate-2);
+	--panel-contrast: var(--white-a9);
+	--shadow: black;
+	--overlay: var(--black-a11);
+}`}
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
+
+		<Tabs.Content asChild value="css-in-js">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="js">
+{`import styled, { ThemeProvider } from "styled-components";
+import {
+	slate,
+	slateA,
+	whiteA,
+	blackA
+} from "@radix-ui/colors";
+
+const theme = {
+	...slate,
+	...slateA,
+	...whiteA,
+	...blackA,
+
+	panel: "white",
+	panelContrast: black.blackA11,
+	shadow: slate.slateA3,
+	overlay: slate.blackA8,
+};
+
+const darkTheme = {
+	...slateDark,
+	...slateDarkA,
+	...whiteA,
+	...blackA,
+
+	// Remap your colors for dark mode
+	panel: slate.slate2,
+	panelContrast: whiteA.whiteA9,
+	shadow: "black",
+	overlay: blackA.blackA11,
+}
+
+<ThemeProvider theme={darkTheme}>
+	// your app
+</ThemeProvider>`}
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
+
+	</CodeBlock.Root>
+</Tabs.Root>
+
+Avoid using specific variable names like "CardBg", or "Tooltip", because you will likely need to use each variable for multiple use cases.
+
+## Renaming scales
+
+If you wish, you can rename scales. Reasons might include:
+
+- Rename a saturated gray to `gray` to keep things simple.
+- Rename `sky` or `grass` to `blue` or `green` to keep the naming intuitive.
+- Rename a scale to match your brand, like how Discord use `blurple`.
+
+<Tabs.Root asChild defaultValue="css">
+	<CodeBlock.Root my="5">
+		<CodeBlock.Header>
+			<Tabs.List>
+				<Tabs.Trigger value="css">CSS</Tabs.Trigger>
+				<Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+			</Tabs.List>
+		</CodeBlock.Header>
+
+		<Tabs.Content asChild value="css">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="css">
+{`/*
+ * Note: Importing from the CDN in production is not recommended.
+ * It's intended for prototyping only.
+ */
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/sky.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/grass.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/violet.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/crimson.css";
+
+:root {
+	--gray-1: var(--slate-1);
+	--gray-2: var(--slate-2);
+
+	--blue-1: var(--sky-1);
+	--blue-2: var(--sky-2);
+
+	--green-1: var(--grass-1);
+	--green-2: var(--grass-2);
+
+	--blurple-1: var(--violet-1);
+	--blurple-2: var(--violet-2);
+
+	--caribbean-sunset-1: var(--crimson-1);
+	--caribbean-sunset-2: var(--crimson-2);
+}
+`}
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
+
+		<Tabs.Content asChild value="css-in-js">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="js">
+{`import {
+	slate,
+	sky,
+	grass,
+	violet,
+	crimson
+} from "@radix-ui/colors";
+
+const theme = {
+	gray1: slate.slate1,
+	gray2: slate.slate2,
+
+	blue1: sky.sky1,
+	blue2: sky.sky2,
+
+	green1: grass.grass1,
+	green2: grass.grass2,
+
+	blurple1: violet.violet1,
+	blurple2: violet.violet2,
+
+	caribbeanSunset1: crimson.crimson1,
+	caribbeanSunset2: crimson.crimson2,
+};`}
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
+
+	</CodeBlock.Root>
+</Tabs.Root>
+
+
+---
+metaTitle: Custom palettes
+metaDescription: How to create custom Radix Colors palettes.
+---
+
+# Custom palettes
+
+<Description>Learn how to create custom Radix Colors palettes.</Description>
+
+Use the [custom color palette tool](/colors/custom) to generate a Radix Colors scale based just on a couple reference colors. Once you are happy with the result, paste the generated CSS into your project and use them the same way you would use the regular Radix Colors scales.
+
+The generated scales are based on the Radix Colors scales themselves, so they will work well with similar component designs. As long as you use a reasonable background color, the contrast ratios will be similar to what Radix Colors provide.
+
+## What you get
+
+Your custom color palette will include Radix Colors steps 1 through 12, as well as their alpha variants and wide-gamut color definitions. Wide-gamut color definitions are needed to ensure that alpha colors are displayed with full saturation in wide-gamut color spaces, such as on Apple’s displays that support P3. This is because alpha blending works differently in P3 than in sRGB.
+
+Learn about the base palette composition in the [Understanding the scale](/colors/docs/palette-composition/understanding-the-scale) guide. The generated CSS also includes a few extra colors used exclusively in [Radix Themes](/themes/docs), such as:
+
+- Surface color, used by certain `variant="surface"` components
+- Indicator color, used by components like Checkbox, Radio, and Tabs
+- Track color, used by components like Slider and Progress Bar
+
+Feel free to remove colors from the generated CSS that you don’t need.
+
+## Color formats
+
+You can use any common CSS color format in the input fields, or even wide-gamut color spaces, such as `color(display-p3 1 0.5 0)`. The generated CSS will provide the closest sRGB fallbacks.
+
+## Dark theme
+
+To generate dark theme colors, toggle the appearance to dark in the website header. Make sure to paste the generated CSS after your light theme color overrides.
+
+
+---
+metaTitle: Installation
+metaDescription: How to install Radix Colors.
+---
+
+# Installation
+
+<Description>How to install Radix Colors.</Description>
+
+## npm
+
+Install Radix Colors from your terminal via npm, yarn or pnpm. Current version is `3.0.0`
+
+```bash
+# with npm
+npm install @radix-ui/colors
+# with yarn
+yarn add @radix-ui/colors
+# with pnpm
+pnpm add @radix-ui/colors
+```
+
+## CDN
+
+To get started quickly, you can use the CDN files.
+
+<Note>
+	Note: Importing from the CDN in production is not recommended. It's intended
+	for prototyping only.
+</Note>
+
+```html
+<!-- Load whichever light and dark scales you need -->
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray-dark.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue-dark.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green-dark.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red-dark.css"
+/>
+```
+
+The example above uses the `@latest` tag to point to the latest version of the scales. You can pin your scales to a specific version.
+
+```html
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@3.0.0/blue.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@3.0.0/blue-dark.css"
+/>
+```
+
+
+---
+metaTitle: Releases
+metaDescription: Radix Colors changelog.
+---
+
+# Releases
+
+<Description>Radix Colors releases and changelog.</Description>
+
+## 3.0.0
+
+<Note> October 2, 2023 </Note>
+
+- [**Breaking**] A complete rework of all colors.
+- Add P3 colorspace versions of all scales.
+
+## 2.1.0
+
+<Note>August 21, 2023</Note>
+
+- Add `ruby`, `iris`, and `jade` scales
+
+## 2.0.1
+
+<Note>August 7, 2023</Note>
+
+- Fix some of the dark `a2` colors being too opaque.
+
+## 2.0.0
+
+<Note>August 7, 2023</Note>
+
+- [**Breaking**] A complete rework of all colors, dramatically improving contrast across the board.
+
+## 1.0.0
+
+<Note>June 23, 2023</Note>
+
+- [**Breaking**] CSS variables were changed to use the hyphen-separated naming:
+  - `gray1` → `gray-1`
+  - `grayA1` → `gray-a1`
+- [**Breaking**] CSS file names were changed to use the hyphen-separated naming:
+  - `gray.css` → `gray.css`
+  - `grayA.css` → `gray-alpha.css`
+  - `grayDark.css` → `gray-dark.css`
+  - `grayDarkA.css` → `gray-dark-alpha.css`
+
+## 0.1.9
+
+<Note>June 19, 2023</Note>
+
+- Apply light scale CSS variables to `.light-theme` class in addition to
+  the `:root` element.
+
+
+---
+metaTitle: How to use Radix Colors
+metaDescription: How to use Radix Colors.
+---
+
+# Usage
+
+<Description>
+	How to use Radix Colors with various styling solutions.
+</Description>
+
+Radix Colors scales are just simple JavaScript objects, so you can use them with your preferred styling solution easily. Below you can find usage examples for popular styling solutions.
+
+## Vanilla CSS
+
+Radix Colors provides the colors bundled as raw CSS files. You can import them directly in your files when using a bundler, such as Parcel or Webpack.
+
+```css
+/* Import only the scales you need */
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/blue.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/gray-dark.css";
+@import "@radix-ui/colors/blue-dark.css";
+@import "@radix-ui/colors/green-dark.css";
+@import "@radix-ui/colors/red-dark.css";
+
+/* Use the colors as CSS variables */
+.button {
+	background-color: var(--blue-4);
+	color: var(--blue-11);
+	border-color: var(--blue-7);
+}
+.button:hover {
+	background-color: var(--blue-5);
+	border-color: var(--blue-8);
+}
+```
+
+```html
+<!-- For dark mode, apply a `.dark` class to <body> or a parent. -->
+<body class="dark">
+	<button class="button">Button</button>
+</body>
+```
+
+<Note>
+	Light scales apply their CSS variables to the `:root` element and to the
+	`.light` and `.light-theme` classes. Dark scales apply their CSS variables to
+	the `.dark` and `.dark-theme` classes.
+</Note>
+
+## styled-components
+
+```js
+import {
+	gray,
+	blue,
+	red,
+	green,
+	grayDark,
+	blueDark,
+	redDark,
+	greenDark,
+} from "@radix-ui/colors";
+import styled, { ThemeProvider } from "styled-components";
+
+// Create your theme
+const theme = {
+	colors: {
+		...gray,
+		...blue,
+		...red,
+		...green,
+	},
+};
+
+// Create your dark theme
+const darkTheme = {
+	colors: {
+		...grayDark,
+		...blueDark,
+		...redDark,
+		...greenDark,
+	},
+};
+
+// Use the colors in your styles
+const Button = styled.button`
+	background-color: ${(props) => props.theme.colors.blue4};
+	color: ${(props) => props.theme.colors.blue11};
+	border-color: ${(props) => props.theme.colors.blue7};
+	&:hover {
+		background-color: ${(props) => props.theme.colors.blue5};
+		border-color: ${(props) => props.theme.colors.blue8};
+	}
+`;
+
+// Wrap your app with the theme provider and apply your theme to it
+export default function App() {
+	return (
+		<ThemeProvider theme={theme}>
+			<Button>Radix Colors</Button>
+		</ThemeProvider>
+	);
+}
+```
+
+## emotion
+
+Usage with emotion is almost identical to the styled-components docs above, aside from the different imports.
+
+```js
+import {
+	gray,
+	blue,
+	red,
+	green,
+	grayDark,
+	blueDark,
+	redDark,
+	greenDark,
+} from "@radix-ui/colors";
+import { ThemeProvider } from "@emotion/react";
+import styled from "@emotion/styled";
+```
+
+## vanilla-extract
+
+```js
+import {
+	gray,
+	blue,
+	red,
+	green,
+	grayDark,
+	blueDark,
+	redDark,
+	greenDark,
+} from "@radix-ui/colors";
+import { createTheme } from "@vanilla-extract/css";
+
+export const [theme, vars] = createTheme({
+	colors: {
+		...gray,
+		...blue,
+		...red,
+		...green,
+	},
+});
+
+export const darkTheme = createTheme(vars, {
+	colors: {
+		...grayDark,
+		...blueDark,
+		...redDark,
+		...greenDark,
+	},
+});
+
+// Use the colors in your styles
+export const styles = {
+	button: style({
+		backgroundColor: vars.colors.blue4,
+		color: vars.colors.blue11,
+		borderColor: vars.colors.blue7,
+		":hover": {
+			backgroundColor: vars.colors.blue5,
+			borderColor: vars.colors.blue8,
+		},
+	}),
+};
+
+// Apply your theme to it
+export default function App() {
+	return (
+		<body className={theme}>
+			<button className={styles.button}>Radix Colors</button>
+		</body>
+	);
+}
+```
+
+
+---
+metaTitle: Composing a color palette
+metaDescription: A guide to composing a color palette with Radix Colors.
+---
+
+# Composing a color palette
+
+<Description>
+	A guide to composing a color palette with Radix Colors.
+</Description>
+
+## Choosing a brand scale
+
+Radix provides a number of scales you could use for your brand or accent color.
+
+Scales designed for white foreground text:
+
+<ColorGrayPairsComplementary />
+
+### Custom brand colors
+
+Radix Colors are not intended to be customised. They’re designed to be accessible, well-balanced, and harmonious. Any customisation would likely break these features.
+
+If you need custom brand colors, we recommend adding custom scales alongside Radix scales.
+
+For example, you could use Radix Colors for your gray scale and your semantic scales, then add custom brand/accent colors.
+
+## Choosing a gray scale
+
+Radix Colors provides a pure gray and a few tinted gray scales.
+
+<ColorGrays />
+
+- `gray` is pure gray
+- `mauve` is based on a purple hue
+- `slate` is based on a blue hue
+- `sage` is based on a green hue
+- `olive` is based on a lime hue
+- `sand` is based on a yellow hue
+
+### Neutral pairing
+
+If you want a neutral vibe, or you want to keep things simple, `gray` will work well with any hue or palette.
+
+### Natural pairing
+
+Alternatively, choose the gray scale which is saturated with the hue closest to your accent hue. The difference is subtle, but this will create a more colorful and harmonius vibe.
+
+<ColorGrayPairs />
+
+<Note>
+	Note: If your project uses a lot of colorful UI components like Badge, be
+	careful when using saturated grays for your app background, especially in dark
+	mode. Colorful UI components may clash with your saturated gray background
+	color.
+</Note>
+
+## Choosing semantic scales
+
+For most projects, you will need colors to communicate semantic meaning. Here are some common pairings that work well in Western culture.
+
+- **Error**: `red`, `ruby`, `tomato`, `crimson`
+- **Success**: `green`, `teal`, `jade`, `grass`, `mint`
+- **Warning**: `yellow`, `amber`, `orange`
+- **Info**: `blue`, `indigo`, `sky`, `cyan`
+
+In many cases, you might eventually need most of the scales, for one reason or another. Your app may support multiplayer mode, where you assign a color to each user. Your app may have a labelling feature, where your users assign a color to a task. Your app may use badges to communicate “pending” or “rejected” states.
+
+Radix Colors are well-balanced, and designed to work in harmony. So for product communication, most color pairings will work.
+
+## Choosing text scales
+
+Steps 11 and 12 are designed for low-contrast text and high-contrast text respectively. Depending on the vibe you want, you can use your accent scale or your gray scale.
+
+Using your accent scale will result in a more colorful vibe.
+
+{
+
+<Box my="5">
+	<Text
+		as="p"
+		size="7"
+		align="center"
+		weight="bold"
+		style={{ color: "var(--blue-12)" }}
+	>
+		This text is Blue 12
+	</Text>
+</Box>
+
+}
+
+Using your gray scale will result in a more functional vibe.
+
+{
+
+<Box my="5">
+	<Text
+		as="p"
+		size="7"
+		align="center"
+		weight="bold"
+		style={{ color: "var(--slate-12)" }}
+	>
+		This text is Slate 12
+	</Text>
+</Box>
+
+}
+
+The difference may seem subtle, but it can make a huge difference with a whole page of text.
+
+You may want to experiment with using your accent scale for text in your marketing sites, and your gray scale for text in your apps.
+
+
+---
+metaTitle: Scales
+metaDescription: See all accessible color scales that Radix Colors provides.
+---
+
+# Scales
+
+<Description>An overview of all Radix Colors scales.</Description>
+
+#### Gray
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Gray" name="gray" />
+	<ColorScale label="Gray Alpha" name="grayA" />
+	<ColorScale label="Gray Dark" name="grayDark" />
+	<ColorScale label="Gray Dark Alpha" name="grayDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Mauve
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Mauve" name="mauve" />
+	<ColorScale label="Mauve Alpha" name="mauveA" />
+	<ColorScale label="Mauve Dark" name="mauveDark" />
+	<ColorScale label="Mauve Dark Alpha" name="mauveDarkA" />
+</ColorScaleGroup>
+}
+
+#### Slate
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Slate" name="slate" />
+	<ColorScale label="Slate Alpha" name="slateA" />
+	<ColorScale label="Slate Dark" name="slateDark" />
+	<ColorScale label="Slate Dark Alpha" name="slateDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Sage
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Sage" name="sage" />
+	<ColorScale label="Sage Alpha" name="sageA" />
+	<ColorScale label="Sage Dark" name="sageDark" />
+	<ColorScale label="Sage Dark Alpha" name="sageDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Olive
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Olive" name="olive" />
+	<ColorScale label="Olive Alpha" name="oliveA" />
+	<ColorScale label="Olive Dark" name="oliveDark" />
+	<ColorScale label="Olive Dark Alpha" name="oliveDarkA" />
+</ColorScaleGroup>
+}
+
+#### Sand
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Sand" name="sand" />
+	<ColorScale label="Sand Alpha" name="sandA" />
+	<ColorScale label="Sand Dark" name="sandDark" />
+	<ColorScale label="Sand Dark Alpha" name="sandDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Gold
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Gold" name="gold" />
+	<ColorScale label="Gold Alpha" name="goldA" />
+	<ColorScale label="Gold Dark" name="goldDark" />
+	<ColorScale label="Gold Dark Alpha" name="goldDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Bronze
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Bronze" name="bronze" />
+	<ColorScale label="Bronze Alpha" name="bronzeA" />
+	<ColorScale label="Bronze Dark" name="bronzeDark" />
+	<ColorScale label="Bronze Dark Alpha" name="bronzeDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Brown
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Brown" name="brown" />
+	<ColorScale label="Brown Alpha" name="brownA" />
+	<ColorScale label="Brown Dark" name="brownDark" />
+	<ColorScale label="Brown Dark Alpha" name="brownDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Yellow
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Yellow" name="yellow" />
+	<ColorScale label="Yellow Alpha" name="yellowA" />
+	<ColorScale label="Yellow Dark" name="yellowDark" />
+	<ColorScale label="Yellow Dark Alpha" name="yellowDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Amber
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Amber" name="amber" />
+	<ColorScale label="Amber Alpha" name="amberA" />
+	<ColorScale label="Amber Dark" name="amberDark" />
+	<ColorScale label="Amber Dark Alpha" name="amberDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Orange
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Orange" name="orange" />
+	<ColorScale label="Orange Alpha" name="orangeA" />
+	<ColorScale label="Orange Dark" name="orangeDark" />
+	<ColorScale label="Orange Dark Alpha" name="orangeDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Tomato
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Tomato" name="tomato" />
+	<ColorScale label="Tomato Alpha" name="tomatoA" />
+	<ColorScale label="Tomato Dark" name="tomatoDark" />
+	<ColorScale label="Tomato Dark Alpha" name="tomatoDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Red
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Red" name="red" />
+	<ColorScale label="Red Alpha" name="redA" />
+	<ColorScale label="Red Dark" name="redDark" />
+	<ColorScale label="Red Dark Alpha" name="redDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Ruby
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Ruby" name="ruby" />
+	<ColorScale label="Ruby Alpha" name="rubyA" />
+	<ColorScale label="Ruby Dark" name="rubyDark" />
+	<ColorScale label="Ruby Dark Alpha" name="rubyDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Crimson
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Crimson" name="crimson" />
+	<ColorScale label="Crimson Alpha" name="crimsonA" />
+	<ColorScale label="Crimson Dark" name="crimsonDark" />
+	<ColorScale label="Crimson Dark Alpha" name="crimsonDarkA" />
+</ColorScaleGroup>
+}
+
+#### Pink
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Pink" name="pink" />
+	<ColorScale label="Pink Alpha" name="pinkA" />
+	<ColorScale label="Pink Dark" name="pinkDark" />
+	<ColorScale label="Pink Dark Alpha" name="pinkDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Plum
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Plum" name="plum" />
+	<ColorScale label="Plum Alpha" name="plumA" />
+	<ColorScale label="Plum Dark" name="plumDark" />
+	<ColorScale label="Plum Dark Alpha" name="plumDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Purple
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Purple" name="purple" />
+	<ColorScale label="Purple Alpha" name="purpleA" />
+	<ColorScale label="Purple Dark" name="purpleDark" />
+	<ColorScale label="Purple Dark Alpha" name="purpleDarkA" />
+</ColorScaleGroup>
+}
+
+#### Violet
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Violet" name="violet" />
+	<ColorScale label="Violet Alpha" name="violetA" />
+	<ColorScale label="Violet Dark" name="violetDark" />
+	<ColorScale label="Violet Dark Alpha" name="violetDarkA" />
+</ColorScaleGroup>
+}
+
+#### Iris
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Iris" name="iris" />
+	<ColorScale label="Iris Alpha" name="irisA" />
+	<ColorScale label="Iris Dark" name="irisDark" />
+	<ColorScale label="Iris Dark Alpha" name="irisDarkA" />
+</ColorScaleGroup>
+}
+
+#### Indigo
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Indigo" name="indigo" />
+	<ColorScale label="Indigo Alpha" name="indigoA" />
+	<ColorScale label="Indigo Dark" name="indigoDark" />
+	<ColorScale label="Indigo Dark Alpha" name="indigoDarkA" />
+</ColorScaleGroup>
+}
+
+#### Blue
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Blue" name="blue" />
+	<ColorScale label="Blue Alpha" name="blueA" />
+	<ColorScale label="Blue Dark" name="blueDark" />
+	<ColorScale label="Blue Dark Alpha" name="blueDarkA" />
+</ColorScaleGroup>
+}
+
+#### Cyan
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Cyan" name="cyan" />
+	<ColorScale label="Cyan Alpha" name="cyanA" />
+	<ColorScale label="Cyan Dark" name="cyanDark" />
+	<ColorScale label="Cyan Dark Alpha" name="cyanDarkA" />
+</ColorScaleGroup>
+}
+
+#### Teal
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Teal" name="teal" />
+	<ColorScale label="Teal Alpha" name="tealA" />
+	<ColorScale label="Teal Dark" name="tealDark" />
+	<ColorScale label="Teal Dark Alpha" name="tealDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Jade
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Jade" name="jade" />
+	<ColorScale label="Jade Alpha" name="jadeA" />
+	<ColorScale label="Jade Dark" name="jadeDark" />
+	<ColorScale label="Jade Dark Alpha" name="jadeDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Green
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Green" name="green" />
+	<ColorScale label="Green Alpha" name="greenA" />
+	<ColorScale label="Green Dark" name="greenDark" />
+	<ColorScale label="Green Dark Alpha" name="greenDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Grass
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Grass" name="grass" />
+	<ColorScale label="Grass Alpha" name="grassA" />
+	<ColorScale label="Grass Dark" name="grassDark" />
+	<ColorScale label="Grass Dark Alpha" name="grassDarkA" />
+</ColorScaleGroup>
+}
+
+#### Lime
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Lime" name="lime" />
+	<ColorScale label="Lime Alpha" name="limeA" />
+	<ColorScale label="Lime Dark" name="limeDark" />
+	<ColorScale label="Lime Dark Alpha" name="limeDarkA" />
+</ColorScaleGroup>
+}
+
+#### Mint
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Mint" name="mint" />
+	<ColorScale label="Mint Alpha" name="mintA" />
+	<ColorScale label="Mint Dark" name="mintDark" />
+	<ColorScale label="Mint Dark Alpha" name="mintDarkA" />
+</ColorScaleGroup>
+
+}
+
+#### Sky
+
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Sky" name="sky" />
+	<ColorScale label="Sky Alpha" name="skyA" />
+	<ColorScale label="Sky Dark" name="skyDark" />
+	<ColorScale label="Sky Dark Alpha" name="skyDarkA" />
+</ColorScaleGroup>
+
+}
+
+<br />
+
+---
+
+#### Overlays
+
+These scales are designed for overlays and don’t change across light and dark
+theme.
+
+<br />
+{
+
+<ColorScaleGroup>
+	<ColorScale label="Black Alpha" name="blackA" />
+	<ColorScale label="White Alpha" name="whiteA" />
+</ColorScaleGroup>
+
+}
+
+<br />
+<br />
+
+
+---
+metaTitle: Use cases
+metaDescription: How to use Radix Colors.
+---
+
+# Understanding the scale
+
+<Description>
+	Learn which scale step is the most appropriate for each use case.
+</Description>
+
+## Use cases
+
+There are 12 steps in each scale. Each step was designed for at least one specific use case.
+
+This table is a simple overview of the most common use case for each step. However, there are many exceptions and caveats to factor in, which are covered in further detail below.
+
+<UseCasesTable />
+
+## Steps 1–2: Backgrounds
+
+<ColorScale01 />
+
+Steps `1` and `2` are designed for app backgrounds and subtle component backgrounds. You can use them interchangeably, depending on the vibe you're going for.
+
+Appropriate applications include:
+
+- Main app background
+- Striped table background
+- Code block background
+- Card background
+- Sidebar background
+- Canvas area background
+
+<Note>
+	You may want to use white for your app background in light mode, and Step `1`
+	or `2` from a gray or coloured scale in dark mode. In this case, set up a
+	[mutable alias](/colors/docs/overview/aliasing#mutable-aliases) for `AppBg`
+	and map it to a different color for each color mode.
+</Note>
+
+## Steps 3–5: Component backgrounds
+
+<ColorScale02 />
+
+Steps `3`, `4`, and `5` are designed for UI component backgrounds.
+
+- Step `3` is for normal states.
+- Step `4` is for hover states.
+- Step `5` is for pressed or selected states.
+
+{
+
+<Flex wrap="wrap" gap="5" my="5">
+  <IconButton variant="soft" color="gray"><PlusIcon /></IconButton>
+  <IconButton variant="soft" color="pink"><PlusIcon /></IconButton>
+
+{' '}
+
+<Flex direction="column" maxWidth="max-content">
+	<MenuItemButton color="gray" data-state="active">
+		Menu item
+	</MenuItemButton>
+	<MenuItemButton color="gray">Second menu item</MenuItemButton>
+	<MenuItemButton color="gray">Third menu item</MenuItemButton>
+</Flex>
+
+  <Flex direction="column" maxWidth="max-content">
+    <MenuItemButton color="pink" data-state="active">
+      Menu item
+    </MenuItemButton>
+    <MenuItemButton color="pink">
+      Second menu item
+    </MenuItemButton>
+    <MenuItemButton color="pink">
+      Third menu item
+    </MenuItemButton>
+  </Flex>
+</Flex>
+}
+
+If your component has a transparent background in its default state, you can use Step `3` for its hover state.
+
+{
+
+<Flex wrap="wrap" gap="5" my="5">
+	<IconButton variant="ghost" color="gray">
+		<PlusIcon />
+	</IconButton>
+	<IconButton variant="ghost" color="blue">
+		<PlusIcon />
+	</IconButton>
+	<IconButton variant="ghost" color="red">
+		<PlusIcon />
+	</IconButton>
+</Flex>
+}
+
+<Note>
+	Steps `11` and `12`—which are designed for text—are guaranteed to Lc 60 and Lc
+	90 APCA contrast ratio on top of a step `2` background from the same scale.
+</Note>
+
+## Steps 6–8: Borders
+
+<ColorScale03 />
+
+Steps `6`, `7`, and `8` are designed for borders.
+
+- Step `6` is designed for subtle borders on components which are not interactive. For example sidebars, headers, cards, alerts, and separators.
+- Step `7` is designed for subtle borders on interactive components.
+- Step `8` is designed for stronger borders on interactive components and focus rings.
+
+{
+
+<Grid columns="7" gap="3" my="5">
+	<Button variant="surface" color="gold">
+		Gold
+	</Button>
+	<Button variant="surface" color="bronze">
+		Bronze
+	</Button>
+	<Button variant="surface" color="brown">
+		Brown
+	</Button>
+	<Button variant="surface" color="yellow">
+		Yellow
+	</Button>
+	<Button variant="surface" color="amber">
+		Amber
+	</Button>
+	<Button variant="surface" color="orange">
+		Orange
+	</Button>
+	<Button variant="surface" color="tomato">
+		Tomato
+	</Button>
+	<Button variant="surface" color="red">
+		Red
+	</Button>
+	<Button variant="surface" color="ruby">
+		Ruby
+	</Button>
+	<Button variant="surface" color="crimson">
+		Crimson
+	</Button>
+	<Button variant="surface" color="pink">
+		Pink
+	</Button>
+	<Button variant="surface" color="plum">
+		Plum
+	</Button>
+	<Button variant="surface" color="purple">
+		Purple
+	</Button>
+	<Button variant="surface" color="violet">
+		Violet
+	</Button>
+	<Button variant="surface" color="iris">
+		Iris
+	</Button>
+	<Button variant="surface" color="indigo">
+		Indigo
+	</Button>
+	<Button variant="surface" color="blue">
+		Blue
+	</Button>
+	<Button variant="surface" color="cyan">
+		Cyan
+	</Button>
+	<Button variant="surface" color="teal">
+		Teal
+	</Button>
+	<Button variant="surface" color="jade">
+		Jade
+	</Button>
+	<Button variant="surface" color="green">
+		Green
+	</Button>
+	<Button variant="surface" color="grass">
+		Grass
+	</Button>
+	<Button variant="surface" color="lime">
+		Lime
+	</Button>
+	<Button variant="surface" color="mint">
+		Mint
+	</Button>
+	<Button variant="surface" color="sky">
+		Sky
+	</Button>
+</Grid>
+
+}
+
+## Steps 9–10: Solid backgrounds
+
+<ColorScale04 />
+
+Steps `9` and `10` are designed for solid backgrounds.
+
+Step `9` has the highest chroma of all steps in the scale. In other words, it's the purest step, the step mixed with the least amount of white or black. Because `9` is the purest step, it has a wide range of applications:
+
+- Website/App backgrounds
+- Website section backgrounds
+- Header backgrounds
+- Component backgrounds
+- Graphics/Logos
+- Overlays
+- Coloured shadows
+- Accent borders
+
+Step `10` is designed for component hover states, where step `9` is the component's normal state background.
+
+<Note>
+	Most step 9 colors are designed for white foreground text. `Sky`, `Mint`,
+	`Lime`, `Yellow`, and `Amber` are designed for dark foreground text and steps
+	`9` and `10`.
+</Note>
+
+{
+
+<Grid columns="7" gap="3" my="5">
+	<Button variant="solid" color="gold">
+		Gold
+	</Button>
+	<Button variant="solid" color="bronze">
+		Bronze
+	</Button>
+	<Button variant="solid" color="brown">
+		Brown
+	</Button>
+	<Button variant="solid" color="yellow">
+		Yellow
+	</Button>
+	<Button variant="solid" color="amber">
+		Amber
+	</Button>
+	<Button variant="solid" color="orange">
+		Orange
+	</Button>
+	<Button variant="solid" color="tomato">
+		Tomato
+	</Button>
+	<Button variant="solid" color="red">
+		Red
+	</Button>
+	<Button variant="solid" color="ruby">
+		Ruby
+	</Button>
+	<Button variant="solid" color="crimson">
+		Crimson
+	</Button>
+	<Button variant="solid" color="pink">
+		Pink
+	</Button>
+	<Button variant="solid" color="plum">
+		Plum
+	</Button>
+	<Button variant="solid" color="purple">
+		Purple
+	</Button>
+	<Button variant="solid" color="violet">
+		Violet
+	</Button>
+	<Button variant="solid" color="iris">
+		Iris
+	</Button>
+	<Button variant="solid" color="indigo">
+		Indigo
+	</Button>
+	<Button variant="solid" color="blue">
+		Blue
+	</Button>
+	<Button variant="solid" color="cyan">
+		Cyan
+	</Button>
+	<Button variant="solid" color="teal">
+		Teal
+	</Button>
+	<Button variant="solid" color="jade">
+		Jade
+	</Button>
+	<Button variant="solid" color="green">
+		Green
+	</Button>
+	<Button variant="solid" color="grass">
+		Grass
+	</Button>
+	<Button variant="solid" color="lime">
+		Lime
+	</Button>
+	<Button variant="solid" color="mint">
+		Mint
+	</Button>
+	<Button variant="solid" color="sky">
+		Sky
+	</Button>
+</Grid>
+
+}
+
+## Steps 11–12: Text
+
+<ColorScale05 />
+
+Steps `11` and `12` are designed for text.
+
+- Step `11` is designed for low-contrast text.
+- Step `12` is designed for high-contrast text.
+
+{
+
+<Flex gap="2" direction="column" my="5">
+	<Text size="3" style={{ color: "var(--pink-11)" }}>
+		This text is Pink 11
+	</Text>
+	<Text size="3" style={{ color: "var(--slate-11)" }}>
+		This text is Slate 11
+	</Text>
+	<Text size="3" style={{ color: "var(--gray-11)" }}>
+		This text is Gray 11
+	</Text>
+	<Text size="3" weight="bold" style={{ color: "var(--pink-12)" }}>
+		This text is Pink 12
+	</Text>
+	<Text size="3" weight="bold" style={{ color: "var(--slate-12)" }}>
+		This text is Slate 12
+	</Text>
+	<Text size="3" weight="bold" style={{ color: "var(--gray-12)" }}>
+		This text is Gray 12
+	</Text>
+</Flex>
+
+}
+

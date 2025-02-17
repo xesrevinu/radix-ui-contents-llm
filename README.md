@@ -1,22 +1,21 @@
-# Effect Documentation Processor
+# Radix UI Documentation Processor
 
-This project processes and combines documentation from various Effect sources, making them more accessible for LLM processing.
+This project processes and combines documentation from various Radix UI sources, making them more accessible for LLM processing.
 
 ## Copyright Notice
 
-All documentation content processed by this tool is the intellectual property of Effect-TS and its contributors. This project merely serves as a processing tool and does not claim any ownership of the content.
+All documentation content processed by this tool is the intellectual property of Radix UI and its contributors. This project merely serves as a processing tool and does not claim any ownership of the content.
 
 For the original documentation and license information, please visit:
-- https://github.com/Effect-TS/website
-- https://github.com/Effect-TS/effect
-- https://github.com/tim-smart/effect-io-ai
+- https://github.com/radix-ui/website
+- https://github.com/radix-ui/primitives
 
 ## Features
 
 - Processes and combines multiple documentation sources:
-  - Official Effect documentation from the website
-  - API documentation from effect-io-ai
-  - Packages readmes
+  - Official Radix UI documentation from the website
+  - Primitives documentation
+  - Colors and Themes documentation
 - Uses [yek](https://github.com/bodo-run/yek) for efficient file processing
 - Calculates token counts for LLM processing
 
@@ -30,8 +29,8 @@ For the original documentation and license information, please visit:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/xesrevinu/effect-contents-llm.git
-cd effect-contents-llm
+git clone https://github.com/xesrevinu/radix-ui-contents-llm.git
+cd radix-ui-contents-llm
 ```
 
 2. Install dependencies:
@@ -62,93 +61,27 @@ This will:
 
 ### Summary
 
-- Total Files: 14
-- Total Size: 9.49 MB
-- Total Tokens: 2,600,237
+- Total Files: 3
+- Total Size: 772 kB
+- Total Tokens: 208,079
 
-#### website-docs
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/website-docs.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/website-docs.txt) | 1.49 MB | 345,844 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/website-docs.txt) |
-
-#### effect-api
+#### radix-docs
 
 | File | Size | Tokens | Raw |
 | --- | --- | --- | --- |
-| [output/effect-api.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/effect-api.txt) | 2.42 MB | 665,052 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/effect-api.txt) |
+| [output/radix-docs.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/radix-docs.txt) | 443 kB | 118,159 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/radix-docs.txt) |
 
-#### effect-modules
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/effect-modules.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/effect-modules.txt) | 5.32 MB | 1,527,942 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/effect-modules.txt) |
-
-#### effect-core
+#### radix-colors
 
 | File | Size | Tokens | Raw |
 | --- | --- | --- | --- |
-| [output/effect-core.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/effect-core.txt) | 2.68 kB | 473 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/effect-core.txt) |
+| [output/radix-colors.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/radix-colors.txt) | 43.8 kB | 12,324 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/radix-colors.txt) |
 
-#### effect-ai
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/effect-ai.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/effect-ai.txt) | 135 B | 36 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/effect-ai.txt) |
-
-#### effect-cli
+#### radix-themes
 
 | File | Size | Tokens | Raw |
 | --- | --- | --- | --- |
-| [output/effect-cli.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/effect-cli.txt) | 48.6 kB | 10,885 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/effect-cli.txt) |
-
-#### printer
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/printer.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/printer.txt) | 11 kB | 2,279 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/printer.txt) |
-
-#### effect-experimental
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/effect-experimental.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/effect-experimental.txt) | 152 B | 34 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/effect-experimental.txt) |
-
-#### effect-opentelemetry
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/effect-opentelemetry.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/effect-opentelemetry.txt) | 154 B | 36 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/effect-opentelemetry.txt) |
-
-#### effect-platform
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/effect-platform.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/effect-platform.txt) | 154 kB | 35,130 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/effect-platform.txt) |
-
-#### effect-rpc
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/effect-rpc.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/effect-rpc.txt) | 10.9 kB | 2,534 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/effect-rpc.txt) |
-
-#### effect-sql
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/effect-sql.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/effect-sql.txt) | 11.6 kB | 2,933 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/effect-sql.txt) |
-
-#### effect-typeclass
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/effect-typeclass.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/effect-typeclass.txt) | 15.8 kB | 4,176 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/effect-typeclass.txt) |
-
-#### effect-vitest
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/effect-vitest.txt](https://github.com/xesrevinu/effect-contents-llm/blob/main/output/effect-vitest.txt) | 12.3 kB | 2,883 | [Raw](https://raw.githubusercontent.com/xesrevinu/effect-contents-llm/main/output/effect-vitest.txt) |
+| [output/radix-themes.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/radix-themes.txt) | 285 kB | 77,596 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/radix-themes.txt) |
 
 
 <!-- STATS_END -->
@@ -156,13 +89,13 @@ This will:
 ## Project Structure
 
 ```
-effect-contents-llm/
+radix-ui-contents-llm/
 ├── src/                 # Source code
 │   └── process.ts      # Main processing logic
 ├── output/             # Processed documentation
 ├── sources/            # Documentation sources (submodules)
-│   ├── website/
-│   └── effect-io-ai/
+│   ├── website/       # Radix UI website
+│   └── primitives/    # Radix UI primitives
 └── README.md
 ```
 
@@ -174,7 +107,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 Special thanks to:
 
-The Effect-TS team and community for their incredible work on Effect and its comprehensive documentation
+The Radix UI team and community for their incredible work on Radix UI and its comprehensive documentation
 
 ## License
 
