@@ -1,3 +1,6 @@
 [submodule "sources/radix-website"]
 	path = sources/radix-website
 	url = https://github.com/radix-ui/website.git
+[submodule "sources/shadcn-ui"]
+	path = sources/shadcn-ui
+	url = https://github.com/shadcn/ui.git
