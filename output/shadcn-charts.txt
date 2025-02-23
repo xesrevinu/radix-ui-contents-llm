@@ -1,4 +1,4 @@
-
+chart-area-axes.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -110,7 +110,7 @@ export default function Component() {
   )
 }
 
-
+chart-area-default.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -206,7 +206,7 @@ export default function Component() {
   )
 }
 
-
+chart-area-gradient.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -338,7 +338,7 @@ export default function Component() {
   )
 }
 
-
+chart-area-icons.tsx
 "use client"
 
 import { TrendingDown, TrendingUp } from "lucide-react"
@@ -452,7 +452,7 @@ export default function Component() {
   )
 }
 
-
+chart-area-interactive.tsx
 "use client"
 
 import * as React from "react"
@@ -720,7 +720,7 @@ export default function Component() {
   )
 }
 
-
+chart-area-legend.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -832,7 +832,7 @@ export default function Component() {
   )
 }
 
-
+chart-area-linear.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -928,7 +928,7 @@ export default function Component() {
   )
 }
 
-
+chart-area-stacked-expand.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -1051,7 +1051,7 @@ export default function Component() {
   )
 }
 
-
+chart-area-stacked.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -1160,7 +1160,7 @@ export default function Component() {
   )
 }
 
-
+chart-area-step.tsx
 "use client"
 
 import { Activity, TrendingUp } from "lucide-react"
@@ -1257,7 +1257,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-active.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -1370,7 +1370,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-default.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -1447,7 +1447,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-horizontal.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -1532,7 +1532,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-interactive.tsx
 "use client"
 
 import * as React from "react"
@@ -1755,7 +1755,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-label-custom.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -1869,7 +1869,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-label.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -1959,7 +1959,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-mixed.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -2064,7 +2064,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-multiple.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -2146,7 +2146,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-negative.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -2227,7 +2227,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-stacked.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -2319,7 +2319,7 @@ export default function Component() {
   )
 }
 
-
+chart-line-default.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -2409,7 +2409,7 @@ export default function Component() {
   )
 }
 
-
+chart-line-dots-colors.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -2529,7 +2529,7 @@ export default function Component() {
   )
 }
 
-
+chart-line-dots-custom.tsx
 "use client"
 
 import { GitCommitVertical, TrendingUp } from "lucide-react"
@@ -2636,7 +2636,7 @@ export default function Component() {
   )
 }
 
-
+chart-line-dots.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -2735,7 +2735,7 @@ export default function Component() {
   )
 }
 
-
+chart-line-interactive.tsx
 "use client"
 
 import * as React from "react"
@@ -2964,7 +2964,7 @@ export default function Component() {
   )
 }
 
-
+chart-line-label-custom.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -3089,7 +3089,7 @@ export default function Component() {
   )
 }
 
-
+chart-line-label.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -3196,7 +3196,7 @@ export default function Component() {
   )
 }
 
-
+chart-line-linear.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -3286,7 +3286,7 @@ export default function Component() {
   )
 }
 
-
+chart-line-multiple.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -3388,7 +3388,7 @@ export default function Component() {
   )
 }
 
-
+chart-line-step.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -3478,7 +3478,7 @@ export default function Component() {
   )
 }
 
-
+chart-pie-donut-active.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -3582,7 +3582,7 @@ export default function Component() {
   )
 }
 
-
+chart-pie-donut-text.tsx
 "use client"
 
 import * as React from "react"
@@ -3713,7 +3713,7 @@ export default function Component() {
   )
 }
 
-
+chart-pie-donut.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -3808,7 +3808,7 @@ export default function Component() {
   )
 }
 
-
+chart-pie-interactive.tsx
 "use client"
 
 import * as React from "react"
@@ -4002,7 +4002,7 @@ export default function Component() {
   )
 }
 
-
+chart-pie-label-custom.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -4111,7 +4111,7 @@ export default function Component() {
   )
 }
 
-
+chart-pie-label-list.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -4210,7 +4210,7 @@ export default function Component() {
   )
 }
 
-
+chart-pie-label.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -4297,7 +4297,7 @@ export default function Component() {
   )
 }
 
-
+chart-pie-legend.tsx
 "use client"
 
 import { Pie, PieChart } from "recharts"
@@ -4377,7 +4377,7 @@ export default function Component() {
   )
 }
 
-
+chart-pie-separator-none.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -4472,7 +4472,7 @@ export default function Component() {
   )
 }
 
-
+chart-pie-simple.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -4562,7 +4562,7 @@ export default function Component() {
   )
 }
 
-
+chart-pie-stacked.tsx
 "use client"
 
 import * as React from "react"
@@ -4683,7 +4683,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-default.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -4760,7 +4760,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-dots.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -4841,7 +4841,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-grid-circle-fill.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -4921,7 +4921,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-grid-circle-no-lines.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -5005,7 +5005,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-grid-circle.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -5089,7 +5089,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-grid-custom.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -5169,7 +5169,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-grid-fill.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -5249,7 +5249,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-grid-none.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -5332,7 +5332,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-icons.tsx
 "use client"
 
 import { ArrowDownFromLine, ArrowUpFromLine, TrendingUp } from "lucide-react"
@@ -5428,7 +5428,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-label-custom.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -5550,7 +5550,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-legend.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -5644,7 +5644,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-lines-only.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -5737,7 +5737,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-multiple.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -5822,7 +5822,7 @@ export default function Component() {
   )
 }
 
-
+chart-radar-radius.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -5920,7 +5920,7 @@ export default function Component() {
   )
 }
 
-
+chart-radial-grid.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -6011,7 +6011,7 @@ export default function Component() {
   )
 }
 
-
+chart-radial-label.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -6114,7 +6114,7 @@ export default function Component() {
   )
 }
 
-
+chart-radial-shape.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -6224,7 +6224,7 @@ export default function Component() {
   )
 }
 
-
+chart-radial-simple.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -6314,7 +6314,7 @@ export default function Component() {
   )
 }
 
-
+chart-radial-stacked.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -6429,7 +6429,7 @@ export default function Component() {
   )
 }
 
-
+chart-radial-text.tsx
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -6540,7 +6540,7 @@ export default function Component() {
   )
 }
 
-
+chart-tooltip-advanced.tsx
 "use client"
 
 import { Bar, BarChart, XAxis } from "recharts"
@@ -6665,7 +6665,7 @@ export default function Component() {
   )
 }
 
-
+chart-tooltip-default.tsx
 "use client"
 
 import { Bar, BarChart, XAxis } from "recharts"
@@ -6756,7 +6756,7 @@ export default function Component() {
   )
 }
 
-
+chart-tooltip-formatter.tsx
 "use client"
 
 import { Bar, BarChart, XAxis } from "recharts"
@@ -6858,7 +6858,7 @@ export default function Component() {
   )
 }
 
-
+chart-tooltip-icons.tsx
 "use client"
 
 import { Footprints, Waves } from "lucide-react"
@@ -6947,7 +6947,7 @@ export default function Component() {
   )
 }
 
-
+chart-tooltip-indicator-line.tsx
 "use client"
 
 import { Bar, BarChart, XAxis } from "recharts"
@@ -7036,7 +7036,7 @@ export default function Component() {
   )
 }
 
-
+chart-tooltip-indicator-none.tsx
 "use client"
 
 import { Bar, BarChart, XAxis } from "recharts"
@@ -7122,7 +7122,7 @@ export default function Component() {
   )
 }
 
-
+chart-tooltip-label-custom.tsx
 "use client"
 
 import { Bar, BarChart, XAxis } from "recharts"
@@ -7215,7 +7215,7 @@ export default function Component() {
   )
 }
 
-
+chart-tooltip-label-formatter.tsx
 "use client"
 
 import { Bar, BarChart, XAxis } from "recharts"
@@ -7311,7 +7311,7 @@ export default function Component() {
   )
 }
 
-
+chart-tooltip-label-none.tsx
 "use client"
 
 import { Bar, BarChart, XAxis } from "recharts"

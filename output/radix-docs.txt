@@ -1,4 +1,108 @@
+accessibility.mdx
+---
+metaTitle: Accessibility
+metaDescription: Radix Primitives follow the WAI-ARIA authoring practices guidelines and are tested in a wide selection of modern browsers and commonly used assistive technologies.
+---
 
+# Accessibility
+
+<Description>
+	Radix Primitives follow the WAI-ARIA authoring practices guidelines and are
+	tested in a wide selection of modern browsers and commonly used assistive
+	technologies.
+</Description>
+
+We take care of many of the difficult implementation details related to accessibility, including `aria` and `role` attributes, focus management, and keyboard navigation. That means that users should be able to use our components as-is in most contexts and rely on functionality to follow the expected accessibility design patterns.
+
+## WAI-ARIA
+
+[WAI-ARIA](https://www.w3.org/TR/wai-aria-1.2/), published and maintained by the W3C, specifies the semantics for many common UI patterns that show up in Radix Primitives. This is designed to provide meaning for controls that aren't built using elements provided by the browser. For example, if you use a `div` instead of a `button` element to create a button, there are attributes you need to add to the `div` in order to convey that it's a button for screen readers or voice recognition tools.
+
+In addition to semantics, there are behaviors that are expected from different types of components. A `button` element is going to respond to certain interactions in ways that a `div` will not, so it's up to the developer to reimplement those interactions with JavaScript. The [WAI-ARIA authoring practices](https://www.w3.org/TR/wai-aria-practices-1.2/) provide additional guidance for implementing behaviors for various controls that come with Radix Primitives.
+
+## Accessible Labels
+
+With many built-in form controls, the native HTML `label` element is designed to provide semantic meaning and context for corresponding `input` elements. For non-form control elements, or for custom controls like those provided by Radix Primitives, [WAI-ARIA provides a specification](https://www.w3.org/TR/wai-aria-1.2/#namecalculation) for how to provide accessible names and descriptions to those controls.
+
+Where possible, Radix Primitives include abstractions to make labelling our controls simple. The [`Label`](../components/label) primitive is designed to work with many of our controls. Ultimately it's up to you to provide those labels so that users have the proper context when navigating your application.
+
+## Keyboard Navigation
+
+Many complex components, like [`Tabs`](../components/tabs) and [`Dialog`](../components/dialog), come with expectations from users on how to interact with their content using a keyboard or other non-mouse input modalities. Radix Primitives provide basic keyboard support in accordance with the [WAI-ARIA authoring practices](https://www.w3.org/TR/wai-aria-practices-1.2/).
+
+## Focus Management
+
+Proper keyboard navigation and good labelling often go hand-in-hand with managing focus. When a user interacts with an element and something changes as a result, it's often helpful to move focus with the interaction so that the next tab stop is logical depending on the new context of the app. And for screen reader users, moving focus often results in an announcement to convey this new context, which relies on proper labelling.
+
+In many Radix Primitives, we move focus based on the interactions a user normally takes in a given component. For example, in [`AlertDialog`](../components/alert-dialog), when the modal is opened, focus is programatically moved to a `Cancel` button element to anticipate a response to the prompt.
+
+accessible-icon.mdx
+---
+metaTitle: Accessible Icon
+metaDescription: Makes icons accessible by adding a label.
+name: accessible-icon
+---
+
+# Accessible Icon
+
+<Description>Makes icons accessible by adding a label.</Description>
+
+<Highlights
+	features={[
+		"Quickly make any icon accessible by wrapping it and providing a meaningful label.",
+		"No visual difference, but announced correctly by screen readers.",
+	]}
+/>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-accessible-icon
+```
+
+## Anatomy
+
+Import the component.
+
+```jsx
+import { AccessibleIcon } from "radix-ui";
+
+export default () => <AccessibleIcon.Root />;
+```
+
+## API Reference
+
+### Root
+
+Contains the icon to make accessible.
+
+<PropsTable
+	data={[
+		{
+			name: "label",
+			required: true,
+			type: "string",
+			description: (
+				<span>
+					The accessible label for the icon. This label will be visually hidden
+					but announced to screen reader users, similar to <Code>alt</Code> text
+					for <Code>img</Code>
+					tags.
+				</span>
+			),
+		},
+	]}
+/>
+
+## Accessibility
+
+Most icons or icon systems come with no accessibility built-in. For example, the same visual **cross** icon may in fact mean **"close"** or **"delete"**. This component lets you give meaning to icons used throughout your app.
+
+This is built with [Visually Hidden](../utilities/visually-hidden).
+
+accordion.mdx
 ---
 metaTitle: Accordion
 metaDescription: A vertically stacked set of interactive headings that each reveal an associated section of content.
@@ -650,7 +754,7 @@ Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/a
 	]}
 />
 
-
+alert-dialog.mdx
 ---
 metaTitle: Alert Dialog
 metaDescription: A modal dialog that interrupts the user with important content and expects a response.
@@ -1128,7 +1232,103 @@ Adheres to the [Alert and Message Dialogs WAI-ARIA design pattern](https://www.w
 	]}
 />
 
+animation.mdx
+---
+metaTitle: Animation
+metaDescription: Animate Radix Primitives with CSS keyframes or the JavaScript animation library of your choice.
+---
 
+# Animation
+
+<Description>
+	Animate Radix Primitives with CSS keyframes or the JavaScript animation
+	library of your choice.
+</Description>
+
+Adding animation to Radix Primitives should feel similar to any other component, but there are some caveats noted here in regards to exiting animations with JS animation libraries.
+
+## Animating with CSS animation
+
+The simplest way to animate Primitives is with CSS.
+
+You can use CSS animation to animate both mount and unmount phases. The latter is possible because the Radix Primitives will suspend unmount while your animation plays out.
+
+```css
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+.DialogOverlay[data-state="open"],
+.DialogContent[data-state="open"] {
+	animation: fadeIn 300ms ease-out;
+}
+
+.DialogOverlay[data-state="closed"],
+.DialogContent[data-state="closed"] {
+	animation: fadeOut 300ms ease-in;
+}
+```
+
+## Delegating unmounting for JavaScript Animation
+
+When many stateful Primitives are hidden from view, they are actually removed from the React Tree, and their elements removed from the DOM. JavaScript animation libraries need control of the unmounting phase, so we provide the `forceMount` prop on many components to allow consumers to delegate the mounting and unmounting of children based on the animation state determined by those libraries.
+
+For example, if you want to use React Spring to animate a `Dialog`, you would do so by conditionally rendering the dialog `Overlay` and `Content` parts based on the animation state from one of its hooks like `useTransition`:
+
+```jsx
+import { Dialog } from "radix-ui";
+import { useTransition, animated, config } from "react-spring";
+
+function Example() {
+	const [open, setOpen] = React.useState(false);
+	const transitions = useTransition(open, {
+		from: { opacity: 0, y: -10 },
+		enter: { opacity: 1, y: 0 },
+		leave: { opacity: 0, y: 10 },
+		config: config.stiff,
+	});
+	return (
+		<Dialog.Root open={open} onOpenChange={setOpen}>
+			<Dialog.Trigger>Open Dialog</Dialog.Trigger>
+			{transitions((styles, item) =>
+				item ? (
+					<>
+						<Dialog.Overlay forceMount asChild>
+							<animated.div
+								style={{
+									opacity: styles.opacity,
+								}}
+							/>
+						</Dialog.Overlay>
+						<Dialog.Content forceMount asChild>
+							<animated.div style={styles}>
+								<h1>Hello from inside the Dialog!</h1>
+								<Dialog.Close>close</Dialog.Close>
+							</animated.div>
+						</Dialog.Content>
+					</>
+				) : null,
+			)}
+		</Dialog.Root>
+	);
+}
+```
+
+aspect-ratio.mdx
 ---
 metaTitle: Aspect Ratio
 metaDescription: Displays content within a desired ratio.
@@ -1198,7 +1398,7 @@ Contains the content you want to constrain to a given ratio.
 	]}
 />
 
-
+avatar.mdx
 ---
 metaTitle: Avatar
 metaDescription: An image element with a fallback for representing the user.
@@ -1361,7 +1561,7 @@ export default () => (
 );
 ```
 
-
+checkbox.mdx
 ---
 metaTitle: Checkbox
 metaDescription: A control that allows the user to toggle between checked and not checked.
@@ -1606,7 +1806,7 @@ Adheres to the [tri-state Checkbox WAI-ARIA design pattern](https://www.w3.org/W
 	]}
 />
 
-
+collapsible.mdx
 ---
 metaTitle: Collapsible
 metaDescription: An interactive component which expands/collapses a panel.
@@ -1892,7 +2092,118 @@ Adheres to the [Disclosure WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/
 	]}
 />
 
+composition.mdx
+---
+metaTitle: Composition
+metaDescription: Use the `asChild` prop to compose Radix's functionality onto alternative element types or your own React components.
+---
 
+# Composition
+
+<Description>
+	Use the `asChild` prop to compose Radix's functionality onto alternative
+	element types or your own React components.
+</Description>
+
+All Radix primitive parts that render a DOM element accept an `asChild` prop. When `asChild` is set to `true`, Radix will not render a default DOM element, instead cloning the part's child and passing it the props and behavior required to make it functional.
+
+## Changing the element type
+
+In the majority of cases you shouldn’t need to modify the element type as Radix has been designed to provide the most appropriate defaults. However, there are cases where it is helpful to do so.
+
+A good example is with `Tooltip.Trigger`. By default this part is rendered as a `button`, though you may want to add a tooltip to a link (`a` tag) as well. Let's see how you can achieve this using `asChild`:
+
+```jsx line=7
+import * as React from "react";
+import { Tooltip } from "radix-ui";
+
+export default () => (
+	<Tooltip.Root>
+		<Tooltip.Trigger __asChild__>
+			<a href="https://www.radix-ui.com/">Radix UI</a>
+		</Tooltip.Trigger>
+		<Tooltip.Portal>…</Tooltip.Portal>
+	</Tooltip.Root>
+);
+```
+
+> If you do decide to change the underlying element type, it is your responsibility to ensure it remains accessible and functional. In the case of `Tooltip.Trigger` for example, it must be a focusable element that can respond to pointer and keyboard events. If you were to switch it to a `div`, it would no longer be accessible.
+
+In reality, you will rarely modify the underlying DOM element like we've seen above. Instead it's more common to use your own React components. This is especially true for most `Trigger` parts, as you usually want to compose the functionality with the custom buttons and links in your design system.
+
+## Composing with your own React components
+
+This works exactly the same as above, you pass `asChild` to the part and then wrap your own component with it.
+However, there are a few gotchas to be aware of.
+
+### Your component must spread props
+
+When Radix clones your component, it will pass its own props and event handlers to make it functional and accessible. If your component doesn't support those props, it will break.
+
+This is done by spreading all of the props onto the underlying DOM node.
+
+```jsx line=5
+// before
+const MyButton = () => <button />;
+
+// after
+const MyButton = (props) => <button {...__props__} />;
+```
+
+We recommend always doing this so that you are not concerned with implementation details (ie. which props/events to accept). We find this is good practice for "leaf" components in general.
+
+> Similarly to when changing the element type directly, it is your responsibility to ensure the element type rendered by your custom component remains accessible and functional.
+
+### Your component must forward ref
+
+Additionally, Radix will sometimes need to attach a `ref` to your component (for example to measure its size). If your component doesn't accept a `ref`, then it will break.
+
+This is done using `React.forwardRef` (read more on [react.dev](https://react.dev/reference/react/forwardRef)).
+
+```jsx line=5-7
+// before
+const MyButton = (props) => <button {...props} />;
+
+// after
+const MyButton = __React.forwardRef__((props, __forwardedRef__) => (
+	<button {...props} __ref__={__forwardedRef__} />
+));
+```
+
+Whilst this isn't necessary for **all** parts, we recommend always doing it so that you are not concerned with implementation details. This is also generally good practice anyway for leaf components.
+
+## Composing multiple primitives
+
+`asChild` can be used as deeply as you need to. This means it is a great way to compose multiple primitive's behavior together.
+Here is an example of how you can compose `Tooltip.Trigger` and `Dialog.Trigger` together with your own button:
+
+```jsx line=12-16
+import * as React from "react";
+import { Dialog, Tooltip } from "radix-ui";
+
+const MyButton = React.forwardRef((props, forwardedRef) => (
+	<button {...props} ref={forwardedRef} />
+));
+
+export default () => {
+	return (
+		<Dialog.Root>
+			<Tooltip.Root>
+				<Tooltip.Trigger __asChild__>
+					<Dialog.Trigger __asChild__>
+						<MyButton>Open dialog</MyButton>
+					</Dialog.Trigger>
+				</Tooltip.Trigger>
+				<Tooltip.Portal>…</Tooltip.Portal>
+			</Tooltip.Root>
+
+			<Dialog.Portal>...</Dialog.Portal>
+		</Dialog.Root>
+	);
+};
+```
+
+context-menu.mdx
 ---
 metaTitle: Context Menu
 metaDescription: Displays a menu located at the pointer, triggered by a right click or a long press.
@@ -3478,7 +3789,7 @@ Uses [roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interf
 	]}
 />
 
-
+dialog.mdx
 ---
 metaTitle: Dialog
 metaDescription: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
@@ -4074,7 +4385,75 @@ export const Dialog = DialogPrimitive.Root;
 export const DialogTrigger = DialogPrimitive.Trigger;
 ```
 
+direction-provider.mdx
+---
+metaTitle: Direction Provider
+metaDescription: Wraps your app to provide global reading direction.
+name: direction
+---
 
+# Direction Provider
+
+<Description>Wraps your app to provide global reading direction.</Description>
+
+<Highlights
+	features={["Enables all primitives to inherit global reading direction."]}
+/>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-direction
+```
+
+## Anatomy
+
+Import the component.
+
+```jsx
+import { Direction } from "radix-ui";
+
+export default () => <Direction.Provider />;
+```
+
+## API Reference
+
+### Provider
+
+When creating localized apps that require right-to-left (RTL) reading direction, you need to wrap your application with the `Direction.Provider` component to ensure all of the primitives adjust their behavior based on the `dir` prop.
+
+<PropsTable
+	data={[
+		{
+			name: "dir",
+			required: false,
+			type: '"ltr" | "rtl"',
+			typeSimple: "enum",
+			description: (
+				<span>
+					The global reading direction of your application. This will be
+					inherited by all primitives.
+				</span>
+			),
+		},
+	]}
+/>
+
+## Example
+
+Use the direction provider.
+
+```jsx
+import { Direction } from "radix-ui";
+
+export default () => (
+	<Direction.Provider dir="rtl">{/* your app */}</Direction.Provider>
+);
+```
+
+dropdown-menu.mdx
 ---
 metaTitle: Dropdown Menu
 metaDescription: Displays a menu to the user—such as a set of actions or functions—triggered by a button.
@@ -5862,7 +6241,7 @@ export const DropdownMenuRadioItem = React.forwardRef(
 export const DropdownMenuSeparator = DropdownMenuPrimitive.Separator;
 ```
 
-
+form.mdx
 ---
 metaTitle: Form
 metaDescription: Collect information from your users using validation rules.
@@ -6440,7 +6819,125 @@ The component follows the "inline errors" pattern for validation:
 - When one or more client-side error messages display, they are automatically associated with their matching control and announced accordingly
 - Focus is moved to the first invalid control
 
+getting-started.mdx
+---
+metaTitle: Getting started
+metaDescription: A quick tutorial to get you up and running with Radix Primitives.
+name: popover
+---
 
+# Getting started
+
+<Description>
+	A quick tutorial to get you up and running with Radix Primitives.
+</Description>
+
+## Implementing a Popover
+
+In this quick tutorial, we will install and style the [Popover](../components/popover) component.
+
+### 1. Install the primitive
+
+Install Radix Primitives from your command line.
+
+```bash
+npm install radix-ui@latest
+```
+
+### 2. Import the parts
+
+Import and structure the parts.
+
+```jsx line=3,6-14
+// index.jsx
+import * as React from "react";
+import { Popover } from "radix-ui";
+
+const PopoverDemo = () => (
+	<Popover.Root>
+		<Popover.Trigger>More info</Popover.Trigger>
+		<Popover.Portal>
+			<Popover.Content>
+				Some more info…
+				<Popover.Arrow />
+			</Popover.Content>
+		</Popover.Portal>
+	</Popover.Root>
+);
+
+export default PopoverDemo;
+```
+
+### 3. Add your styles
+
+Add styles where desired.
+
+```jsx line=4,8,10,12
+// index.jsx
+import * as React from "react";
+import { Popover } from "radix-ui";
+import "./styles.css";
+
+const PopoverDemo = () => (
+	<Popover.Root>
+		<Popover.Trigger __className__="PopoverTrigger">Show info</Popover.Trigger>
+		<Popover.Portal>
+			<Popover.Content __className__="PopoverContent">
+				Some content
+				<Popover.Arrow __className__="PopoverArrow" />
+			</Popover.Content>
+		</Popover.Portal>
+	</Popover.Root>
+);
+
+export default PopoverDemo;
+```
+
+```css
+/* styles.css */
+.PopoverTrigger {
+	background-color: white;
+	border-radius: 4px;
+}
+
+.PopoverContent {
+	border-radius: 4px;
+	padding: 20px;
+	width: 260px;
+	background-color: white;
+}
+
+.PopoverArrow {
+	fill: white;
+}
+```
+
+### Demo
+
+Here's a complete demo.
+
+<HeroContainer>
+	<GettingStartedDemo />
+</HeroContainer>
+
+<HeroCodeBlock folder="GettingStarted" cssLib="css" />
+
+## Summary
+
+The steps above outline briefly what's involved in using a Radix Primitive in your application.
+
+These components are low-level enough to give you control over how you want to wrap them. You're free to introduce your own high-level API to better suit the needs of your team and product.
+
+In a few simple steps, we've implemented a fully accessible Popover component, without having to worry about many of its complexities.
+
+- Adheres to [WAI-ARIA](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal) design pattern.
+- Can be controlled or uncontrolled.
+- Customize side, alignment, offsets, collision handling.
+- Optionally render a pointing arrow.
+- Focus is fully managed and customizable.
+- Dismissing and layering behavior is highly customizable.
+
+hover-card.mdx
 ---
 metaTitle: Hover Card
 metaDescription: For sighted users to preview content available behind a link.
@@ -7012,7 +7509,98 @@ The hover card is intended for sighted users only, the content will be inaccessi
 	]}
 />
 
+introduction.mdx
+---
+metaTitle: Introduction
+metaDescription: An open-source UI component library for building high-quality, accessible design systems and web apps.
+---
 
+# Introduction
+
+<Description>
+	An open-source UI component library for building high-quality, accessible
+	design systems and web apps.
+</Description>
+
+Radix Primitives is a low-level UI component library with a focus on accessibility, customization and developer experience. You can use these components either as the base layer of your design system, or adopt them incrementally.
+
+## Vision
+
+Most of us share similar definitions for common UI patterns like accordion, checkbox,
+combobox, dialog, dropdown, select, slider, and tooltip. These UI patterns are [documented by WAI-ARIA](https://www.w3.org/TR/wai-aria-practices/#aria_ex) and generally understood by the community.
+
+However, the implementations provided to us by the web platform are inadequate. They're
+either non-existent, lacking in functionality, or cannot be customized sufficiently.
+
+So, developers are forced to build custom components; an incredibly difficult task. As a
+result, most components on the web are inaccessible, non-performant, and lacking important
+features.
+
+Our goal is to create a well-funded, open-source component library that the community can
+use to build accessible design systems.
+
+## Key Features
+
+### Accessible
+
+Components adhere to the [WAI-ARIA design patterns](https://www.w3.org/TR/wai-aria-practices-1.2) where possible. We handle many of the difficult implementation details related to accessibility, including aria and role attributes, focus management, and keyboard navigation. Learn more in our [accessibility](./accessibility) overview.
+
+### Unstyled
+
+Components ship without styles, giving you complete control over the look and feel. Components can be styled with any styling solution. Learn more in our [styling](../guides/styling) guide.
+
+### Opened
+
+Radix Primitives are designed to be customized to suit your needs. Our open component architecture provides you granular access to each component part, so you can wrap them and add your own event listeners, props, or refs.
+
+### Uncontrolled
+
+Where applicable, components are uncontrolled by default but can also be controlled, alternatively. All of the behavior wiring is handled internally, so you can get up and running as smoothly as possible, without needing to create any local states.
+
+### Developer experience
+
+One of our main goals is to provide the best possible developer experience. Radix Primitives provides a fully-typed API. All components share a similar API, creating a consistent and predictable experience. We've also implemented an `asChild` prop, giving users full control over the rendered element.
+
+### Incremental adoption
+
+We recommend installing the `radix-ui` package and importing the primitives you need. This is the simplest way to get started, prevent version conflicts or duplication, and makes it easy to manage updates. The package is tree-shakeable, so you should only ship the components you use.
+
+```bash
+npm install radix-ui
+```
+
+```tsx
+import { Dialog, DropdownMenu, Tooltip } from "radix-ui";
+```
+
+Alternatively, each primitive can be installed individually:
+
+```bash
+npm install @radix-ui/react-dialog
+npm install @radix-ui/react-dropdown-menu
+npm install @radix-ui/react-tooltip
+```
+
+```tsx
+import * as Dialog from "@radix-ui/react-dialog";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import * as Tooltip from "@radix-ui/react-tooltip";
+```
+
+When installing separately, we recommend updating all Radix packages together to prevent duplication of shared dependencies and keep your bundle size down.
+
+## Community
+
+To get involved with the Radix community, ask questions and share tips, [Join our Discord](https://discord.com/invite/7Xb99uG).
+
+To receive updates on new primitives, announcements, blog posts, and general Radix tips, follow along on [Bluesky](https://bsky.app/profile/radix-ui.com) or [Twitter](https://twitter.com/radix_ui).
+
+To file issues, request features, and contribute, check out our GitHub.
+
+- [GitHub repo](https://github.com/radix-ui/primitives)
+- [Code of conduct](https://github.com/radix-ui/primitives/blob/main/CODE_OF_CONDUCT.md)
+
+label.mdx
 ---
 metaTitle: Label
 metaDescription: Renders an accessible label associated with controls.
@@ -7090,7 +7678,7 @@ Contains the content for the label.
 
 This component is based on the native `label` element, it will automatically apply the correct labelling when wrapping controls or using the `htmlFor` attribute. For your own custom controls to work correctly, ensure they use native elements such as `button` or `input` as a base.
 
-
+menubar.mdx
 ---
 metaTitle: Menubar
 metaDescription:
@@ -8836,7 +9424,7 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA
 	]}
 />
 
-
+navigation-menu.mdx
 ---
 metaTitle: Navigation Menu
 metaDescription: A collection of links for navigating websites.
@@ -9797,7 +10385,7 @@ See [this example](/primitives/docs/components/navigation-menu#with-client-side-
 	]}
 />
 
-
+popover.mdx
 ---
 metaTitle: Popover
 metaDescription: Displays rich content in a portal, triggered by a button.
@@ -10568,7 +11156,88 @@ export const PopoverContent = React.forwardRef(
 );
 ```
 
+portal.mdx
+---
+metaTitle: Portal
+metaDescription: Renders a React subtree in a different part of the DOM.
+name: portal
+---
 
+# Portal
+
+<Description>
+	Renders a React subtree in a different part of the DOM.
+</Description>
+
+<Highlights
+	features={[
+		"Render any React subtree outside of your App.",
+		"Appends to `document.body` by default but can be customized to use a different container.",
+	]}
+/>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-portal
+```
+
+## Anatomy
+
+Import the component.
+
+```jsx
+import { Portal } from "radix-ui";
+
+export default () => <Portal.Root />;
+```
+
+## Basic example
+
+Use the portal primitive.
+
+```jsx
+import { Portal } from "radix-ui";
+
+export default () => <Portal.Root>Content</Portal.Root>;
+```
+
+## API Reference
+
+### Root
+
+Anything you put inside this component will be rendered in a separate `<div>` element. By default, this element will be appended to `document.body` but you can choose a different container by using the `container` prop.
+
+<PropsTable
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "container",
+			type: "HTMLElement",
+			description:
+				"A optional different container where the portaled content should be appended.",
+		},
+	]}
+/>
+
+progress.mdx
 ---
 metaTitle: Progress
 metaDescription: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
@@ -10724,7 +11393,7 @@ Used to show the progress visually. It also makes progress accessible to assisti
 	]}
 />
 
-
+radio-group.mdx
 ---
 metaTitle: Radio Group
 metaDescription: A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
@@ -11041,7 +11710,1218 @@ Adheres to the [Radio Group WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA
 	]}
 />
 
+releases.mdx
+---
+metaTitle: Releases
+metaDescription: Radix Primitives releases and their changelogs.
+---
 
+# Releases
+
+<Description>Radix Primitives releases and their changelogs.</Description>
+
+## February 5, 2025
+
+- Updated dependencies to remove peer dependency warnings for `react` and `react-dom` <PRLink id={3350} />
+- Skip forwarding refs to `SlotClone` when the child is a `Fragment` <PRLink id={3229} />
+
+## January 22, 2025
+
+- Added a `radix-ui` package that exposes the latest version of all Radix Primitives from a single place. This tree-shakable entrypoint makes it easier to bring in whatever components you need and keep them up-to-date without worrying about conflicting or duplicate dependencies.
+- Updated `aria-hidden` and `react-remove-scroll` dependencies for the following components:
+  - Alert Dialog
+  - Context Menu
+  - Dialog
+  - Dropdown Menu
+  - Hover Card
+  - Menubar
+  - Navigation Menu
+  - Popover
+  - Select
+  - Toast
+  - Tooltip
+
+## October 1, 2024
+
+<PackageRelease name="Alert Dialog" version="1.1.2" />
+
+- Fix `allowPinchZoom` bug for trackpad users <PRLink id={3127} />
+
+<PackageRelease name="Avatar" version="1.1.1" />
+
+- Check for `referrerPolicy` when checking the image loading status <PRLink id={2772} />
+
+<PackageRelease name="Checkbox" version="1.1.2" />
+
+- Fix a bug where `defaultChecked` unexpectedly changed for uncontrolled checkboxes <PRLink id={2135} />
+- Forward the `form` prop to the bubble input element to fix non-parent form submissions <PRLink id={3161} />
+
+<PackageRelease name="Dialog" version="1.1.2" />
+
+- Fix `allowPinchZoom` bug for trackpad users <PRLink id={3127} />
+
+<PackageRelease name="Radio Group" version="1.2.1" />
+
+- Forward the `form` prop to the bubble input element to fix non-parent form submissions <PRLink id={3161} />
+
+<PackageRelease name="Scroll Area" version="1.2.0" />
+
+- Fix `asChild` prop not working as expected on the `Viewport` <PRLink id={2945} />
+- Update internal styles to fix other issues with `Viewport` <PRLink id={2945} />
+
+<PackageRelease name="Select" version="2.1.2" />
+
+- Fix error thrown when items are initially undefined <PRLink id={2623} />
+- Fix several bugs for touch devices <PRLink id={2939} />
+- Forward the `form` prop to the bubble input element to fix non-parent form submissions <PRLink id={3161} />
+- Fix position bug where popover may start off-screen for long items <PRLink id={3149} />
+
+<PackageRelease name="Slider" version="1.2.1" />
+
+- Forward the root `form` prop to each thumb's bubble input element to fix non-parent form submissions <PRLink id={3161} />
+
+<PackageRelease name="Switch" version="1.1.1" />
+
+- Forward the `form` prop to the bubble input element to fix non-parent form submissions <PRLink id={3161} />
+
+<PackageRelease name="Toast" version="1.2.2" />
+
+- Fix incorrect focus when `hotkey` is an empty array <PRLink id={2491} />
+
+## June 28, 2024
+
+<PackageRelease name="Checkbox" version="1.1.1" />
+
+- Export `CheckedState` type
+
+<PackageRelease name="Tooltip" version="1.1.2" />
+
+- Export `TooltipProviderProps` type
+
+## June 21, 2024
+
+<PackageRelease name="Portal" version="1.1.1" />
+
+- Add a missing internal utility to `package.json`. The corresponding packages that provide a Portal part also received a patch update. <PRLink id={2966} />
+
+## June 19, 2024
+
+<PackageRelease name="All primitives" />
+
+<br />
+
+Released minor versions for all primitives with the following changes:
+
+- Full React 19 compatability <PRLink id={2952} />
+- Full RSC compatibility <PRLink id={2923} />
+- Internal build tooling changes <PRLink id={2922} /> <PRLink id={2931} />
+- Update and pin `react-remove-scroll` dependency version to avoid double scrollbar bugs in edge cases <PRLink id={2776} />
+- Don’t scroll menu items in response to hover <PRLink id={2451} />
+- Make sure that components that close on Escape key press capture the corresponding keyboard event. This way you can call `stopPropagation` in `onEscapeKeyDown` if you need more control rendering Radix components within another component that closes on Escape key press.
+- Make sure that components with roving focus do not interfere with browser or system hotkeys, such as back navigation <PRLink id={2739} />
+- Make sure that components that support `hideWhenDetached` prop do not allow interactions with hidden content <PRLink id={2743} /> <PRLink id={2745} />
+
+<PackageRelease name="Dialog" version="1.1.0" />
+
+- Log an error when an accessible title via the `Dialog.Title` part is missing <PRLink id={2948} />
+- Log a warning when an accessible description via the `Dialog.Description` part is missing <PRLink id={2948} />
+
+<PackageRelease name="Label" version="2.1.0" />
+
+- Make sure that the component doesn’t interfere when clicking on the spinner of a number input
+
+<PackageRelease name="Navigation Menu" version="1.2.0" />
+
+- Remove unsupported `disableOutsidePointerEvents` prop
+
+<PackageRelease name="Portal" version="1.1.0" />
+
+- Fix hydration error in SSR on the initial render <PRLink id={2923} />
+
+<PackageRelease name="Progress" version="1.2.0" />
+
+- Explicitly allow `value={undefined}` to represent an indeterminate state, matching the current practical behaviour <PRLink id={2947} />
+
+<PackageRelease name="Select" version="2.1.0" />
+
+- Add `nonce` prop to be able to pass CSP nonce to the inline styles <PRLink id={2728} />
+
+<PackageRelease name="Scroll Area" version="1.1.0" />
+
+- Add `nonce` prop to be able to pass CSP nonce to the inline styles <PRLink id={2728} />
+
+## September 25, 2023
+
+<PackageRelease name="Alert Dialog" version="1.0.5" />
+
+- Fix pointer-events issue when clicking outside <PRLink id={2177} />
+- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
+
+<PackageRelease name="Avatar" version="1.0.4" />
+
+- Prevent image flash <PRLink id={2340} />
+
+<PackageRelease name="Context Menu" version="2.1.5" />
+
+- Fix pointer-events issue when clicking outside <PRLink id={2177} />
+- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
+
+<PackageRelease name="Dialog" version="1.0.5" />
+
+- Fix pointer-events issue when clicking outside <PRLink id={2177} />
+- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
+
+<PackageRelease name="Dropdown Menu" version="2.0.6" />
+
+- Fix pointer-events issue when clicking outside <PRLink id={2177} />
+- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
+
+<PackageRelease name="Hover Card" version="1.0.7" />
+
+- Fix pointer-events issue when clicking outside <PRLink id={2177} />
+- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
+
+<PackageRelease name="Menubar" version="1.0.4" />
+
+- Fix pointer-events issue when clicking outside <PRLink id={2177} />
+- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
+
+<PackageRelease name="Navigation Menu" version="1.1.4" />
+
+- Fix pointer-events issue when clicking outside <PRLink id={2177} />
+- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
+
+<PackageRelease name="Popover" version="1.0.7" />
+
+- Fix pointer-events issue when clicking outside <PRLink id={2177} />
+- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
+- Fix `Popover` nested inside `Dialog` not opening <PRLink id={2182} />
+
+<PackageRelease name="Scroll Area" version="1.0.5" />
+
+- Add `scroll-behavior: smooth` compatibility <PRLink id={2175} />
+
+<PackageRelease name="Select" version="2.0.0" major />
+
+- **\[Breaking\]** Add ability to reset to placeholder using `""` `value`. Note that this is only a breaking change if you were using an option with a `value` of `""`. <PRLink id={2174} />
+- Fix pointer-events issue when clicking outside <PRLink id={2177} />
+- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
+
+<PackageRelease name="Toast" version="1.1.5" />
+
+- Fix pointer-events issue when clicking outside <PRLink id={2177} />
+
+<PackageRelease name="Tooltip" version="1.0.7" />
+
+- Fix pointer-events issue when clicking outside <PRLink id={2177} />
+- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
+- Fix issue with boundary padding calculations <PRLink id={2185} />
+- Add option to always re-position `Content` on the fly <PRLink id={2092} />
+
+## May 26, 2023
+
+This release ensures all of our primitives are ESM compatible. We have also updated to the latest version of [Floating UI](https://floating-ui.com/) for all of our popper-positioned primitives.
+
+<PackageRelease name="All primitives" />
+
+- Improve ESM compatibility <PRLink id={2130} />
+- Fix possible upstream compiler errors (`@types/react` phantom dependency) <PRLink id={1896} />
+
+<PackageRelease name="Context Menu" version="2.1.4" />
+
+- Position content correctly when matching trigger size <PRLink id={1995} />
+
+<PackageRelease name="Dialog" version="1.0.4" />
+
+- Prevent non-modal dialog from re-opening when closing using trigger in Safari <PRLink id={2110} />
+- Ensure focus trapping is maintained when the focused item is deleted <PRLink id={2145} />
+
+<PackageRelease name="Dropdown Menu" version="2.0.5" />
+
+- Position content correctly when matching trigger size <PRLink id={1995} />
+
+<PackageRelease name="Hover Card" version="1.0.6" />
+
+- Position content correctly when matching trigger size <PRLink id={1995} />
+
+<PackageRelease name="Menubar" version="1.0.3" />
+
+- Position content correctly when matching trigger size <PRLink id={1995} />
+
+<PackageRelease name="Navigation Menu" version="1.1.3" />
+
+- Do not close when clicking items and meta key is down <PRLink id={2080} />
+
+<PackageRelease name="Popover" version="1.0.6" />
+
+- Position content correctly when matching trigger size <PRLink id={1995} />
+- Prevent non-modal popover from re-opening when closing using trigger in Safari <PRLink id={2110} />
+- Ensure `--radix-popper-available-width` is calculated correctly when using `collisionBoundary` <PRLink id={2032} />
+
+<PackageRelease name="Select" version="1.2.2" />
+
+- Position content correctly when matching trigger size <PRLink id={1995} />
+- Improve scroll buttons touch screen support <PRLink id={1771} />
+
+<PackageRelease name="Slider" version="1.1.2" />
+
+- Clamp thumb position within range <PRLink id={1988} />
+
+<PackageRelease name="Slot" version="1.0.2" />
+
+- Ensure `Slot` can be used in a React Server Component <PRLink id={2116} />
+
+<PackageRelease name="Tooltip" version="1.0.6" />
+
+- Position content correctly when matching trigger size <PRLink id={1995} />
+- Improve large content hoverability <PRLink id={2155} />
+
+## March 8, 2023
+
+This release introduces a brand new primitive in preview: [`Form`](../components/form).
+
+<PackageRelease name="Form" version="0.0.2" preview />
+
+- New primitive <PRLink id={1998} />
+
+## February 24, 2023
+
+<PackageRelease name="Checkbox" version="1.0.2" />
+
+- Reset checkbox state when form is reset <PRLink id={1733} />
+
+<PackageRelease name="ContextMenu" version="2.1.2" />
+
+- Expose new CSS custom properties to enable size constraints <PRLink id={1942} />
+- Don't exit fullscreen mode when pressing escape to dismiss from submenu <PRLink id={1752} />
+- Relax `onCheckedChange` type on `ContextMenu.CheckboxItem` <PRLink id={1778} />
+
+<PackageRelease name="DropdownMenu" version="2.0.3" />
+
+- Expose new CSS custom properties to enable size constraints <PRLink id={1942} />
+- Don't exit fullscreen mode when pressing escape to dismiss from submenu <PRLink id={1752} />
+- Relax `onCheckedChange` type on `DropdownMenu.CheckboxItem` <PRLink id={1778} />
+
+<PackageRelease name="HoverCard" version="1.0.4" />
+
+- Expose new CSS custom properties to enable size constraints <PRLink id={1942} />
+
+<PackageRelease name="Menubar" version="1.0.1" />
+
+- Expose new CSS custom properties to enable size constraints <PRLink id={1943} />
+- Don't exit fullscreen mode when pressing escape to dismiss from submenu <PRLink id={1752} />
+- Relax `onCheckedChange` type on `Menubar.CheckboxItem` <PRLink id={1778} />
+
+<PackageRelease name="Popover" version="1.0.4" />
+
+- Expose new CSS custom properties to enable size constraints <PRLink id={1942} />
+
+<PackageRelease name="Tooltip" version="1.0.4" />
+
+- Expose new CSS custom properties to enable size constraints <PRLink id={1942} />
+
+## January 17, 2023
+
+This release introduces a brand new primitive: [`Menubar`](../components/menubar). It also adds support for a highly requested feature for [`Select`](../components/select): the ability to position the content in a similar way to `Popover` or `DropdownMenu`.
+
+<PackageRelease name="Accordion" version="1.1.0" />
+
+- Add horizontal orientation support with new `orientation` prop, as well as RTL support with `dir` <PRLink id={1850} />
+
+<PackageRelease name="Context Menu" version="2.1.1" />
+
+- Fix consistency issue with RTL positioning <PRLink id={1890} />
+
+<PackageRelease name="Dropdown Menu" version="2.0.2" />
+
+- Fix consistency issue with RTL positioning <PRLink id={1890} />
+
+<PackageRelease name="Hover Card" version="1.0.3" />
+
+- Fix consistency issue with RTL positioning <PRLink id={1890} />
+
+<PackageRelease name="Menubar" version="1.0.0" major />
+
+- New primitive <PRLink id={1846} />
+
+<PackageRelease name="Popover" version="1.0.3" />
+
+- Fix consistency issue with RTL positioning <PRLink id={1890} />
+
+<PackageRelease name="Select" version="1.2.0" />
+
+- Add `position` prop to `Select.Content` to enable popper positioning <PRLink id={1853} />
+
+<PackageRelease name="Tooltip" version="1.0.3" />
+
+- Fix consistency issue with RTL positioning <PRLink id={1890} />
+
+## December 14, 2022
+
+<PackageRelease name="Context Menu" version="2.1.0" />
+
+- Add `disabled` prop to `ContextMenu.Trigger` <PRLink id={1746} />
+
+## November 15, 2022
+
+<PackageRelease name="Select" version="1.1.2" />
+
+- Fix invalid `pointerId` in Cypress when running Firefox <PRLink id={1753} />
+
+## October 17, 2022
+
+<PackageRelease name="Accordion" version="1.0.1" />
+
+- Fix initial animation playback in Firefox and Safari <PRLink id={1710} />
+
+<PackageRelease name="Alert Dialog" version="1.0.2" />
+
+- Fix issue with textarea elements not being scrollable in Firefox <PRLink id={1550} />
+
+<PackageRelease name="Collapsible" version="1.0.1" />
+
+- Fix initial animation playback in Firefox and Safari <PRLink id={1710} />
+
+<PackageRelease name="Context Menu" version="2.0.1" major />
+
+- **\[Breaking\]** Add support for indeterminate state on `ContextMenu.CheckboxItem`. Note that this is only a breaking change if you are currently using the `CheckboxItem` part and your codebase is written in TypeScript. <PRLink id={1624} />
+
+<PackageRelease name="Dialog" version="1.0.2" />
+
+- Fix issue with textarea elements not being scrollable in Firefox <PRLink id={1550} />
+
+<PackageRelease name="Dropdown Menu" version="2.0.1" major />
+
+- **\[Breaking\]** Add support for indeterminate state on `DropdownMenu.CheckboxItem`. Note that this is only a breaking change if you are currently using the `CheckboxItem` part and your codebase is written in TypeScript. <PRLink id={1624} />
+- Correctly pair `DropdownMenu.Trigger` open state with `aria-expanded` when closed <PRLink id={1644} />
+- Fix issue with eager selection of items when using `asChild` <PRLink id={1647} />
+- Fix issue with dismissing when the component is used in a separate popup window <PRLink id={1677} />
+
+<PackageRelease name="Hover Card" version="1.0.2" />
+
+- Improve text selection experience <PRLink id={1692} />
+
+<PackageRelease name="Label" version="2.0.0" major />
+
+- **\[Breaking\]** Remove `useLabelContext` and support for fully custom controls. For native labelling to work, ensure your custom controls are based on native elements such as `button` or `input`. <PRLink id={1686} />
+- Improve native behavior by using the native `label` element <PRLink id={1686} />
+
+<PackageRelease name="Navigation Menu" version="1.1.1" />
+
+- Prevent menu from re-opening with the pointer after being dismissed with escape <PRLink id={1579} />
+- Add `delayDuration` and `skipDelayDuration` props to `NavigationMenu.Root`. Note that by default, triggers now have a brief delay before opening in order to improve UX, this can be modified using the props provided. <PRLink id={1716} />
+
+<PackageRelease name="Radio Group" version="1.1.0" />
+
+- Add `disabled` prop to `RadioGroup.Root` <PRLink id={1530} />
+- Fix issue where `RadioGroup.Root` was focusable when all items were disabled <PRLink id={1530} />
+
+<PackageRelease name="Select" version="1.1.1" />
+
+- Add `disabled` prop to `Select.Root` <PRLink id={1699} />
+- Add `required` prop to `Select.Root` <PRLink id={1598} />
+
+<PackageRelease name="Slider" version="1.1.0" />
+
+- Add ability to visually invert the slider using the new `inverted` prop on `Slider.Root` <PRLink id={1695} />
+- Add `onValueCommit` prop to `Slider.Root` to better handle discrete value changes <PRLink id={1696} />
+
+<PackageRelease name="Slot" version="1.0.1" />
+
+- Stop eagerly creating callback props <PRLink id={1713} />
+
+<PackageRelease name="Toast" version="1.1.1" />
+
+- Fix regression with screen readers announcing as "group" rather than "status" <PRLink id={1556} />
+- Fix regression with `ref` assignments on child elements returning `null` <PRLink id={1668} />
+- Add `onPause` and `onResume` props to `Toast.Root` <PRLink id={1669} />
+- Fix timer reset issue which would cause toasts to dismiss early in some cases <PRLink id={1682} />
+
+<PackageRelease name="Toolbar" version="1.0.1" />
+
+- Prevent `Toolbar.Item` click handlers firing twice <PRLink id={1526} />
+
+<PackageRelease name="Tooltip" version="1.0.2" />
+
+- Ensure tooltip doesn't open if interacting with the trigger before the open timer expires <PRLink id={1693} />
+
+## July 21, 2022
+
+With this release, we start following semantic versioning strictly. All primitives are now versioned <Badge size="1" color="yellow">1.0.0</Badge>.
+
+We also move the [`Select`](../components/select), [`Toast`](../components/toast) and [`NavigationMenu`](../components/navigation-menu) from preview to stable.
+
+<PackageRelease name="All primitives" />
+
+- Improve support for React 18 <PRLink id={1329} />
+- **\[Breaking\]** Improve RTL performance. You need to use [`DirectionProvider`](../utilities/direction-provider) if you were relying on `dir` attribute inheritance from document (or any element). <PRLink id={1119} />
+
+<PackageRelease name="Alert Dialog" version="1.0.0" major />
+
+- **\[Breaking\]** Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
+- Improve compatibility with JS animation libraries with `forceMount` on `AlertDialog.Portal` <PRLink id={1075} />
+- Fix regressions with page interactivity while/after closing dialog <PRLink id={1401} />
+
+<PackageRelease name="Context Menu" version="1.0.0" major />
+
+- **\[Breaking\]** Improve indirect nesting of context menus. Submenus must now be created using explicit parts. <PRLink id={1394} />
+- **\[Breaking\]** Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
+- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1429} />
+- **\[Breaking\]** Remove `offset` on `Arrow` part <PRLink id={1531} />
+- **\[Breaking\]** Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
+- Fix issue with native context menu appearing in React 18 <PRLink id={1378} />
+- Add `data-highlighted` attribute to support styling <PRLink id={1388} />
+- Add `data-state` attribute to `Trigger` part <PRLink id={1455} />
+- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
+
+<PackageRelease name="Dialog" version="1.0.0" major />
+
+- **\[Breaking\]** Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
+- Improve compatibility with JS animation libraries with `forceMount` on `Dialog.Portal` <PRLink id={1075} />
+- Fix regressions with page interactivity while/after closing dialog <PRLink id={1401} />
+
+<PackageRelease name="Dropdown Menu" version="1.0.0" major />
+
+- **\[Breaking\]** Improve indirect nesting of dropdown menus. Submenus must now be created using explicit parts. <PRLink id={1394} />
+- **\[Breaking\]** Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
+- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1429} />
+- **\[Breaking\]** Remove `offset` on `Arrow` part <PRLink id={1531} />
+- **\[Breaking\]** Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
+- Add `data-highlighted` attribute to support styling <PRLink id={1388} />
+- Prevent escape key from exiting fullscreen mode in Firefox & Safari <PRLink id={1423} />
+- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
+
+<PackageRelease name="Hover Card" version="1.0.0" major />
+
+- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1426} />
+- **\[Breaking\]** Remove `offset` on `Arrow` part <PRLink id={1531} />
+- **\[Breaking\]** Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
+- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
+
+<PackageRelease name="Navigation Menu" version="1.0.0" major />
+
+- Ensure menu closes after clicking `NavigationMenu.Link` <PRLink id={1347} />
+- Add `onSelect` prop to `NavigationMenu.Link` <PRLink id={1372} />
+
+<PackageRelease name="Popover" version="1.0.0" major />
+
+- **\[Breaking\]** Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
+- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1425} />
+- **\[Breaking\]** Remove `offset` on `Arrow` part <PRLink id={1531} />
+- **\[Breaking\]** Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
+- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
+
+<PackageRelease name="Portal" version="1.0.0" major />
+
+- **\[Breaking\]** Note that `z-index` isn't managed anymore so you have full control of layering. The prop to provide a custom container evolves from `containerRef` (ref) to `container` (element). The `data-radix-portal` was removed because you can use `asChild` to control the element. <PRLink id={1463} />
+
+<PackageRelease name="RadioGroup" version="1.0.0" major />
+
+- Add `aria-required` to root <PRLink id={1422} />
+
+<PackageRelease name="Scroll Area" version="1.0.0" major />
+
+- `ScrollArea.Thumb` is now animatable <PRLink id={1392} />
+
+<PackageRelease name="Select" version="1.0.0" major />
+
+- **\[Breaking\]** Renamed `data-state` values from `active|inactive` to `checked|unchecked` <PRLink id={1388} />
+- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1459} />
+- Fix position breaking when using `asChild` on `Select.Content` <PRLink id={1245} />
+- Improve trigger/content alignment when `Select.Content` has padding <PRLink id={1312} />
+- Fix trigger/content alignment when there are less than 5 items <PRLink id={1355} />
+- Support trigger/content alignment when no value is provided <PRLink id={1379} />
+- Add `data-highlighted` attribute to support styling <PRLink id={1388} />
+- Add support for placeholder via `placeholder` prop on `Select.Value` <PRLink id={1384} />
+- Resolve value mismatch with underlying native select <PRLink id={1421} />
+
+<PackageRelease name="Slot" version="1.0.0" major />
+
+- Fix issue with children ordering when using `Slottable` <PRLink id={1376} />
+
+<PackageRelease name="Tabs" version="1.0.0" major />
+
+- Add support for lifecycle animation to `Tabs.Content` <PRLink id={1346} />
+
+<PackageRelease name="Toast" version="1.0.0" major />
+
+- **\[Breaking\]** The default toast order has changed, they now render top to bottom from oldest to newest <PRLink id={1469} />
+- Improve Typescript types when using `asChild` <PRLink id={1300} />
+- Fix issue with toast reordering when updating React's `key` prop <PRLink id={1283} />
+- Improve compatability with animation libraries <PRLink id={1468} />
+
+<PackageRelease name="Tooltip" version="1.0.0" major />
+
+- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1427} />
+- **\[Breaking\]** By default `Tooltip.Content` will remain open when hovering (WCAG 2.1 Content on Hover compliance). `disableHoverableContent` can be supplied to `Tooltip.Provider` to restore previous behavior <PRLink id={1490} />
+- **\[Breaking\]** `side` on `Tooltip.Content` now defaults to `top` <PRLink id={1490} />
+- **\[Breaking\]** `Tooltip.Provider` is now required, you must wrap your app to avoid regressions. <PRLink id={1490} />
+- **\[Breaking\]** Remove `offset` on `Arrow` part <PRLink id={1531} />
+- **\[Breaking\]** Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
+- Improve layering of tooltip with other primitives <PRLink id={1314} />
+- Fix tooltip closing when transforming/animation trigger <PRLink id={937} />
+- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
+
+## February 28, 2022
+
+This release introduces 3 brand new primitives in preview: [`Select`](../components/select), [`Toast`](../components/toast) and [`NavigationMenu`](../components/navigation-menu), whilst also shipping a ton of fixes and improvements.
+
+<PackageRelease name="Accordion" version="0.1.6" />
+
+- Prevent form submission when pressing `Accordion.Trigger` <PRLink id={1085} />
+- Fix animation issue with React 18 <PRLink id={1125} />
+
+<PackageRelease name="Alert Dialog" version="0.1.7" />
+
+- Improve pointer-events management <PRLink id={1079} />
+
+<PackageRelease name="Checkbox" version="0.1.5" />
+
+- Prevent activation via enter key <PRLink id={1104} />
+
+<PackageRelease name="Collapsible" version="0.1.6" />
+
+- Fix animation issue with React 18 <PRLink id={1125} />
+
+<PackageRelease name="Context Menu" version="0.1.6" />
+
+- Prevent `DropdownMenu.TriggerItem` click from firing twice <PRLink id={1057} />
+- Improve idle performance <PRLink id={1040} />
+
+<PackageRelease name="Dialog" version="0.1.7" major />
+
+- Improve pointer-events management <PRLink id={1079} />
+- **\[Breaking\]** `Dialog.Title` is now a required part so will throw an error if not used. `aria-describedby={undefined}` must be passed to `Dialog.Content` if no description is needed. <PRLink id={1098} />
+
+<PackageRelease name="Dropdown Menu" version="0.1.6" />
+
+- Improve composability with `Dialog`/`AlertDialog` <PRLink id={1097} />
+- Prevent clicking trigger to close from immediately reopening in non-modal mode <PRLink id={1059} />
+- Prevent `DropdownMenu.TriggerItem` click from firing twice <PRLink id={1057} />
+- Improve idle performance <PRLink id={1040} />
+
+<PackageRelease name="Navigation Menu" version="0.1.2" preview />
+
+- New primitive <PRLink id={1172} />
+
+<PackageRelease name="Radio Group" version="0.1.5" />
+
+- Prevent activation via enter key <PRLink id={1104} />
+
+<PackageRelease name="Select" version="0.1.1" preview />
+
+- New primitive <PRLink id={1169} />
+
+<PackageRelease name="Slider" version="0.1.4" />
+
+- Prevent page scroll when using `Home` and `End` keys <PRLink id={1076} />
+
+<PackageRelease name="Tabs" version="0.1.5" />
+
+- Prevent accidental focus activation via right click <PRLink id={1114} />
+
+<PackageRelease name="Toast" version="0.1.1" preview />
+
+- New primitive <PRLink id={1165} />
+
+<PackageRelease name="Toggle Group" version="0.1.5" />
+
+- Improve accessibility by using radio role for single toggle group <PRLink id={1118} />
+
+## December 13, 2021
+
+This release focuses on React 18 support and introduces a number of breaking changes to some packages, mostly related to portalling dialogs.
+
+<PackageRelease name="All primitives" />
+
+- **\[Breaking\]** Deprecate `IdProvider`. Improves support for React 18 going forward and is no longer needed in older versions. Remove from your app to avoid deprecation warnings. <PRLink id={1006} />
+
+<PackageRelease name="Accordion" version="0.1.5" major />
+
+- Improve React 18 support <PRLink id={984} />
+- Improve dev mode errors with mismatched `type` and `value` props <PRLink id={979} />
+- Prevent `Accordion.Content` height animation on initial page load <PRLink id={977} />
+
+<PackageRelease name="Alert Dialog" version="0.1.5" major />
+
+- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. <PRLink id={936} />
+- **\[Breaking\]** Support scrolling within `AlertDialog.Overlay`. Move `allowPinchZoom` to root. <PRLink id={963} />
+- Fix `asChild` TypeScript error <PRLink id={924} />
+
+<PackageRelease name="Collapsible" version="0.1.5" />
+
+- Prevent `Collapsible.Content` height animation on initial page load <PRLink id={977} />
+
+<PackageRelease name="Dialog" version="0.1.5" major />
+
+- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. <PRLink id={936} />
+- **\[Breaking\]** Support scrolling within `Dialog.Overlay`. Move `allowPinchZoom` to root. <PRLink id={963} />
+
+<PackageRelease name="Dropdown Menu" version="0.1.4" />
+
+- Prevent disabled trigger from opening menu <PRLink id={974} />
+
+<PackageRelease name="Hover Card" version="0.1.3" />
+
+- Fix ability to focus `HoverCard` when inside a dialog <PRLink id={920} />
+
+<PackageRelease name="Radio Group" version="0.1.4" />
+
+- Prevent programmatic focus from changing value <PRLink id={939} />
+
+<PackageRelease name="Tabs" version="0.1.4" major />
+
+- **\[Breaking\]** Change `Tabs.Trigger` to `button` element <PRLink id={981} />
+- Improve TSDocs <PRLink id={978} />
+
+<PackageRelease name="Toggle Group" version="0.1.4" />
+
+- Remove invalid `aria-orientation` attribute on `role=group` element <PRLink id={965} />
+
+<PackageRelease name="Toolbar" version="0.1.4" />
+
+- Fix `asChild` TypeScript error <PRLink id={924} />
+- Remove invalid `toolbaritem` role <PRLink id={950} />
+
+<PackageRelease name="Tooltip" version="0.1.6" major />
+
+- **\[Breaking\]** Add new `TooltipProvider` part. You must wrap your app to avoid regressions. <PRLink id={1007} />
+- **\[Breaking\]** Remove `type=button` attribute from `Tooltip.Trigger` <PRLink id={1011} />
+- Fix tooltip activation regression <PRLink id={1035} />
+
+<PackageRelease name="Slot" version="0.1.2" />
+
+- Fix `key` warnings <PRLink id={1015} />
+
+<Separator mt="7" />
+
+## October 15, 2021
+
+<PackageRelease name="All primitives" />
+
+- All primitives are now versioned <Badge size="1" color="blue">0.1.1</Badge>
+- Fix composability issues between primitives by scoping context <PRLink id={906} />
+- Fix CSS unmount animations <PRLink id={851} />
+
+<PackageRelease name="Accordion" version="0.1.1" />
+
+- Add new CSS variable to `Accordion.Content` to help with width animations <PRLink id={879} />
+
+<PackageRelease name="Alert Dialog" version="0.1.1" major />
+
+- Improve composability with `Dialog` <PRLink id={906} />
+- **\[Breaking\]** Remove `AlertDialog.Content` `onInteractOutside` prop <PRLink id={846} />
+
+<PackageRelease name="Dialog" version="0.1.1" />
+
+- Improve composability with `AlertDialog` <PRLink id={906} />
+- Add pinch to zoom support to `DropdownMenu.Content` via `allowPinchZoom` prop <PRLink id={884} />
+
+<PackageRelease name="Context Menu" version="0.1.1" />
+
+- Add pinch to zoom support to `ContextMenu.Content` via `allowPinchZoom` prop <PRLink id={884} />
+- Prevent scroll via arrow keypress on submenu triggers <PRLink id={908} />
+
+<PackageRelease name="Collapsible" version="0.1.1" />
+
+- Add new CSS variable to `Collapsible.Content` to help with width animations <PRLink id={879} />
+
+<PackageRelease name="Checkbox" version="0.1.1" />
+
+- Prevent screen reader virtual cursor from accessing hidden input <PRLink id={870} />
+
+<PackageRelease name="Dropdown Menu" version="0.1.1" />
+
+- Improve composability with `Tooltip` <PRLink id={906} />
+- Add pinch to zoom support to `DropdownMenu.Content` via `allowPinchZoom` prop <PRLink id={884} />
+- Prevent scroll via arrow keypress on submenu triggers <PRLink id={908} />
+
+<PackageRelease name="Hover Card" version="0.1.1" />
+
+- Open on focus to improve keyboard support <PRLink id={902} />
+- Compose correct pointer events internally <PRLink id={893} />
+
+<PackageRelease name="Label" version="0.1.1" />
+
+- Allow its children to prevent event propagation <PRLink id={861} />
+
+<PackageRelease name="Radio Group" version="0.1.1" />
+
+- Prevent screen reader virtual cursor from accessing hidden inputs <PRLink id={870} />
+
+<PackageRelease name="Popover" version="0.1.1" />
+
+- Add pinch to zoom support to `Popover.Content` via `allowPinchZoom` prop <PRLink id={884} />
+
+<PackageRelease name="Slider" version="0.1.1" />
+
+- Fix calculations when value is `0` <PRLink id={866} />
+
+<PackageRelease name="Switch" version="0.1.1" />
+
+- Prevent screen reader virtual cursor from accessing hidden input <PRLink id={870} />
+
+<PackageRelease name="Tabs" version="0.1.1" major />
+
+- **\[Breaking\]** Unmount content within `Tabs.Content` when tab is inactive <PRLink id={859} />
+
+<Separator mt="7" />
+
+## September 7, 2021
+
+<PackageRelease name="All primitives" />
+
+- All primitives moved to **Beta** and are now versioned <Badge size="1" color="blue">0.1.0</Badge>
+- **\[Breaking\]** Replace polymorphic `as` prop with `asChild` boolean prop. Learn more
+  about how to [change the rendered element here](/primitives/docs/guides/composition) <PRLink id={835} />
+
+<PackageRelease name="Dialog" version="0.1.0" />
+
+- Improve composability with `DropdownMenu` <PRLink id={818} />
+
+<PackageRelease name="Dropdown Menu" version="0.1.0" />
+
+- Improve composability with `Dialog` <PRLink id={818} />
+- Re-enable `pointer-events` when closed <PRLink id={819} />
+- Prevent body text from selecting on close (Firefox) <PRLink id={812} />
+- Ensure sub triggers receive focus on click (iOS Safari) <PRLink id={820} />
+
+<PackageRelease name="Primitive" version="0.1.0" major />
+
+- **\[Breaking\]** Deprecate `extendPrimitive` utility <PRLink id={840} />
+
+<Separator mt="7" />
+
+## August 4, 2021
+
+<PackageRelease name="All primitives" />
+
+- Improve polymorphic types performance <PRLink id={784} />
+
+<PackageRelease name="Alert Dialog" version="0.0.20" major />
+
+- **\[Breaking\]** Remove `AlertDialog.Content` `onPointerDownOutside` prop <PRLink id={700} />
+- Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
+
+<PackageRelease name="Context Menu" version="0.0.24" major />
+
+- Add modality support via `modal` prop <PRLink id={700} />
+- **\[Breaking\]** Remove `ContextMenu.Content` `disableOutsidePointerEvents` prop <PRLink id={700} />
+- Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
+
+<PackageRelease name="Dialog" version="0.0.20" />
+
+- Add modality support via `modal` prop <PRLink id={700} />
+- Improve animation rendering in React 18 <PRLink id={776} />
+- Ensure focus is restored to trigger on close when using the `autofocus` attribute on a child element <PRLink id={739} />
+- Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
+- Ensure iOS Safari consistently focuses the first focusable element <PRLink id={776} />
+
+<PackageRelease name="Dropdown Menu" version="0.0.23" major />
+
+- Add modality support via `modal` prop <PRLink id={700} />
+- **\[Breaking\]** Remove `DropdownMenu.Content` `disableOutsideScroll` prop <PRLink id={700} />
+- **\[Breaking\]** Remove `DropdownMenu.Content` `disableOutsidePointerEvents` prop <PRLink id={700} />
+- Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
+
+<PackageRelease name="Popover" version="0.0.20" major />
+
+- Add modality support via `modal` prop <PRLink id={700} />
+- **\[Breaking\]** Remove `Popover.Content` `disableOutsideScroll` prop <PRLink id={700} />
+- **\[Breaking\]** Remove `Popover.Content` `disableOutsidePointerEvents` prop <PRLink id={700} />
+- **\[Breaking\]** Remove `Popover.Content` `trapFocus` prop <PRLink id={700} />
+- Improve animation rendering in React 18 <PRLink id={776} />
+- Ensure focus is restored to trigger on close when using the `autofocus` attribute on a child element <PRLink id={739} />
+- Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
+- Ensure iOS Safari consistently focuses the first focusable element <PRLink id={776} />
+
+<PackageRelease name="Scroll Area" version="0.0.16" />
+
+- Add `data-state` to `ScrollBar` part <PRLink id={801} />
+
+<PackageRelease name="Slider" version="0.0.17" />
+
+- Prevent thumb receiving focus when disabled <PRLink id={777} />
+- Prevent focus loss on thumb when using `React.StrictMode` <PRLink id={794} />
+
+<Separator mt="7" />
+
+## June 24, 2021
+
+<PackageRelease name="Context Menu" version="0.0.23" />
+
+- Can now be triggered on touch with a long press <PRLink id={743} />
+
+<PackageRelease name="Dialog" version="0.0.19" />
+
+- Add optional `Title` and `Description` parts for simpler labelling <PRLink id={741} />
+
+<PackageRelease name="Scroll Area" version="0.0.15" />
+
+- Add `data-orientation` to `Scrollbar` for styling convenience <PRLink id={720} />
+- Fix `forceMount` type issue on `Scrollbar` <PRLink id={738} />
+
+<PackageRelease name="Slider" version="0.0.16" />
+
+- Ensure the correct thumb is focused when using keyboard and crossing another thumb <PRLink id={731} />
+- Ensure only one arrow press is needed when crossing another thumb <PRLink id={733} />
+
+<PackageRelease name="Slot" version="0.0.12" />
+
+- Improve types compatibility <PRLink id={737} />
+
+<PackageRelease name="Toggle Group" version="0.0.10" />
+
+- Ensure only one click is needed to toggle a single controlled toggle group <PRLink id={722} />
+- Ensure focus behavior is consistent on Safari <PRLink id={727} />
+
+<Separator mt="7" />
+
+## June 15, 2021
+
+<PackageRelease name="All primitives" />
+
+- Improve polymorphic types <PRLink id={648} />
+
+<PackageRelease name="Accordion" version="0.0.16" major />
+
+- **\[Breaking\]** Rename `Accordion.Button` to `Accordion.Trigger` <PRLink id={651} />
+- **\[Breaking\]** Rename `Accordion.Panel` to `Accordion.Content` <PRLink id={651} />
+- **\[Breaking\]** Rename custom property accordingly (`--radix-accordion-content-height`) <PRLink id={651} />
+- **\[Breaking\]** `type=“single”` `Accordion` now has a new `collapsible` prop which is `false` by default. This means that the default behavior has now changed. By default a user cannot close all items. <PRLink id={651} />
+
+<PackageRelease name="Alert Dialog" version="0.0.18" major />
+
+- **\[Breaking\]** Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
+
+<PackageRelease name="Checkbox" version="0.0.16" major />
+
+- **\[Breaking\]** `onCheckedChange(event)` is now `onCheckedChange(checked: CheckedState)` <PRLink id={672} />
+- Improve compatibility with native form validation <PRLink id={650} />
+- Allow stopping propagation on `Checkbox` `onClick` <PRLink id={672} />
+- Improve compatibility with native `label` <PRLink id={672} />
+- Improve accessibility when wrapped in native `label` <PRLink id={672} />
+
+<PackageRelease name="Collapsible" version="0.0.16" major />
+
+- **\[Breaking\]** Rename `Collapsible.Button` to `Collapsible.Trigger` <PRLink id={651} />
+
+<PackageRelease name="Context Menu" version="0.0.22" major />
+
+- Add submenu support <PRLink id={682} />
+- Add `ContextMenu.TriggerItem` <PRLink id={682} />
+- Add `ContextMenu.Arrow` <PRLink id={682} />
+- Add `dir` prop for RTL support with submenus <PRLink id={682} />
+- **\[Breaking\]** Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
+- **\[Breaking\]** Remove `ContextMenu.Content` `side` prop <PRLink id={658} />
+- **\[Breaking\]** Remove `ContextMenu.Content` `align` prop <PRLink id={658} />
+- **\[Breaking\]** If you had `sideOffset` on `ContextMenu.Content` before, you should now use `alignOffset`. This is to standardize vertical alignment for both root and sub-menus. <PRLink id={712} />
+- **\[Breaking\]** `onFocusOutside` is now a custom event <PRLink id={671} />
+- Improve support of content and item with no padding <PRLink id={658} />
+- Align with WAI-ARIA spec by focusing first item when opening via keyboard <PRLink id={694} />
+
+<PackageRelease name="Dialog" version="0.0.18" major />
+
+- **\[Breaking\]** Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
+
+<PackageRelease name="Dropdown Menu" version="0.0.21" major />
+
+- Add submenu support <PRLink id={682} />
+- Add `DropdownMenu.TriggerItem` <PRLink id={682} />
+- Add `dir` prop for RTL support with submenus <PRLink id={682} />
+- **\[Breaking\]** Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
+- **\[Breaking\]** `onFocusOutside` is now a custom event <PRLink id={671} />
+- **\[Breaking\]** The up arrow no longer opens the menu <PRLink id={702} />
+- Align with WAI-ARIA spec by focusing first item when opening via keyboard <PRLink id={694} />
+
+<PackageRelease name="Popover" version="0.0.18" major />
+
+- **\[Breaking\]** Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
+- **\[Breaking\]** `onFocusOutside` is now a custom event <PRLink id={671} />
+
+<PackageRelease name="Radio Group" version="0.0.17" major />
+
+- **\[Breaking\]** `onValueChange(event)` is now `onValueChange(value: string)` <PRLink id={685} />
+- **\[Breaking\]** Remove `RadioGroup.Item` `onCheckedChange` prop <PRLink id={685} />
+- Improve compatibility with native form validation <PRLink id={650} />
+- Improve usage within forms <PRLink id={685} />
+
+<PackageRelease name="Scroll Area" version="0.0.14" major />
+
+- Brand new version with a simpler API <PRLink id={624} />
+- Improve Safari support <PRLink id={624} />
+- Improve RTL support <PRLink id={624} />
+- Improve touch support <PRLink id={624} />
+- `Scrollbar` mount/unmount can now be animated <PRLink id={624} />
+- Add minimum width/height to thumb so it's always grabbable <PRLink id={624} />
+- Move functional CSS into component to improve DX <PRLink id={624} />
+- Bundle size significantly reduced <PRLink id={624} />
+- **\[Breaking\]** Remove `overflowX` and `overflowY` props <PRLink id={624} />
+- **\[Breaking\]** Remove `ScrollAreaButtonStart`, `ScrollAreaButtonEnd` and `ScrollAreaTrack` <PRLink id={624} />
+- **\[Breaking\]** Rename `scrollbarVisibility` prop to `type`. The values are `auto`, `always`, `scroll` or `hover` <PRLink id={624} />
+- **\[Breaking\]** Rename `scrollbarVisibilityRestTimeout` prop to `scrollHideDelay` <PRLink id={624} />
+- **\[Breaking\]** Remove `trackClickBehavior` prop as we've removed built-in animation. Clicking on track always snaps to pointer position <PRLink id={624} />
+- **\[Breaking\]** `ScrollAreaScrollbarX` and `ScrollAreaScrollbarY` are now `<ScrollAreaScrollbar orientation="horizontal" />` and `<ScrollAreaScrollbar orientation="vertical" />` <PRLink id={624} />
+- Ensure no scrollbars are shown when scrolling is disabled <PRLink id={624} />
+- Ensure children event handlers don't break <PRLink id={624} />
+- Ensure scroll area updates when children content size changes <PRLink id={624} />
+
+<PackageRelease name="Slider" version="0.0.15" />
+
+- Improve usage within forms <PRLink id={678} />
+- Fix key binding issue in LTR <PRLink id={718} />
+
+<PackageRelease name="Switch" version="0.0.14" major />
+
+- **\[Breaking\]** `onCheckedChange(event)` is now `onCheckedChange(checked: boolean)` <PRLink id={679} />
+- Improve compatibility with native form validation <PRLink id={650} />
+- Improve usage within forms <PRLink id={679} />
+- Improve accessibility when wrapped in native `label` <PRLink id={679} />
+
+<PackageRelease name="Tabs" version="0.0.14" major />
+
+- **\[Breaking\]** Rename `Tabs.Tab` to `Tabs.Trigger` <PRLink id={652} />
+- **\[Breaking\]** Rename `Tabs.Panel` to `Tabs.Content` <PRLink id={652} />
+
+<Separator mt="7" />
+
+## May 3, 2021
+
+<PackageRelease name="All primitives" />
+
+- Improve polymorphic types performance <PRLink id={613} />
+
+<PackageRelease name="Accordion" version="0.0.14" />
+
+- Ensure only one click is needed to close a single controlled accordion <PRLink id={594} />
+
+<PackageRelease name="Checkbox" version="0.0.14" major />
+
+- **\[Breaking\]** Remove `readOnly` prop <PRLink id={600} />
+
+<PackageRelease name="Context Menu" version="0.0.18" />
+
+- Add `onOpenChange` prop <PRLink id={604} />
+
+<PackageRelease name="Dialog" version="0.0.16" />
+
+- Ensure focus position isn't lost when blurring out window and re-focusing it <PRLink id={589} />
+
+<PackageRelease name="Dropdown Menu" version="0.0.18" major />
+
+- Take into account non-visible items <PRLink id={618} />
+- **\[Breaking\]** Remove `anchorRef` prop <PRLink id={580} />
+- Prevent page from scrolling when selecting an item with space key <PRLink id={626} />
+
+<PackageRelease name="Hover Card" version="0.0.1" />
+
+- New primitive <PRLink id={595} />
+
+<PackageRelease name="Popover" version="0.0.16" major />
+
+- **\[Breaking\]** Remove `anchorRef` prop and replace with optional `Anchor` part <PRLink id={580} />
+
+<PackageRelease name="Radio Group" version="0.0.15" major />
+
+- Add optional `orientation`, `dir`, `loop` props <PRLink id={618} />
+- **\[Breaking\]** Remove `readOnly` prop <PRLink id={600} />
+
+<PackageRelease name="Switch" version="0.0.12" major />
+
+- **\[Breaking\]** Remove `readOnly` prop <PRLink id={600} />
+
+<PackageRelease name="Toggle Group" version="0.0.7" />
+
+- Add optional `orientation`, `dir`, `loop` props <PRLink id={618} />
+
+<PackageRelease name="Tooltip" version="0.0.17" major />
+
+- **\[Breaking\]** Remove `anchorRef` prop <PRLink id={580} />
+
+<Separator mt="7" />
+
+## March 26, 2021
+
+<PackageRelease name="All primitives" />
+
+- Improve tree-shaking <PRLink id={577} />
+
+<PackageRelease name="Context Menu" version="0.0.17" />
+
+- Ensure you can open a context menu when one is already open <PRLink id={565} />
+
+<PackageRelease name="Dropdown Menu" version="0.0.17" />
+
+- Fix potential overlap issue <PRLink id={541} />
+
+<PackageRelease name="Popover" version="0.0.15" />
+
+- Ensure `Content` closes when it has multiple close animations <PRLink id={571} />
+
+<PackageRelease name="Toggle" version="0.0.6" major />
+
+- **\[Breaking\]** Rename `ToggleButton` primitive to `Toggle` <PRLink id={546} />
+- **\[Breaking\]** Rename `toggled` prop to `pressed` <PRLink id={546} />
+- **\[Breaking\]** Rename `defaultToggled` prop to `defaultPressed` <PRLink id={546} />
+- **\[Breaking\]** Rename `onToggledChange` prop to `onPressedChange` <PRLink id={546} />
+
+<PackageRelease name="Toggle Group" version="0.0.6" />
+
+- New primitive <PRLink id={376} />
+
+<PackageRelease name="Toolbar" version="0.0.9" />
+
+- New primitive <PRLink id={[412,451,545]} />
+
+<PackageRelease name="Tooltip" version="0.0.16" />
+
+- Add custom timing support <PRLink id={[550,551,554,558]} />
+- Add unmount animation support <PRLink id={558} />
+
+<Separator mt="7" />
+
+## March 5, 2021
+
+<PackageRelease name="Accordion" version="0.0.7" />
+
+- Add height CSS custom property to panel for easier animation <PRLink id={537} />
+
+<PackageRelease name="Collapsible" version="0.0.7" />
+
+- Add height CSS custom property to content for easier animation <PRLink id={537} />
+
+<PackageRelease name="Tooltip" version="0.0.9" />
+
+- Fix type definition conflicts <PRLink id={538} />
+
+<Separator mt="7" />
+
+## March 3, 2021
+
+<PackageRelease name="All primitives" />
+
+- Add support for SSR
+- **\[Breaking\]** Remove `selector` prop and `data-radix-*` atributes <PRLink id={517} />
+
+<PackageRelease name="Accordion" version="0.0.6" major />
+
+- **\[Breaking\]** Add support for multiple values. Note that this is a breaking change because the new `type` prop is required <PRLink id={527} />
+
+<PackageRelease name="Slider" version="0.0.6" />
+
+- Ensure `step` is rounded correctly <PRLink id={463} />
+
+<PackageRelease name="Tabs" version="0.0.6" />
+
+- Add RTL support (`dir` prop) <PRLink id={497} />
+
+<Separator mt="7" />
+
+## February 17, 2021
+
+<PackageRelease name="Tooltip" version="0.0.7" />
+
+- Ensure events are composed when using `<Trigger as={Slot}>` <PRLink id={461} />
+
+<Separator mt="7" />
+
+## February 15, 2021
+
+<PackageRelease name="Context Menu" version="0.0.8" />
+
+- Expose `onCloseAutoFocus` prop <PRLink id={456} />
+
+<PackageRelease name="Dropdown Menu" version="0.0.8" />
+
+- Expose `onCloseAutoFocus` prop <PRLink id={456} />
+
+<Separator mt="7" />
+
+## February 10, 2021
+
+<PackageRelease name="All primitives" />
+
+- Fix type autocompletion when using `as` prop <PRLink id={421} />
+
+<PackageRelease name="Accordion" version="0.0.5" />
+
+- Prevent open/close flickering <PRLink id={431} />
+
+<PackageRelease name="Dialog" version="0.0.6" />
+
+- Ensure focus is returned properly on close <PRLink id={422} />
+
+<PackageRelease name="Radio Group" version="0.0.5" major />
+
+- **\[Breaking\]** Move `name` prop from `Item` to `Root` <PRLink id={424} />
+
+<Separator mt="7" />
+
+## February 1, 2021
+
+<PackageRelease name="Context Menu" version="0.0.6" />
+
+- Re–add missing `children` <PRLink id={414} />
+
+<PackageRelease name="Dropdown Menu" version="0.0.6" />
+
+- Re–add missing `children` <PRLink id={414} />
+
+<PackageRelease name="Popover" version="0.0.5" />
+
+- Prevent flickering (sliding) issue <PRLink id={415} />
+
+<Separator mt="7" />
+
+## January 29, 2021
+
+<PackageRelease name="Slot" version="0.0.1" />
+
+- New utility <PRLink id={409} />
+
+<Separator mt="7" />
+
+## January 25, 2021
+
+<PackageRelease name="Dialog" version="0.0.3" />
+
+- Fix regression when tabbing out would close <PRLink id={403} />
+
+<PackageRelease name="Dropdown Menu" version="0.0.3" />
+
+- Fix broken arrow keys navigation <PRLink id={404} />
+
+<Separator mt="7" />
+
+## January 22, 2021
+
+<PackageRelease name="All primitives" />
+
+- Add `selector` prop <PRLink id={347} />
+
+<PackageRelease name="Accordion" version="0.0.2" />
+
+- Ensure setting `disabled={false}` on `Root` doesn't enable disabled items <PRLink id={400} />
+
+<PackageRelease name="Dropdown Menu" version="0.0.2" />
+
+- Add enter key support on trigger <PRLink id={381} />
+- Prevent focus race condition <PRLink id={394} />
+
+<PackageRelease name="Popover" version="0.0.2" />
+
+- Ensure `Content` repositions on window resize <PRLink id={359} />
+- Ensure last element inside `Content` triggers blur event <PRLink id={395} />
+
+<Separator mt="7" />
+
+## December 15, 2020
+
+<PackageRelease name="All primitives" version="0.0.1" major />
+
+- Initial release! 🎉 <PRLink id={338} />
+
+scroll-area.mdx
 ---
 metaTitle: Scroll Area
 metaDescription: Augments native scroll functionality for custom, cross-browser styling.
@@ -11338,7 +13218,7 @@ In most cases, it's best to rely on native scrolling and work with the customiza
 
 Scrolling via keyboard is supported by default because the component relies on native scrolling. Specific keyboard interactions may differ between platforms, so we do not specify them here or add specific event listeners to handle scrolling via key events.
 
-
+select.mdx
 ---
 metaTitle: Select
 metaDescription: Displays a list of options for the user to pick from—triggered by a button.
@@ -12680,7 +14560,7 @@ export const SelectItem = React.forwardRef(
 );
 ```
 
-
+separator.mdx
 ---
 metaTitle: Separator
 metaDescription: Visually or semantically separates content.
@@ -12776,7 +14656,34 @@ The separator.
 
 Adheres to the [`separator` role requirements](https://www.w3.org/TR/wai-aria-1.2/#separator).
 
+server-side-rendering.mdx
+---
+metaTitle: Server-side rendering
+metaDescription: Radix Primitives can be rendered on the server. However, Primitives in React versions less than 18 rely on hydration for ids.
+---
 
+# Server-side rendering
+
+<Description>
+	Radix Primitives can be rendered on the server. However, Primitives in React
+	versions less than 18 rely on hydration for ids.
+</Description>
+
+## Overview
+
+Server-side rendering or `SSR`, is a technique used to render components to HTML on the server, as opposed to rendering them only on the client.
+
+Static rendering is another similar approach. Instead it pre-renders pages to HTML at build time rather than on each request.
+
+You should be able to use all of our primitives with both approaches, for example with [Next.js](https://nextjs.org/), [Remix](https://remix.run/), or [Gatsby](https://www.gatsbyjs.com/).
+
+## Gotcha
+
+Primitives in React versions less than 18 rely on hydration for ids (used in aria attributes) to avoid server/client mismatch errors.
+
+In other words, the equivalent of [Time to Interactive](https://web.dev/interactive/) for screen reader users will depend on the download speed of the JS bundle. If you'd like to generate ids server-side to improve this experience, we suggest upgrading to React 18.
+
+slider.mdx
 ---
 metaTitle: Slider
 metaDescription: An input where the user selects a value from within a given range.
@@ -13361,7 +15268,242 @@ Because of [a limitation](https://github.com/radix-ui/primitives/blob/83a8c13bf6
 
 We recommend using pointer events instead (eg. `onPointerDown`, `onPointerUp`). Regardless of the above limitation, these events are better suited for cross-platform/device handling as they are fired for all pointer input types (mouse, touch, pen, etc.).
 
+slot.mdx
+---
+metaTitle: Slot
+metaDescription: Merges its props onto its immediate child.
+name: slot
+---
 
+# Slot
+
+<Description>Merges its props onto its immediate child.</Description>
+
+<Highlights features={["Can be used to support your own `asChild` prop."]} />
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+## Anatomy
+
+Import the component.
+
+```jsx
+import { Slot } from "radix-ui";
+
+export default () => (
+	<Slot.Root>
+		<div>Hello</div>
+	</Slot.Root>
+);
+```
+
+## Basic example
+
+Use to create your own `asChild` API.
+
+When your component has a single children element:
+
+```jsx line=9
+// your-button.jsx
+import * as React from "react";
+import { Slot } from "radix-ui";
+
+function Button({ asChild, ...props }) {
+	const Comp = asChild ? Slot.Root : "button";
+	return <Comp {...props} />;
+}
+```
+
+Use `Slottable` when your component has multiple children to pass the props to the correct element:
+
+```jsx
+// your-button.jsx
+import * as React from "react";
+import { Slot } from "radix-ui";
+
+function Button({ asChild, children, leftElement, rightElement, ...props }) {
+	const Comp = asChild ? Slot.Root : "button";
+	return (
+		<Comp {...props}>
+			{leftElement}
+			<Slot.Slottable>{children}</Slottable>
+			{rightElement}
+		</Comp>
+	);
+}
+```
+
+### Usage
+
+```jsx
+import { Button } from "./your-button";
+
+export default () => (
+	<Button asChild>
+		<a href="/contact">Contact</a>
+	</Button>
+);
+```
+
+### Event handlers
+
+Any prop that starts with `on` (e.g., `onClick`) is considered an event handler.
+
+When merging event handlers, `Slot` will create a new function where the child handler takes precedence over the slot handler.
+
+If one of the event handlers relies on `event.defaultPrevented` make sure that the order is correct.
+
+```jsx
+import { Slot } from "radix-ui";
+
+export default () => (
+	<Slot.Root
+		onClick={(event) => {
+			if (!event.defaultPrevented)
+				console.log("Not logged because default is prevented.");
+		}}
+	>
+		<button onClick={(event) => event.preventDefault()} />
+	</Slot>
+);
+```
+
+styling.mdx
+---
+metaTitle: Styling
+metaDescription: Radix Primitives are unstyled—and compatible with any styling solution—giving you complete control over styling.
+---
+
+# Styling
+
+<Description>
+	Radix Primitives are unstyled—and compatible with any styling solution—giving
+	you complete control over styling.
+</Description>
+
+## Styling overview
+
+### Functional styles
+
+You are in control of all aspects of styling, including functional styles. For example—by default—a [Dialog Overlay](../components/dialog) won't cover the entire viewport. You're responsible for adding those styles, plus any presentation styles.
+
+### Classes
+
+All components and their parts accept a `className` prop. This class will be passed through to the DOM element. You can use it in CSS as expected.
+
+### Data attributes
+
+When components are stateful, their state will be exposed in a `data-state` attribute. For example, when an [Accordion Item](../components/accordion) is opened, it includes a `data-state="open"` attribute.
+
+## Styling with CSS
+
+### Styling a part
+
+You can style a component part by targeting the `className` that you provide.
+
+```jsx line=3,7
+import * as React from "react";
+import { Accordion } from "radix-ui";
+import "./styles.css";
+
+const AccordionDemo = () => (
+	<Accordion.Root>
+		<Accordion.Item __className__="AccordionItem" value="item-1" />
+		{/* … */}
+	</Accordion.Root>
+);
+
+export default AccordionDemo;
+```
+
+### Styling a state
+
+You can style a component state by targeting its `data-state` attribute.
+
+```css
+.AccordionItem {
+	border-bottom: 1px solid gainsboro;
+}
+
+.AccordionItem[__data-state__="open"] {
+	border-bottom-width: 2px;
+}
+```
+
+## Styling with CSS-in-JS
+
+The examples below are using [styled-components](https://styled-components.com/), but you can use any CSS-in-JS library of your choice.
+
+### Styling a part
+
+Most CSS-in-JS libraries export a function for passing components and their styles. You can provide the Radix primitive component directly.
+
+```jsx line=5-7,11
+import * as React from "react";
+import { Accordion } from "radix-ui";
+import styled from "styled-components";
+
+const StyledItem = __styled__(Accordion.Item)`
+  border-bottom: 1px solid gainsboro;
+`;
+
+const AccordionDemo = () => (
+	<Accordion.Root>
+		<StyledItem value="item-1" />
+		{/* … */}
+	</Accordion.Root>
+);
+
+export default AccordionDemo;
+```
+
+### Styling a state
+
+You can style a component state by targeting its `data-state` attribute.
+
+```jsx
+import { Accordion } from "radix-ui";
+import styled from "styled-components";
+
+const StyledItem = styled(Accordion.Item)`
+	border-bottom: 1px solid gainsboro;
+
+	&[__data-state__="open"] {
+		border-bottom-width: 2px;
+	}
+`;
+```
+
+## Extending a primitive
+
+Extending a primitive is done the same way you extend any React component.
+
+```tsx
+import * as React from "react";
+import { Accordion as AccordionPrimitive } from "radix-ui";
+
+const AccordionItem = React.forwardRef<
+	React.ElementRef<typeof AccordionPrimitive.Item>,
+	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+>((props, forwardedRef) => (
+	<AccordionPrimitive.Item {...props} ref={forwardedRef} />
+));
+AccordionItem.displayName = "AccordionItem";
+```
+
+## Summary
+
+Radix Primitives were designed to encapsulate accessibility concerns and other complex functionalities, while ensuring you retain complete control over styling.
+
+For convenience, stateful components include a `data-state` attribute.
+
+switch.mdx
 ---
 metaTitle: Switch
 metaDescription: A control that allows the user to toggle between checked and not checked.
@@ -13562,7 +15704,7 @@ Adheres to the [`switch` role requirements](https://www.w3.org/WAI/ARIA/apg/patt
 	]}
 />
 
-
+tabs.mdx
 ---
 metaTitle: Tabs
 metaDescription: A set of layered sections of content—known as tab panels—that are displayed one at a time.
@@ -13967,7 +16109,7 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/pa
 	]}
 />
 
-
+toast.mdx
 ---
 metaTitle: Toast
 metaDescription: A succinct message that is displayed temporarily.
@@ -14712,7 +16854,7 @@ export const Toast = React.forwardRef((props, forwardedRef) => {
 });
 ```
 
-
+toggle-group.mdx
 ---
 metaTitle: Toggle Group
 metaDescription: A set of two-state buttons that can be toggled on or off.
@@ -15090,7 +17232,7 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
 	]}
 />
 
-
+toggle.mdx
 ---
 metaTitle: Toggle
 metaDescription: A two-state button that can be either on or off.
@@ -15220,7 +17362,7 @@ The toggle.
 	]}
 />
 
-
+toolbar.mdx
 ---
 metaTitle: Toolbar
 metaDescription: A container for grouping a set of controls, such as buttons, toggle groups or dropdown menus.
@@ -15718,7 +17860,7 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
 	]}
 />
 
-
+tooltip.mdx
 ---
 metaTitle: Tooltip
 metaDescription: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
@@ -16448,2149 +18590,7 @@ export function Tooltip({
 }
 ```
 
-
----
-metaTitle: Animation
-metaDescription: Animate Radix Primitives with CSS keyframes or the JavaScript animation library of your choice.
----
-
-# Animation
-
-<Description>
-	Animate Radix Primitives with CSS keyframes or the JavaScript animation
-	library of your choice.
-</Description>
-
-Adding animation to Radix Primitives should feel similar to any other component, but there are some caveats noted here in regards to exiting animations with JS animation libraries.
-
-## Animating with CSS animation
-
-The simplest way to animate Primitives is with CSS.
-
-You can use CSS animation to animate both mount and unmount phases. The latter is possible because the Radix Primitives will suspend unmount while your animation plays out.
-
-```css
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-
-@keyframes fadeOut {
-	from {
-		opacity: 1;
-	}
-	to {
-		opacity: 0;
-	}
-}
-
-.DialogOverlay[data-state="open"],
-.DialogContent[data-state="open"] {
-	animation: fadeIn 300ms ease-out;
-}
-
-.DialogOverlay[data-state="closed"],
-.DialogContent[data-state="closed"] {
-	animation: fadeOut 300ms ease-in;
-}
-```
-
-## Delegating unmounting for JavaScript Animation
-
-When many stateful Primitives are hidden from view, they are actually removed from the React Tree, and their elements removed from the DOM. JavaScript animation libraries need control of the unmounting phase, so we provide the `forceMount` prop on many components to allow consumers to delegate the mounting and unmounting of children based on the animation state determined by those libraries.
-
-For example, if you want to use React Spring to animate a `Dialog`, you would do so by conditionally rendering the dialog `Overlay` and `Content` parts based on the animation state from one of its hooks like `useTransition`:
-
-```jsx
-import { Dialog } from "radix-ui";
-import { useTransition, animated, config } from "react-spring";
-
-function Example() {
-	const [open, setOpen] = React.useState(false);
-	const transitions = useTransition(open, {
-		from: { opacity: 0, y: -10 },
-		enter: { opacity: 1, y: 0 },
-		leave: { opacity: 0, y: 10 },
-		config: config.stiff,
-	});
-	return (
-		<Dialog.Root open={open} onOpenChange={setOpen}>
-			<Dialog.Trigger>Open Dialog</Dialog.Trigger>
-			{transitions((styles, item) =>
-				item ? (
-					<>
-						<Dialog.Overlay forceMount asChild>
-							<animated.div
-								style={{
-									opacity: styles.opacity,
-								}}
-							/>
-						</Dialog.Overlay>
-						<Dialog.Content forceMount asChild>
-							<animated.div style={styles}>
-								<h1>Hello from inside the Dialog!</h1>
-								<Dialog.Close>close</Dialog.Close>
-							</animated.div>
-						</Dialog.Content>
-					</>
-				) : null,
-			)}
-		</Dialog.Root>
-	);
-}
-```
-
-
----
-metaTitle: Composition
-metaDescription: Use the `asChild` prop to compose Radix's functionality onto alternative element types or your own React components.
----
-
-# Composition
-
-<Description>
-	Use the `asChild` prop to compose Radix's functionality onto alternative
-	element types or your own React components.
-</Description>
-
-All Radix primitive parts that render a DOM element accept an `asChild` prop. When `asChild` is set to `true`, Radix will not render a default DOM element, instead cloning the part's child and passing it the props and behavior required to make it functional.
-
-## Changing the element type
-
-In the majority of cases you shouldn’t need to modify the element type as Radix has been designed to provide the most appropriate defaults. However, there are cases where it is helpful to do so.
-
-A good example is with `Tooltip.Trigger`. By default this part is rendered as a `button`, though you may want to add a tooltip to a link (`a` tag) as well. Let's see how you can achieve this using `asChild`:
-
-```jsx line=7
-import * as React from "react";
-import { Tooltip } from "radix-ui";
-
-export default () => (
-	<Tooltip.Root>
-		<Tooltip.Trigger __asChild__>
-			<a href="https://www.radix-ui.com/">Radix UI</a>
-		</Tooltip.Trigger>
-		<Tooltip.Portal>…</Tooltip.Portal>
-	</Tooltip.Root>
-);
-```
-
-> If you do decide to change the underlying element type, it is your responsibility to ensure it remains accessible and functional. In the case of `Tooltip.Trigger` for example, it must be a focusable element that can respond to pointer and keyboard events. If you were to switch it to a `div`, it would no longer be accessible.
-
-In reality, you will rarely modify the underlying DOM element like we've seen above. Instead it's more common to use your own React components. This is especially true for most `Trigger` parts, as you usually want to compose the functionality with the custom buttons and links in your design system.
-
-## Composing with your own React components
-
-This works exactly the same as above, you pass `asChild` to the part and then wrap your own component with it.
-However, there are a few gotchas to be aware of.
-
-### Your component must spread props
-
-When Radix clones your component, it will pass its own props and event handlers to make it functional and accessible. If your component doesn't support those props, it will break.
-
-This is done by spreading all of the props onto the underlying DOM node.
-
-```jsx line=5
-// before
-const MyButton = () => <button />;
-
-// after
-const MyButton = (props) => <button {...__props__} />;
-```
-
-We recommend always doing this so that you are not concerned with implementation details (ie. which props/events to accept). We find this is good practice for "leaf" components in general.
-
-> Similarly to when changing the element type directly, it is your responsibility to ensure the element type rendered by your custom component remains accessible and functional.
-
-### Your component must forward ref
-
-Additionally, Radix will sometimes need to attach a `ref` to your component (for example to measure its size). If your component doesn't accept a `ref`, then it will break.
-
-This is done using `React.forwardRef` (read more on [react.dev](https://react.dev/reference/react/forwardRef)).
-
-```jsx line=5-7
-// before
-const MyButton = (props) => <button {...props} />;
-
-// after
-const MyButton = __React.forwardRef__((props, __forwardedRef__) => (
-	<button {...props} __ref__={__forwardedRef__} />
-));
-```
-
-Whilst this isn't necessary for **all** parts, we recommend always doing it so that you are not concerned with implementation details. This is also generally good practice anyway for leaf components.
-
-## Composing multiple primitives
-
-`asChild` can be used as deeply as you need to. This means it is a great way to compose multiple primitive's behavior together.
-Here is an example of how you can compose `Tooltip.Trigger` and `Dialog.Trigger` together with your own button:
-
-```jsx line=12-16
-import * as React from "react";
-import { Dialog, Tooltip } from "radix-ui";
-
-const MyButton = React.forwardRef((props, forwardedRef) => (
-	<button {...props} ref={forwardedRef} />
-));
-
-export default () => {
-	return (
-		<Dialog.Root>
-			<Tooltip.Root>
-				<Tooltip.Trigger __asChild__>
-					<Dialog.Trigger __asChild__>
-						<MyButton>Open dialog</MyButton>
-					</Dialog.Trigger>
-				</Tooltip.Trigger>
-				<Tooltip.Portal>…</Tooltip.Portal>
-			</Tooltip.Root>
-
-			<Dialog.Portal>...</Dialog.Portal>
-		</Dialog.Root>
-	);
-};
-```
-
-
----
-metaTitle: Server-side rendering
-metaDescription: Radix Primitives can be rendered on the server. However, Primitives in React versions less than 18 rely on hydration for ids.
----
-
-# Server-side rendering
-
-<Description>
-	Radix Primitives can be rendered on the server. However, Primitives in React
-	versions less than 18 rely on hydration for ids.
-</Description>
-
-## Overview
-
-Server-side rendering or `SSR`, is a technique used to render components to HTML on the server, as opposed to rendering them only on the client.
-
-Static rendering is another similar approach. Instead it pre-renders pages to HTML at build time rather than on each request.
-
-You should be able to use all of our primitives with both approaches, for example with [Next.js](https://nextjs.org/), [Remix](https://remix.run/), or [Gatsby](https://www.gatsbyjs.com/).
-
-## Gotcha
-
-Primitives in React versions less than 18 rely on hydration for ids (used in aria attributes) to avoid server/client mismatch errors.
-
-In other words, the equivalent of [Time to Interactive](https://web.dev/interactive/) for screen reader users will depend on the download speed of the JS bundle. If you'd like to generate ids server-side to improve this experience, we suggest upgrading to React 18.
-
-
----
-metaTitle: Styling
-metaDescription: Radix Primitives are unstyled—and compatible with any styling solution—giving you complete control over styling.
----
-
-# Styling
-
-<Description>
-	Radix Primitives are unstyled—and compatible with any styling solution—giving
-	you complete control over styling.
-</Description>
-
-## Styling overview
-
-### Functional styles
-
-You are in control of all aspects of styling, including functional styles. For example—by default—a [Dialog Overlay](../components/dialog) won't cover the entire viewport. You're responsible for adding those styles, plus any presentation styles.
-
-### Classes
-
-All components and their parts accept a `className` prop. This class will be passed through to the DOM element. You can use it in CSS as expected.
-
-### Data attributes
-
-When components are stateful, their state will be exposed in a `data-state` attribute. For example, when an [Accordion Item](../components/accordion) is opened, it includes a `data-state="open"` attribute.
-
-## Styling with CSS
-
-### Styling a part
-
-You can style a component part by targeting the `className` that you provide.
-
-```jsx line=3,7
-import * as React from "react";
-import { Accordion } from "radix-ui";
-import "./styles.css";
-
-const AccordionDemo = () => (
-	<Accordion.Root>
-		<Accordion.Item __className__="AccordionItem" value="item-1" />
-		{/* … */}
-	</Accordion.Root>
-);
-
-export default AccordionDemo;
-```
-
-### Styling a state
-
-You can style a component state by targeting its `data-state` attribute.
-
-```css
-.AccordionItem {
-	border-bottom: 1px solid gainsboro;
-}
-
-.AccordionItem[__data-state__="open"] {
-	border-bottom-width: 2px;
-}
-```
-
-## Styling with CSS-in-JS
-
-The examples below are using [styled-components](https://styled-components.com/), but you can use any CSS-in-JS library of your choice.
-
-### Styling a part
-
-Most CSS-in-JS libraries export a function for passing components and their styles. You can provide the Radix primitive component directly.
-
-```jsx line=5-7,11
-import * as React from "react";
-import { Accordion } from "radix-ui";
-import styled from "styled-components";
-
-const StyledItem = __styled__(Accordion.Item)`
-  border-bottom: 1px solid gainsboro;
-`;
-
-const AccordionDemo = () => (
-	<Accordion.Root>
-		<StyledItem value="item-1" />
-		{/* … */}
-	</Accordion.Root>
-);
-
-export default AccordionDemo;
-```
-
-### Styling a state
-
-You can style a component state by targeting its `data-state` attribute.
-
-```jsx
-import { Accordion } from "radix-ui";
-import styled from "styled-components";
-
-const StyledItem = styled(Accordion.Item)`
-	border-bottom: 1px solid gainsboro;
-
-	&[__data-state__="open"] {
-		border-bottom-width: 2px;
-	}
-`;
-```
-
-## Extending a primitive
-
-Extending a primitive is done the same way you extend any React component.
-
-```tsx
-import * as React from "react";
-import { Accordion as AccordionPrimitive } from "radix-ui";
-
-const AccordionItem = React.forwardRef<
-	React.ElementRef<typeof AccordionPrimitive.Item>,
-	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
->((props, forwardedRef) => (
-	<AccordionPrimitive.Item {...props} ref={forwardedRef} />
-));
-AccordionItem.displayName = "AccordionItem";
-```
-
-## Summary
-
-Radix Primitives were designed to encapsulate accessibility concerns and other complex functionalities, while ensuring you retain complete control over styling.
-
-For convenience, stateful components include a `data-state` attribute.
-
-
----
-metaTitle: Accessibility
-metaDescription: Radix Primitives follow the WAI-ARIA authoring practices guidelines and are tested in a wide selection of modern browsers and commonly used assistive technologies.
----
-
-# Accessibility
-
-<Description>
-	Radix Primitives follow the WAI-ARIA authoring practices guidelines and are
-	tested in a wide selection of modern browsers and commonly used assistive
-	technologies.
-</Description>
-
-We take care of many of the difficult implementation details related to accessibility, including `aria` and `role` attributes, focus management, and keyboard navigation. That means that users should be able to use our components as-is in most contexts and rely on functionality to follow the expected accessibility design patterns.
-
-## WAI-ARIA
-
-[WAI-ARIA](https://www.w3.org/TR/wai-aria-1.2/), published and maintained by the W3C, specifies the semantics for many common UI patterns that show up in Radix Primitives. This is designed to provide meaning for controls that aren't built using elements provided by the browser. For example, if you use a `div` instead of a `button` element to create a button, there are attributes you need to add to the `div` in order to convey that it's a button for screen readers or voice recognition tools.
-
-In addition to semantics, there are behaviors that are expected from different types of components. A `button` element is going to respond to certain interactions in ways that a `div` will not, so it's up to the developer to reimplement those interactions with JavaScript. The [WAI-ARIA authoring practices](https://www.w3.org/TR/wai-aria-practices-1.2/) provide additional guidance for implementing behaviors for various controls that come with Radix Primitives.
-
-## Accessible Labels
-
-With many built-in form controls, the native HTML `label` element is designed to provide semantic meaning and context for corresponding `input` elements. For non-form control elements, or for custom controls like those provided by Radix Primitives, [WAI-ARIA provides a specification](https://www.w3.org/TR/wai-aria-1.2/#namecalculation) for how to provide accessible names and descriptions to those controls.
-
-Where possible, Radix Primitives include abstractions to make labelling our controls simple. The [`Label`](../components/label) primitive is designed to work with many of our controls. Ultimately it's up to you to provide those labels so that users have the proper context when navigating your application.
-
-## Keyboard Navigation
-
-Many complex components, like [`Tabs`](../components/tabs) and [`Dialog`](../components/dialog), come with expectations from users on how to interact with their content using a keyboard or other non-mouse input modalities. Radix Primitives provide basic keyboard support in accordance with the [WAI-ARIA authoring practices](https://www.w3.org/TR/wai-aria-practices-1.2/).
-
-## Focus Management
-
-Proper keyboard navigation and good labelling often go hand-in-hand with managing focus. When a user interacts with an element and something changes as a result, it's often helpful to move focus with the interaction so that the next tab stop is logical depending on the new context of the app. And for screen reader users, moving focus often results in an announcement to convey this new context, which relies on proper labelling.
-
-In many Radix Primitives, we move focus based on the interactions a user normally takes in a given component. For example, in [`AlertDialog`](../components/alert-dialog), when the modal is opened, focus is programatically moved to a `Cancel` button element to anticipate a response to the prompt.
-
-
----
-metaTitle: Getting started
-metaDescription: A quick tutorial to get you up and running with Radix Primitives.
-name: popover
----
-
-# Getting started
-
-<Description>
-	A quick tutorial to get you up and running with Radix Primitives.
-</Description>
-
-## Implementing a Popover
-
-In this quick tutorial, we will install and style the [Popover](../components/popover) component.
-
-### 1. Install the primitive
-
-Install Radix Primitives from your command line.
-
-```bash
-npm install radix-ui@latest
-```
-
-### 2. Import the parts
-
-Import and structure the parts.
-
-```jsx line=3,6-14
-// index.jsx
-import * as React from "react";
-import { Popover } from "radix-ui";
-
-const PopoverDemo = () => (
-	<Popover.Root>
-		<Popover.Trigger>More info</Popover.Trigger>
-		<Popover.Portal>
-			<Popover.Content>
-				Some more info…
-				<Popover.Arrow />
-			</Popover.Content>
-		</Popover.Portal>
-	</Popover.Root>
-);
-
-export default PopoverDemo;
-```
-
-### 3. Add your styles
-
-Add styles where desired.
-
-```jsx line=4,8,10,12
-// index.jsx
-import * as React from "react";
-import { Popover } from "radix-ui";
-import "./styles.css";
-
-const PopoverDemo = () => (
-	<Popover.Root>
-		<Popover.Trigger __className__="PopoverTrigger">Show info</Popover.Trigger>
-		<Popover.Portal>
-			<Popover.Content __className__="PopoverContent">
-				Some content
-				<Popover.Arrow __className__="PopoverArrow" />
-			</Popover.Content>
-		</Popover.Portal>
-	</Popover.Root>
-);
-
-export default PopoverDemo;
-```
-
-```css
-/* styles.css */
-.PopoverTrigger {
-	background-color: white;
-	border-radius: 4px;
-}
-
-.PopoverContent {
-	border-radius: 4px;
-	padding: 20px;
-	width: 260px;
-	background-color: white;
-}
-
-.PopoverArrow {
-	fill: white;
-}
-```
-
-### Demo
-
-Here's a complete demo.
-
-<HeroContainer>
-	<GettingStartedDemo />
-</HeroContainer>
-
-<HeroCodeBlock folder="GettingStarted" cssLib="css" />
-
-## Summary
-
-The steps above outline briefly what's involved in using a Radix Primitive in your application.
-
-These components are low-level enough to give you control over how you want to wrap them. You're free to introduce your own high-level API to better suit the needs of your team and product.
-
-In a few simple steps, we've implemented a fully accessible Popover component, without having to worry about many of its complexities.
-
-- Adheres to [WAI-ARIA](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal) design pattern.
-- Can be controlled or uncontrolled.
-- Customize side, alignment, offsets, collision handling.
-- Optionally render a pointing arrow.
-- Focus is fully managed and customizable.
-- Dismissing and layering behavior is highly customizable.
-
-
----
-metaTitle: Introduction
-metaDescription: An open-source UI component library for building high-quality, accessible design systems and web apps.
----
-
-# Introduction
-
-<Description>
-	An open-source UI component library for building high-quality, accessible
-	design systems and web apps.
-</Description>
-
-Radix Primitives is a low-level UI component library with a focus on accessibility, customization and developer experience. You can use these components either as the base layer of your design system, or adopt them incrementally.
-
-## Vision
-
-Most of us share similar definitions for common UI patterns like accordion, checkbox,
-combobox, dialog, dropdown, select, slider, and tooltip. These UI patterns are [documented by WAI-ARIA](https://www.w3.org/TR/wai-aria-practices/#aria_ex) and generally understood by the community.
-
-However, the implementations provided to us by the web platform are inadequate. They're
-either non-existent, lacking in functionality, or cannot be customized sufficiently.
-
-So, developers are forced to build custom components; an incredibly difficult task. As a
-result, most components on the web are inaccessible, non-performant, and lacking important
-features.
-
-Our goal is to create a well-funded, open-source component library that the community can
-use to build accessible design systems.
-
-## Key Features
-
-### Accessible
-
-Components adhere to the [WAI-ARIA design patterns](https://www.w3.org/TR/wai-aria-practices-1.2) where possible. We handle many of the difficult implementation details related to accessibility, including aria and role attributes, focus management, and keyboard navigation. Learn more in our [accessibility](./accessibility) overview.
-
-### Unstyled
-
-Components ship without styles, giving you complete control over the look and feel. Components can be styled with any styling solution. Learn more in our [styling](../guides/styling) guide.
-
-### Opened
-
-Radix Primitives are designed to be customized to suit your needs. Our open component architecture provides you granular access to each component part, so you can wrap them and add your own event listeners, props, or refs.
-
-### Uncontrolled
-
-Where applicable, components are uncontrolled by default but can also be controlled, alternatively. All of the behavior wiring is handled internally, so you can get up and running as smoothly as possible, without needing to create any local states.
-
-### Developer experience
-
-One of our main goals is to provide the best possible developer experience. Radix Primitives provides a fully-typed API. All components share a similar API, creating a consistent and predictable experience. We've also implemented an `asChild` prop, giving users full control over the rendered element.
-
-### Incremental adoption
-
-We recommend installing the `radix-ui` package and importing the primitives you need. This is the simplest way to get started, prevent version conflicts or duplication, and makes it easy to manage updates. The package is tree-shakeable, so you should only ship the components you use.
-
-```bash
-npm install radix-ui
-```
-
-```tsx
-import { Dialog, DropdownMenu, Tooltip } from "radix-ui";
-```
-
-Alternatively, each primitive can be installed individually:
-
-```bash
-npm install @radix-ui/react-dialog
-npm install @radix-ui/react-dropdown-menu
-npm install @radix-ui/react-tooltip
-```
-
-```tsx
-import * as Dialog from "@radix-ui/react-dialog";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import * as Tooltip from "@radix-ui/react-tooltip";
-```
-
-When installing separately, we recommend updating all Radix packages together to prevent duplication of shared dependencies and keep your bundle size down.
-
-## Community
-
-To get involved with the Radix community, ask questions and share tips, [Join our Discord](https://discord.com/invite/7Xb99uG).
-
-To receive updates on new primitives, announcements, blog posts, and general Radix tips, follow along on [Bluesky](https://bsky.app/profile/radix-ui.com) or [Twitter](https://twitter.com/radix_ui).
-
-To file issues, request features, and contribute, check out our GitHub.
-
-- [GitHub repo](https://github.com/radix-ui/primitives)
-- [Code of conduct](https://github.com/radix-ui/primitives/blob/main/CODE_OF_CONDUCT.md)
-
-
----
-metaTitle: Releases
-metaDescription: Radix Primitives releases and their changelogs.
----
-
-# Releases
-
-<Description>Radix Primitives releases and their changelogs.</Description>
-
-## February 5, 2025
-
-- Updated dependencies to remove peer dependency warnings for `react` and `react-dom` <PRLink id={3350} />
-- Skip forwarding refs to `SlotClone` when the child is a `Fragment` <PRLink id={3229} />
-
-## January 22, 2025
-
-- Added a `radix-ui` package that exposes the latest version of all Radix Primitives from a single place. This tree-shakable entrypoint makes it easier to bring in whatever components you need and keep them up-to-date without worrying about conflicting or duplicate dependencies.
-- Updated `aria-hidden` and `react-remove-scroll` dependencies for the following components:
-  - Alert Dialog
-  - Context Menu
-  - Dialog
-  - Dropdown Menu
-  - Hover Card
-  - Menubar
-  - Navigation Menu
-  - Popover
-  - Select
-  - Toast
-  - Tooltip
-
-## October 1, 2024
-
-<PackageRelease name="Alert Dialog" version="1.1.2" />
-
-- Fix `allowPinchZoom` bug for trackpad users <PRLink id={3127} />
-
-<PackageRelease name="Avatar" version="1.1.1" />
-
-- Check for `referrerPolicy` when checking the image loading status <PRLink id={2772} />
-
-<PackageRelease name="Checkbox" version="1.1.2" />
-
-- Fix a bug where `defaultChecked` unexpectedly changed for uncontrolled checkboxes <PRLink id={2135} />
-- Forward the `form` prop to the bubble input element to fix non-parent form submissions <PRLink id={3161} />
-
-<PackageRelease name="Dialog" version="1.1.2" />
-
-- Fix `allowPinchZoom` bug for trackpad users <PRLink id={3127} />
-
-<PackageRelease name="Radio Group" version="1.2.1" />
-
-- Forward the `form` prop to the bubble input element to fix non-parent form submissions <PRLink id={3161} />
-
-<PackageRelease name="Scroll Area" version="1.2.0" />
-
-- Fix `asChild` prop not working as expected on the `Viewport` <PRLink id={2945} />
-- Update internal styles to fix other issues with `Viewport` <PRLink id={2945} />
-
-<PackageRelease name="Select" version="2.1.2" />
-
-- Fix error thrown when items are initially undefined <PRLink id={2623} />
-- Fix several bugs for touch devices <PRLink id={2939} />
-- Forward the `form` prop to the bubble input element to fix non-parent form submissions <PRLink id={3161} />
-- Fix position bug where popover may start off-screen for long items <PRLink id={3149} />
-
-<PackageRelease name="Slider" version="1.2.1" />
-
-- Forward the root `form` prop to each thumb's bubble input element to fix non-parent form submissions <PRLink id={3161} />
-
-<PackageRelease name="Switch" version="1.1.1" />
-
-- Forward the `form` prop to the bubble input element to fix non-parent form submissions <PRLink id={3161} />
-
-<PackageRelease name="Toast" version="1.2.2" />
-
-- Fix incorrect focus when `hotkey` is an empty array <PRLink id={2491} />
-
-## June 28, 2024
-
-<PackageRelease name="Checkbox" version="1.1.1" />
-
-- Export `CheckedState` type
-
-<PackageRelease name="Tooltip" version="1.1.2" />
-
-- Export `TooltipProviderProps` type
-
-## June 21, 2024
-
-<PackageRelease name="Portal" version="1.1.1" />
-
-- Add a missing internal utility to `package.json`. The corresponding packages that provide a Portal part also received a patch update. <PRLink id={2966} />
-
-## June 19, 2024
-
-<PackageRelease name="All primitives" />
-
-<br />
-
-Released minor versions for all primitives with the following changes:
-
-- Full React 19 compatability <PRLink id={2952} />
-- Full RSC compatibility <PRLink id={2923} />
-- Internal build tooling changes <PRLink id={2922} /> <PRLink id={2931} />
-- Update and pin `react-remove-scroll` dependency version to avoid double scrollbar bugs in edge cases <PRLink id={2776} />
-- Don’t scroll menu items in response to hover <PRLink id={2451} />
-- Make sure that components that close on Escape key press capture the corresponding keyboard event. This way you can call `stopPropagation` in `onEscapeKeyDown` if you need more control rendering Radix components within another component that closes on Escape key press.
-- Make sure that components with roving focus do not interfere with browser or system hotkeys, such as back navigation <PRLink id={2739} />
-- Make sure that components that support `hideWhenDetached` prop do not allow interactions with hidden content <PRLink id={2743} /> <PRLink id={2745} />
-
-<PackageRelease name="Dialog" version="1.1.0" />
-
-- Log an error when an accessible title via the `Dialog.Title` part is missing <PRLink id={2948} />
-- Log a warning when an accessible description via the `Dialog.Description` part is missing <PRLink id={2948} />
-
-<PackageRelease name="Label" version="2.1.0" />
-
-- Make sure that the component doesn’t interfere when clicking on the spinner of a number input
-
-<PackageRelease name="Navigation Menu" version="1.2.0" />
-
-- Remove unsupported `disableOutsidePointerEvents` prop
-
-<PackageRelease name="Portal" version="1.1.0" />
-
-- Fix hydration error in SSR on the initial render <PRLink id={2923} />
-
-<PackageRelease name="Progress" version="1.2.0" />
-
-- Explicitly allow `value={undefined}` to represent an indeterminate state, matching the current practical behaviour <PRLink id={2947} />
-
-<PackageRelease name="Select" version="2.1.0" />
-
-- Add `nonce` prop to be able to pass CSP nonce to the inline styles <PRLink id={2728} />
-
-<PackageRelease name="Scroll Area" version="1.1.0" />
-
-- Add `nonce` prop to be able to pass CSP nonce to the inline styles <PRLink id={2728} />
-
-## September 25, 2023
-
-<PackageRelease name="Alert Dialog" version="1.0.5" />
-
-- Fix pointer-events issue when clicking outside <PRLink id={2177} />
-- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
-
-<PackageRelease name="Avatar" version="1.0.4" />
-
-- Prevent image flash <PRLink id={2340} />
-
-<PackageRelease name="Context Menu" version="2.1.5" />
-
-- Fix pointer-events issue when clicking outside <PRLink id={2177} />
-- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
-
-<PackageRelease name="Dialog" version="1.0.5" />
-
-- Fix pointer-events issue when clicking outside <PRLink id={2177} />
-- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
-
-<PackageRelease name="Dropdown Menu" version="2.0.6" />
-
-- Fix pointer-events issue when clicking outside <PRLink id={2177} />
-- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
-
-<PackageRelease name="Hover Card" version="1.0.7" />
-
-- Fix pointer-events issue when clicking outside <PRLink id={2177} />
-- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
-
-<PackageRelease name="Menubar" version="1.0.4" />
-
-- Fix pointer-events issue when clicking outside <PRLink id={2177} />
-- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
-
-<PackageRelease name="Navigation Menu" version="1.1.4" />
-
-- Fix pointer-events issue when clicking outside <PRLink id={2177} />
-- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
-
-<PackageRelease name="Popover" version="1.0.7" />
-
-- Fix pointer-events issue when clicking outside <PRLink id={2177} />
-- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
-- Fix `Popover` nested inside `Dialog` not opening <PRLink id={2182} />
-
-<PackageRelease name="Scroll Area" version="1.0.5" />
-
-- Add `scroll-behavior: smooth` compatibility <PRLink id={2175} />
-
-<PackageRelease name="Select" version="2.0.0" major />
-
-- **\[Breaking\]** Add ability to reset to placeholder using `""` `value`. Note that this is only a breaking change if you were using an option with a `value` of `""`. <PRLink id={2174} />
-- Fix pointer-events issue when clicking outside <PRLink id={2177} />
-- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
-
-<PackageRelease name="Toast" version="1.1.5" />
-
-- Fix pointer-events issue when clicking outside <PRLink id={2177} />
-
-<PackageRelease name="Tooltip" version="1.0.7" />
-
-- Fix pointer-events issue when clicking outside <PRLink id={2177} />
-- Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
-- Fix issue with boundary padding calculations <PRLink id={2185} />
-- Add option to always re-position `Content` on the fly <PRLink id={2092} />
-
-## May 26, 2023
-
-This release ensures all of our primitives are ESM compatible. We have also updated to the latest version of [Floating UI](https://floating-ui.com/) for all of our popper-positioned primitives.
-
-<PackageRelease name="All primitives" />
-
-- Improve ESM compatibility <PRLink id={2130} />
-- Fix possible upstream compiler errors (`@types/react` phantom dependency) <PRLink id={1896} />
-
-<PackageRelease name="Context Menu" version="2.1.4" />
-
-- Position content correctly when matching trigger size <PRLink id={1995} />
-
-<PackageRelease name="Dialog" version="1.0.4" />
-
-- Prevent non-modal dialog from re-opening when closing using trigger in Safari <PRLink id={2110} />
-- Ensure focus trapping is maintained when the focused item is deleted <PRLink id={2145} />
-
-<PackageRelease name="Dropdown Menu" version="2.0.5" />
-
-- Position content correctly when matching trigger size <PRLink id={1995} />
-
-<PackageRelease name="Hover Card" version="1.0.6" />
-
-- Position content correctly when matching trigger size <PRLink id={1995} />
-
-<PackageRelease name="Menubar" version="1.0.3" />
-
-- Position content correctly when matching trigger size <PRLink id={1995} />
-
-<PackageRelease name="Navigation Menu" version="1.1.3" />
-
-- Do not close when clicking items and meta key is down <PRLink id={2080} />
-
-<PackageRelease name="Popover" version="1.0.6" />
-
-- Position content correctly when matching trigger size <PRLink id={1995} />
-- Prevent non-modal popover from re-opening when closing using trigger in Safari <PRLink id={2110} />
-- Ensure `--radix-popper-available-width` is calculated correctly when using `collisionBoundary` <PRLink id={2032} />
-
-<PackageRelease name="Select" version="1.2.2" />
-
-- Position content correctly when matching trigger size <PRLink id={1995} />
-- Improve scroll buttons touch screen support <PRLink id={1771} />
-
-<PackageRelease name="Slider" version="1.1.2" />
-
-- Clamp thumb position within range <PRLink id={1988} />
-
-<PackageRelease name="Slot" version="1.0.2" />
-
-- Ensure `Slot` can be used in a React Server Component <PRLink id={2116} />
-
-<PackageRelease name="Tooltip" version="1.0.6" />
-
-- Position content correctly when matching trigger size <PRLink id={1995} />
-- Improve large content hoverability <PRLink id={2155} />
-
-## March 8, 2023
-
-This release introduces a brand new primitive in preview: [`Form`](../components/form).
-
-<PackageRelease name="Form" version="0.0.2" preview />
-
-- New primitive <PRLink id={1998} />
-
-## February 24, 2023
-
-<PackageRelease name="Checkbox" version="1.0.2" />
-
-- Reset checkbox state when form is reset <PRLink id={1733} />
-
-<PackageRelease name="ContextMenu" version="2.1.2" />
-
-- Expose new CSS custom properties to enable size constraints <PRLink id={1942} />
-- Don't exit fullscreen mode when pressing escape to dismiss from submenu <PRLink id={1752} />
-- Relax `onCheckedChange` type on `ContextMenu.CheckboxItem` <PRLink id={1778} />
-
-<PackageRelease name="DropdownMenu" version="2.0.3" />
-
-- Expose new CSS custom properties to enable size constraints <PRLink id={1942} />
-- Don't exit fullscreen mode when pressing escape to dismiss from submenu <PRLink id={1752} />
-- Relax `onCheckedChange` type on `DropdownMenu.CheckboxItem` <PRLink id={1778} />
-
-<PackageRelease name="HoverCard" version="1.0.4" />
-
-- Expose new CSS custom properties to enable size constraints <PRLink id={1942} />
-
-<PackageRelease name="Menubar" version="1.0.1" />
-
-- Expose new CSS custom properties to enable size constraints <PRLink id={1943} />
-- Don't exit fullscreen mode when pressing escape to dismiss from submenu <PRLink id={1752} />
-- Relax `onCheckedChange` type on `Menubar.CheckboxItem` <PRLink id={1778} />
-
-<PackageRelease name="Popover" version="1.0.4" />
-
-- Expose new CSS custom properties to enable size constraints <PRLink id={1942} />
-
-<PackageRelease name="Tooltip" version="1.0.4" />
-
-- Expose new CSS custom properties to enable size constraints <PRLink id={1942} />
-
-## January 17, 2023
-
-This release introduces a brand new primitive: [`Menubar`](../components/menubar). It also adds support for a highly requested feature for [`Select`](../components/select): the ability to position the content in a similar way to `Popover` or `DropdownMenu`.
-
-<PackageRelease name="Accordion" version="1.1.0" />
-
-- Add horizontal orientation support with new `orientation` prop, as well as RTL support with `dir` <PRLink id={1850} />
-
-<PackageRelease name="Context Menu" version="2.1.1" />
-
-- Fix consistency issue with RTL positioning <PRLink id={1890} />
-
-<PackageRelease name="Dropdown Menu" version="2.0.2" />
-
-- Fix consistency issue with RTL positioning <PRLink id={1890} />
-
-<PackageRelease name="Hover Card" version="1.0.3" />
-
-- Fix consistency issue with RTL positioning <PRLink id={1890} />
-
-<PackageRelease name="Menubar" version="1.0.0" major />
-
-- New primitive <PRLink id={1846} />
-
-<PackageRelease name="Popover" version="1.0.3" />
-
-- Fix consistency issue with RTL positioning <PRLink id={1890} />
-
-<PackageRelease name="Select" version="1.2.0" />
-
-- Add `position` prop to `Select.Content` to enable popper positioning <PRLink id={1853} />
-
-<PackageRelease name="Tooltip" version="1.0.3" />
-
-- Fix consistency issue with RTL positioning <PRLink id={1890} />
-
-## December 14, 2022
-
-<PackageRelease name="Context Menu" version="2.1.0" />
-
-- Add `disabled` prop to `ContextMenu.Trigger` <PRLink id={1746} />
-
-## November 15, 2022
-
-<PackageRelease name="Select" version="1.1.2" />
-
-- Fix invalid `pointerId` in Cypress when running Firefox <PRLink id={1753} />
-
-## October 17, 2022
-
-<PackageRelease name="Accordion" version="1.0.1" />
-
-- Fix initial animation playback in Firefox and Safari <PRLink id={1710} />
-
-<PackageRelease name="Alert Dialog" version="1.0.2" />
-
-- Fix issue with textarea elements not being scrollable in Firefox <PRLink id={1550} />
-
-<PackageRelease name="Collapsible" version="1.0.1" />
-
-- Fix initial animation playback in Firefox and Safari <PRLink id={1710} />
-
-<PackageRelease name="Context Menu" version="2.0.1" major />
-
-- **\[Breaking\]** Add support for indeterminate state on `ContextMenu.CheckboxItem`. Note that this is only a breaking change if you are currently using the `CheckboxItem` part and your codebase is written in TypeScript. <PRLink id={1624} />
-
-<PackageRelease name="Dialog" version="1.0.2" />
-
-- Fix issue with textarea elements not being scrollable in Firefox <PRLink id={1550} />
-
-<PackageRelease name="Dropdown Menu" version="2.0.1" major />
-
-- **\[Breaking\]** Add support for indeterminate state on `DropdownMenu.CheckboxItem`. Note that this is only a breaking change if you are currently using the `CheckboxItem` part and your codebase is written in TypeScript. <PRLink id={1624} />
-- Correctly pair `DropdownMenu.Trigger` open state with `aria-expanded` when closed <PRLink id={1644} />
-- Fix issue with eager selection of items when using `asChild` <PRLink id={1647} />
-- Fix issue with dismissing when the component is used in a separate popup window <PRLink id={1677} />
-
-<PackageRelease name="Hover Card" version="1.0.2" />
-
-- Improve text selection experience <PRLink id={1692} />
-
-<PackageRelease name="Label" version="2.0.0" major />
-
-- **\[Breaking\]** Remove `useLabelContext` and support for fully custom controls. For native labelling to work, ensure your custom controls are based on native elements such as `button` or `input`. <PRLink id={1686} />
-- Improve native behavior by using the native `label` element <PRLink id={1686} />
-
-<PackageRelease name="Navigation Menu" version="1.1.1" />
-
-- Prevent menu from re-opening with the pointer after being dismissed with escape <PRLink id={1579} />
-- Add `delayDuration` and `skipDelayDuration` props to `NavigationMenu.Root`. Note that by default, triggers now have a brief delay before opening in order to improve UX, this can be modified using the props provided. <PRLink id={1716} />
-
-<PackageRelease name="Radio Group" version="1.1.0" />
-
-- Add `disabled` prop to `RadioGroup.Root` <PRLink id={1530} />
-- Fix issue where `RadioGroup.Root` was focusable when all items were disabled <PRLink id={1530} />
-
-<PackageRelease name="Select" version="1.1.1" />
-
-- Add `disabled` prop to `Select.Root` <PRLink id={1699} />
-- Add `required` prop to `Select.Root` <PRLink id={1598} />
-
-<PackageRelease name="Slider" version="1.1.0" />
-
-- Add ability to visually invert the slider using the new `inverted` prop on `Slider.Root` <PRLink id={1695} />
-- Add `onValueCommit` prop to `Slider.Root` to better handle discrete value changes <PRLink id={1696} />
-
-<PackageRelease name="Slot" version="1.0.1" />
-
-- Stop eagerly creating callback props <PRLink id={1713} />
-
-<PackageRelease name="Toast" version="1.1.1" />
-
-- Fix regression with screen readers announcing as "group" rather than "status" <PRLink id={1556} />
-- Fix regression with `ref` assignments on child elements returning `null` <PRLink id={1668} />
-- Add `onPause` and `onResume` props to `Toast.Root` <PRLink id={1669} />
-- Fix timer reset issue which would cause toasts to dismiss early in some cases <PRLink id={1682} />
-
-<PackageRelease name="Toolbar" version="1.0.1" />
-
-- Prevent `Toolbar.Item` click handlers firing twice <PRLink id={1526} />
-
-<PackageRelease name="Tooltip" version="1.0.2" />
-
-- Ensure tooltip doesn't open if interacting with the trigger before the open timer expires <PRLink id={1693} />
-
-## July 21, 2022
-
-With this release, we start following semantic versioning strictly. All primitives are now versioned <Badge size="1" color="yellow">1.0.0</Badge>.
-
-We also move the [`Select`](../components/select), [`Toast`](../components/toast) and [`NavigationMenu`](../components/navigation-menu) from preview to stable.
-
-<PackageRelease name="All primitives" />
-
-- Improve support for React 18 <PRLink id={1329} />
-- **\[Breaking\]** Improve RTL performance. You need to use [`DirectionProvider`](../utilities/direction-provider) if you were relying on `dir` attribute inheritance from document (or any element). <PRLink id={1119} />
-
-<PackageRelease name="Alert Dialog" version="1.0.0" major />
-
-- **\[Breaking\]** Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
-- Improve compatibility with JS animation libraries with `forceMount` on `AlertDialog.Portal` <PRLink id={1075} />
-- Fix regressions with page interactivity while/after closing dialog <PRLink id={1401} />
-
-<PackageRelease name="Context Menu" version="1.0.0" major />
-
-- **\[Breaking\]** Improve indirect nesting of context menus. Submenus must now be created using explicit parts. <PRLink id={1394} />
-- **\[Breaking\]** Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
-- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1429} />
-- **\[Breaking\]** Remove `offset` on `Arrow` part <PRLink id={1531} />
-- **\[Breaking\]** Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
-- Fix issue with native context menu appearing in React 18 <PRLink id={1378} />
-- Add `data-highlighted` attribute to support styling <PRLink id={1388} />
-- Add `data-state` attribute to `Trigger` part <PRLink id={1455} />
-- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
-
-<PackageRelease name="Dialog" version="1.0.0" major />
-
-- **\[Breaking\]** Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
-- Improve compatibility with JS animation libraries with `forceMount` on `Dialog.Portal` <PRLink id={1075} />
-- Fix regressions with page interactivity while/after closing dialog <PRLink id={1401} />
-
-<PackageRelease name="Dropdown Menu" version="1.0.0" major />
-
-- **\[Breaking\]** Improve indirect nesting of dropdown menus. Submenus must now be created using explicit parts. <PRLink id={1394} />
-- **\[Breaking\]** Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
-- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1429} />
-- **\[Breaking\]** Remove `offset` on `Arrow` part <PRLink id={1531} />
-- **\[Breaking\]** Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
-- Add `data-highlighted` attribute to support styling <PRLink id={1388} />
-- Prevent escape key from exiting fullscreen mode in Firefox & Safari <PRLink id={1423} />
-- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
-
-<PackageRelease name="Hover Card" version="1.0.0" major />
-
-- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1426} />
-- **\[Breaking\]** Remove `offset` on `Arrow` part <PRLink id={1531} />
-- **\[Breaking\]** Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
-- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
-
-<PackageRelease name="Navigation Menu" version="1.0.0" major />
-
-- Ensure menu closes after clicking `NavigationMenu.Link` <PRLink id={1347} />
-- Add `onSelect` prop to `NavigationMenu.Link` <PRLink id={1372} />
-
-<PackageRelease name="Popover" version="1.0.0" major />
-
-- **\[Breaking\]** Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
-- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1425} />
-- **\[Breaking\]** Remove `offset` on `Arrow` part <PRLink id={1531} />
-- **\[Breaking\]** Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
-- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
-
-<PackageRelease name="Portal" version="1.0.0" major />
-
-- **\[Breaking\]** Note that `z-index` isn't managed anymore so you have full control of layering. The prop to provide a custom container evolves from `containerRef` (ref) to `container` (element). The `data-radix-portal` was removed because you can use `asChild` to control the element. <PRLink id={1463} />
-
-<PackageRelease name="RadioGroup" version="1.0.0" major />
-
-- Add `aria-required` to root <PRLink id={1422} />
-
-<PackageRelease name="Scroll Area" version="1.0.0" major />
-
-- `ScrollArea.Thumb` is now animatable <PRLink id={1392} />
-
-<PackageRelease name="Select" version="1.0.0" major />
-
-- **\[Breaking\]** Renamed `data-state` values from `active|inactive` to `checked|unchecked` <PRLink id={1388} />
-- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1459} />
-- Fix position breaking when using `asChild` on `Select.Content` <PRLink id={1245} />
-- Improve trigger/content alignment when `Select.Content` has padding <PRLink id={1312} />
-- Fix trigger/content alignment when there are less than 5 items <PRLink id={1355} />
-- Support trigger/content alignment when no value is provided <PRLink id={1379} />
-- Add `data-highlighted` attribute to support styling <PRLink id={1388} />
-- Add support for placeholder via `placeholder` prop on `Select.Value` <PRLink id={1384} />
-- Resolve value mismatch with underlying native select <PRLink id={1421} />
-
-<PackageRelease name="Slot" version="1.0.0" major />
-
-- Fix issue with children ordering when using `Slottable` <PRLink id={1376} />
-
-<PackageRelease name="Tabs" version="1.0.0" major />
-
-- Add support for lifecycle animation to `Tabs.Content` <PRLink id={1346} />
-
-<PackageRelease name="Toast" version="1.0.0" major />
-
-- **\[Breaking\]** The default toast order has changed, they now render top to bottom from oldest to newest <PRLink id={1469} />
-- Improve Typescript types when using `asChild` <PRLink id={1300} />
-- Fix issue with toast reordering when updating React's `key` prop <PRLink id={1283} />
-- Improve compatability with animation libraries <PRLink id={1468} />
-
-<PackageRelease name="Tooltip" version="1.0.0" major />
-
-- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1427} />
-- **\[Breaking\]** By default `Tooltip.Content` will remain open when hovering (WCAG 2.1 Content on Hover compliance). `disableHoverableContent` can be supplied to `Tooltip.Provider` to restore previous behavior <PRLink id={1490} />
-- **\[Breaking\]** `side` on `Tooltip.Content` now defaults to `top` <PRLink id={1490} />
-- **\[Breaking\]** `Tooltip.Provider` is now required, you must wrap your app to avoid regressions. <PRLink id={1490} />
-- **\[Breaking\]** Remove `offset` on `Arrow` part <PRLink id={1531} />
-- **\[Breaking\]** Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
-- Improve layering of tooltip with other primitives <PRLink id={1314} />
-- Fix tooltip closing when transforming/animation trigger <PRLink id={937} />
-- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
-
-## February 28, 2022
-
-This release introduces 3 brand new primitives in preview: [`Select`](../components/select), [`Toast`](../components/toast) and [`NavigationMenu`](../components/navigation-menu), whilst also shipping a ton of fixes and improvements.
-
-<PackageRelease name="Accordion" version="0.1.6" />
-
-- Prevent form submission when pressing `Accordion.Trigger` <PRLink id={1085} />
-- Fix animation issue with React 18 <PRLink id={1125} />
-
-<PackageRelease name="Alert Dialog" version="0.1.7" />
-
-- Improve pointer-events management <PRLink id={1079} />
-
-<PackageRelease name="Checkbox" version="0.1.5" />
-
-- Prevent activation via enter key <PRLink id={1104} />
-
-<PackageRelease name="Collapsible" version="0.1.6" />
-
-- Fix animation issue with React 18 <PRLink id={1125} />
-
-<PackageRelease name="Context Menu" version="0.1.6" />
-
-- Prevent `DropdownMenu.TriggerItem` click from firing twice <PRLink id={1057} />
-- Improve idle performance <PRLink id={1040} />
-
-<PackageRelease name="Dialog" version="0.1.7" major />
-
-- Improve pointer-events management <PRLink id={1079} />
-- **\[Breaking\]** `Dialog.Title` is now a required part so will throw an error if not used. `aria-describedby={undefined}` must be passed to `Dialog.Content` if no description is needed. <PRLink id={1098} />
-
-<PackageRelease name="Dropdown Menu" version="0.1.6" />
-
-- Improve composability with `Dialog`/`AlertDialog` <PRLink id={1097} />
-- Prevent clicking trigger to close from immediately reopening in non-modal mode <PRLink id={1059} />
-- Prevent `DropdownMenu.TriggerItem` click from firing twice <PRLink id={1057} />
-- Improve idle performance <PRLink id={1040} />
-
-<PackageRelease name="Navigation Menu" version="0.1.2" preview />
-
-- New primitive <PRLink id={1172} />
-
-<PackageRelease name="Radio Group" version="0.1.5" />
-
-- Prevent activation via enter key <PRLink id={1104} />
-
-<PackageRelease name="Select" version="0.1.1" preview />
-
-- New primitive <PRLink id={1169} />
-
-<PackageRelease name="Slider" version="0.1.4" />
-
-- Prevent page scroll when using `Home` and `End` keys <PRLink id={1076} />
-
-<PackageRelease name="Tabs" version="0.1.5" />
-
-- Prevent accidental focus activation via right click <PRLink id={1114} />
-
-<PackageRelease name="Toast" version="0.1.1" preview />
-
-- New primitive <PRLink id={1165} />
-
-<PackageRelease name="Toggle Group" version="0.1.5" />
-
-- Improve accessibility by using radio role for single toggle group <PRLink id={1118} />
-
-## December 13, 2021
-
-This release focuses on React 18 support and introduces a number of breaking changes to some packages, mostly related to portalling dialogs.
-
-<PackageRelease name="All primitives" />
-
-- **\[Breaking\]** Deprecate `IdProvider`. Improves support for React 18 going forward and is no longer needed in older versions. Remove from your app to avoid deprecation warnings. <PRLink id={1006} />
-
-<PackageRelease name="Accordion" version="0.1.5" major />
-
-- Improve React 18 support <PRLink id={984} />
-- Improve dev mode errors with mismatched `type` and `value` props <PRLink id={979} />
-- Prevent `Accordion.Content` height animation on initial page load <PRLink id={977} />
-
-<PackageRelease name="Alert Dialog" version="0.1.5" major />
-
-- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. <PRLink id={936} />
-- **\[Breaking\]** Support scrolling within `AlertDialog.Overlay`. Move `allowPinchZoom` to root. <PRLink id={963} />
-- Fix `asChild` TypeScript error <PRLink id={924} />
-
-<PackageRelease name="Collapsible" version="0.1.5" />
-
-- Prevent `Collapsible.Content` height animation on initial page load <PRLink id={977} />
-
-<PackageRelease name="Dialog" version="0.1.5" major />
-
-- **\[Breaking\]** Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. <PRLink id={936} />
-- **\[Breaking\]** Support scrolling within `Dialog.Overlay`. Move `allowPinchZoom` to root. <PRLink id={963} />
-
-<PackageRelease name="Dropdown Menu" version="0.1.4" />
-
-- Prevent disabled trigger from opening menu <PRLink id={974} />
-
-<PackageRelease name="Hover Card" version="0.1.3" />
-
-- Fix ability to focus `HoverCard` when inside a dialog <PRLink id={920} />
-
-<PackageRelease name="Radio Group" version="0.1.4" />
-
-- Prevent programmatic focus from changing value <PRLink id={939} />
-
-<PackageRelease name="Tabs" version="0.1.4" major />
-
-- **\[Breaking\]** Change `Tabs.Trigger` to `button` element <PRLink id={981} />
-- Improve TSDocs <PRLink id={978} />
-
-<PackageRelease name="Toggle Group" version="0.1.4" />
-
-- Remove invalid `aria-orientation` attribute on `role=group` element <PRLink id={965} />
-
-<PackageRelease name="Toolbar" version="0.1.4" />
-
-- Fix `asChild` TypeScript error <PRLink id={924} />
-- Remove invalid `toolbaritem` role <PRLink id={950} />
-
-<PackageRelease name="Tooltip" version="0.1.6" major />
-
-- **\[Breaking\]** Add new `TooltipProvider` part. You must wrap your app to avoid regressions. <PRLink id={1007} />
-- **\[Breaking\]** Remove `type=button` attribute from `Tooltip.Trigger` <PRLink id={1011} />
-- Fix tooltip activation regression <PRLink id={1035} />
-
-<PackageRelease name="Slot" version="0.1.2" />
-
-- Fix `key` warnings <PRLink id={1015} />
-
-<Separator mt="7" />
-
-## October 15, 2021
-
-<PackageRelease name="All primitives" />
-
-- All primitives are now versioned <Badge size="1" color="blue">0.1.1</Badge>
-- Fix composability issues between primitives by scoping context <PRLink id={906} />
-- Fix CSS unmount animations <PRLink id={851} />
-
-<PackageRelease name="Accordion" version="0.1.1" />
-
-- Add new CSS variable to `Accordion.Content` to help with width animations <PRLink id={879} />
-
-<PackageRelease name="Alert Dialog" version="0.1.1" major />
-
-- Improve composability with `Dialog` <PRLink id={906} />
-- **\[Breaking\]** Remove `AlertDialog.Content` `onInteractOutside` prop <PRLink id={846} />
-
-<PackageRelease name="Dialog" version="0.1.1" />
-
-- Improve composability with `AlertDialog` <PRLink id={906} />
-- Add pinch to zoom support to `DropdownMenu.Content` via `allowPinchZoom` prop <PRLink id={884} />
-
-<PackageRelease name="Context Menu" version="0.1.1" />
-
-- Add pinch to zoom support to `ContextMenu.Content` via `allowPinchZoom` prop <PRLink id={884} />
-- Prevent scroll via arrow keypress on submenu triggers <PRLink id={908} />
-
-<PackageRelease name="Collapsible" version="0.1.1" />
-
-- Add new CSS variable to `Collapsible.Content` to help with width animations <PRLink id={879} />
-
-<PackageRelease name="Checkbox" version="0.1.1" />
-
-- Prevent screen reader virtual cursor from accessing hidden input <PRLink id={870} />
-
-<PackageRelease name="Dropdown Menu" version="0.1.1" />
-
-- Improve composability with `Tooltip` <PRLink id={906} />
-- Add pinch to zoom support to `DropdownMenu.Content` via `allowPinchZoom` prop <PRLink id={884} />
-- Prevent scroll via arrow keypress on submenu triggers <PRLink id={908} />
-
-<PackageRelease name="Hover Card" version="0.1.1" />
-
-- Open on focus to improve keyboard support <PRLink id={902} />
-- Compose correct pointer events internally <PRLink id={893} />
-
-<PackageRelease name="Label" version="0.1.1" />
-
-- Allow its children to prevent event propagation <PRLink id={861} />
-
-<PackageRelease name="Radio Group" version="0.1.1" />
-
-- Prevent screen reader virtual cursor from accessing hidden inputs <PRLink id={870} />
-
-<PackageRelease name="Popover" version="0.1.1" />
-
-- Add pinch to zoom support to `Popover.Content` via `allowPinchZoom` prop <PRLink id={884} />
-
-<PackageRelease name="Slider" version="0.1.1" />
-
-- Fix calculations when value is `0` <PRLink id={866} />
-
-<PackageRelease name="Switch" version="0.1.1" />
-
-- Prevent screen reader virtual cursor from accessing hidden input <PRLink id={870} />
-
-<PackageRelease name="Tabs" version="0.1.1" major />
-
-- **\[Breaking\]** Unmount content within `Tabs.Content` when tab is inactive <PRLink id={859} />
-
-<Separator mt="7" />
-
-## September 7, 2021
-
-<PackageRelease name="All primitives" />
-
-- All primitives moved to **Beta** and are now versioned <Badge size="1" color="blue">0.1.0</Badge>
-- **\[Breaking\]** Replace polymorphic `as` prop with `asChild` boolean prop. Learn more
-  about how to [change the rendered element here](/primitives/docs/guides/composition) <PRLink id={835} />
-
-<PackageRelease name="Dialog" version="0.1.0" />
-
-- Improve composability with `DropdownMenu` <PRLink id={818} />
-
-<PackageRelease name="Dropdown Menu" version="0.1.0" />
-
-- Improve composability with `Dialog` <PRLink id={818} />
-- Re-enable `pointer-events` when closed <PRLink id={819} />
-- Prevent body text from selecting on close (Firefox) <PRLink id={812} />
-- Ensure sub triggers receive focus on click (iOS Safari) <PRLink id={820} />
-
-<PackageRelease name="Primitive" version="0.1.0" major />
-
-- **\[Breaking\]** Deprecate `extendPrimitive` utility <PRLink id={840} />
-
-<Separator mt="7" />
-
-## August 4, 2021
-
-<PackageRelease name="All primitives" />
-
-- Improve polymorphic types performance <PRLink id={784} />
-
-<PackageRelease name="Alert Dialog" version="0.0.20" major />
-
-- **\[Breaking\]** Remove `AlertDialog.Content` `onPointerDownOutside` prop <PRLink id={700} />
-- Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
-
-<PackageRelease name="Context Menu" version="0.0.24" major />
-
-- Add modality support via `modal` prop <PRLink id={700} />
-- **\[Breaking\]** Remove `ContextMenu.Content` `disableOutsidePointerEvents` prop <PRLink id={700} />
-- Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
-
-<PackageRelease name="Dialog" version="0.0.20" />
-
-- Add modality support via `modal` prop <PRLink id={700} />
-- Improve animation rendering in React 18 <PRLink id={776} />
-- Ensure focus is restored to trigger on close when using the `autofocus` attribute on a child element <PRLink id={739} />
-- Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
-- Ensure iOS Safari consistently focuses the first focusable element <PRLink id={776} />
-
-<PackageRelease name="Dropdown Menu" version="0.0.23" major />
-
-- Add modality support via `modal` prop <PRLink id={700} />
-- **\[Breaking\]** Remove `DropdownMenu.Content` `disableOutsideScroll` prop <PRLink id={700} />
-- **\[Breaking\]** Remove `DropdownMenu.Content` `disableOutsidePointerEvents` prop <PRLink id={700} />
-- Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
-
-<PackageRelease name="Popover" version="0.0.20" major />
-
-- Add modality support via `modal` prop <PRLink id={700} />
-- **\[Breaking\]** Remove `Popover.Content` `disableOutsideScroll` prop <PRLink id={700} />
-- **\[Breaking\]** Remove `Popover.Content` `disableOutsidePointerEvents` prop <PRLink id={700} />
-- **\[Breaking\]** Remove `Popover.Content` `trapFocus` prop <PRLink id={700} />
-- Improve animation rendering in React 18 <PRLink id={776} />
-- Ensure focus is restored to trigger on close when using the `autofocus` attribute on a child element <PRLink id={739} />
-- Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
-- Ensure iOS Safari consistently focuses the first focusable element <PRLink id={776} />
-
-<PackageRelease name="Scroll Area" version="0.0.16" />
-
-- Add `data-state` to `ScrollBar` part <PRLink id={801} />
-
-<PackageRelease name="Slider" version="0.0.17" />
-
-- Prevent thumb receiving focus when disabled <PRLink id={777} />
-- Prevent focus loss on thumb when using `React.StrictMode` <PRLink id={794} />
-
-<Separator mt="7" />
-
-## June 24, 2021
-
-<PackageRelease name="Context Menu" version="0.0.23" />
-
-- Can now be triggered on touch with a long press <PRLink id={743} />
-
-<PackageRelease name="Dialog" version="0.0.19" />
-
-- Add optional `Title` and `Description` parts for simpler labelling <PRLink id={741} />
-
-<PackageRelease name="Scroll Area" version="0.0.15" />
-
-- Add `data-orientation` to `Scrollbar` for styling convenience <PRLink id={720} />
-- Fix `forceMount` type issue on `Scrollbar` <PRLink id={738} />
-
-<PackageRelease name="Slider" version="0.0.16" />
-
-- Ensure the correct thumb is focused when using keyboard and crossing another thumb <PRLink id={731} />
-- Ensure only one arrow press is needed when crossing another thumb <PRLink id={733} />
-
-<PackageRelease name="Slot" version="0.0.12" />
-
-- Improve types compatibility <PRLink id={737} />
-
-<PackageRelease name="Toggle Group" version="0.0.10" />
-
-- Ensure only one click is needed to toggle a single controlled toggle group <PRLink id={722} />
-- Ensure focus behavior is consistent on Safari <PRLink id={727} />
-
-<Separator mt="7" />
-
-## June 15, 2021
-
-<PackageRelease name="All primitives" />
-
-- Improve polymorphic types <PRLink id={648} />
-
-<PackageRelease name="Accordion" version="0.0.16" major />
-
-- **\[Breaking\]** Rename `Accordion.Button` to `Accordion.Trigger` <PRLink id={651} />
-- **\[Breaking\]** Rename `Accordion.Panel` to `Accordion.Content` <PRLink id={651} />
-- **\[Breaking\]** Rename custom property accordingly (`--radix-accordion-content-height`) <PRLink id={651} />
-- **\[Breaking\]** `type=“single”` `Accordion` now has a new `collapsible` prop which is `false` by default. This means that the default behavior has now changed. By default a user cannot close all items. <PRLink id={651} />
-
-<PackageRelease name="Alert Dialog" version="0.0.18" major />
-
-- **\[Breaking\]** Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
-
-<PackageRelease name="Checkbox" version="0.0.16" major />
-
-- **\[Breaking\]** `onCheckedChange(event)` is now `onCheckedChange(checked: CheckedState)` <PRLink id={672} />
-- Improve compatibility with native form validation <PRLink id={650} />
-- Allow stopping propagation on `Checkbox` `onClick` <PRLink id={672} />
-- Improve compatibility with native `label` <PRLink id={672} />
-- Improve accessibility when wrapped in native `label` <PRLink id={672} />
-
-<PackageRelease name="Collapsible" version="0.0.16" major />
-
-- **\[Breaking\]** Rename `Collapsible.Button` to `Collapsible.Trigger` <PRLink id={651} />
-
-<PackageRelease name="Context Menu" version="0.0.22" major />
-
-- Add submenu support <PRLink id={682} />
-- Add `ContextMenu.TriggerItem` <PRLink id={682} />
-- Add `ContextMenu.Arrow` <PRLink id={682} />
-- Add `dir` prop for RTL support with submenus <PRLink id={682} />
-- **\[Breaking\]** Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
-- **\[Breaking\]** Remove `ContextMenu.Content` `side` prop <PRLink id={658} />
-- **\[Breaking\]** Remove `ContextMenu.Content` `align` prop <PRLink id={658} />
-- **\[Breaking\]** If you had `sideOffset` on `ContextMenu.Content` before, you should now use `alignOffset`. This is to standardize vertical alignment for both root and sub-menus. <PRLink id={712} />
-- **\[Breaking\]** `onFocusOutside` is now a custom event <PRLink id={671} />
-- Improve support of content and item with no padding <PRLink id={658} />
-- Align with WAI-ARIA spec by focusing first item when opening via keyboard <PRLink id={694} />
-
-<PackageRelease name="Dialog" version="0.0.18" major />
-
-- **\[Breaking\]** Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
-
-<PackageRelease name="Dropdown Menu" version="0.0.21" major />
-
-- Add submenu support <PRLink id={682} />
-- Add `DropdownMenu.TriggerItem` <PRLink id={682} />
-- Add `dir` prop for RTL support with submenus <PRLink id={682} />
-- **\[Breaking\]** Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
-- **\[Breaking\]** `onFocusOutside` is now a custom event <PRLink id={671} />
-- **\[Breaking\]** The up arrow no longer opens the menu <PRLink id={702} />
-- Align with WAI-ARIA spec by focusing first item when opening via keyboard <PRLink id={694} />
-
-<PackageRelease name="Popover" version="0.0.18" major />
-
-- **\[Breaking\]** Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
-- **\[Breaking\]** `onFocusOutside` is now a custom event <PRLink id={671} />
-
-<PackageRelease name="Radio Group" version="0.0.17" major />
-
-- **\[Breaking\]** `onValueChange(event)` is now `onValueChange(value: string)` <PRLink id={685} />
-- **\[Breaking\]** Remove `RadioGroup.Item` `onCheckedChange` prop <PRLink id={685} />
-- Improve compatibility with native form validation <PRLink id={650} />
-- Improve usage within forms <PRLink id={685} />
-
-<PackageRelease name="Scroll Area" version="0.0.14" major />
-
-- Brand new version with a simpler API <PRLink id={624} />
-- Improve Safari support <PRLink id={624} />
-- Improve RTL support <PRLink id={624} />
-- Improve touch support <PRLink id={624} />
-- `Scrollbar` mount/unmount can now be animated <PRLink id={624} />
-- Add minimum width/height to thumb so it's always grabbable <PRLink id={624} />
-- Move functional CSS into component to improve DX <PRLink id={624} />
-- Bundle size significantly reduced <PRLink id={624} />
-- **\[Breaking\]** Remove `overflowX` and `overflowY` props <PRLink id={624} />
-- **\[Breaking\]** Remove `ScrollAreaButtonStart`, `ScrollAreaButtonEnd` and `ScrollAreaTrack` <PRLink id={624} />
-- **\[Breaking\]** Rename `scrollbarVisibility` prop to `type`. The values are `auto`, `always`, `scroll` or `hover` <PRLink id={624} />
-- **\[Breaking\]** Rename `scrollbarVisibilityRestTimeout` prop to `scrollHideDelay` <PRLink id={624} />
-- **\[Breaking\]** Remove `trackClickBehavior` prop as we've removed built-in animation. Clicking on track always snaps to pointer position <PRLink id={624} />
-- **\[Breaking\]** `ScrollAreaScrollbarX` and `ScrollAreaScrollbarY` are now `<ScrollAreaScrollbar orientation="horizontal" />` and `<ScrollAreaScrollbar orientation="vertical" />` <PRLink id={624} />
-- Ensure no scrollbars are shown when scrolling is disabled <PRLink id={624} />
-- Ensure children event handlers don't break <PRLink id={624} />
-- Ensure scroll area updates when children content size changes <PRLink id={624} />
-
-<PackageRelease name="Slider" version="0.0.15" />
-
-- Improve usage within forms <PRLink id={678} />
-- Fix key binding issue in LTR <PRLink id={718} />
-
-<PackageRelease name="Switch" version="0.0.14" major />
-
-- **\[Breaking\]** `onCheckedChange(event)` is now `onCheckedChange(checked: boolean)` <PRLink id={679} />
-- Improve compatibility with native form validation <PRLink id={650} />
-- Improve usage within forms <PRLink id={679} />
-- Improve accessibility when wrapped in native `label` <PRLink id={679} />
-
-<PackageRelease name="Tabs" version="0.0.14" major />
-
-- **\[Breaking\]** Rename `Tabs.Tab` to `Tabs.Trigger` <PRLink id={652} />
-- **\[Breaking\]** Rename `Tabs.Panel` to `Tabs.Content` <PRLink id={652} />
-
-<Separator mt="7" />
-
-## May 3, 2021
-
-<PackageRelease name="All primitives" />
-
-- Improve polymorphic types performance <PRLink id={613} />
-
-<PackageRelease name="Accordion" version="0.0.14" />
-
-- Ensure only one click is needed to close a single controlled accordion <PRLink id={594} />
-
-<PackageRelease name="Checkbox" version="0.0.14" major />
-
-- **\[Breaking\]** Remove `readOnly` prop <PRLink id={600} />
-
-<PackageRelease name="Context Menu" version="0.0.18" />
-
-- Add `onOpenChange` prop <PRLink id={604} />
-
-<PackageRelease name="Dialog" version="0.0.16" />
-
-- Ensure focus position isn't lost when blurring out window and re-focusing it <PRLink id={589} />
-
-<PackageRelease name="Dropdown Menu" version="0.0.18" major />
-
-- Take into account non-visible items <PRLink id={618} />
-- **\[Breaking\]** Remove `anchorRef` prop <PRLink id={580} />
-- Prevent page from scrolling when selecting an item with space key <PRLink id={626} />
-
-<PackageRelease name="Hover Card" version="0.0.1" />
-
-- New primitive <PRLink id={595} />
-
-<PackageRelease name="Popover" version="0.0.16" major />
-
-- **\[Breaking\]** Remove `anchorRef` prop and replace with optional `Anchor` part <PRLink id={580} />
-
-<PackageRelease name="Radio Group" version="0.0.15" major />
-
-- Add optional `orientation`, `dir`, `loop` props <PRLink id={618} />
-- **\[Breaking\]** Remove `readOnly` prop <PRLink id={600} />
-
-<PackageRelease name="Switch" version="0.0.12" major />
-
-- **\[Breaking\]** Remove `readOnly` prop <PRLink id={600} />
-
-<PackageRelease name="Toggle Group" version="0.0.7" />
-
-- Add optional `orientation`, `dir`, `loop` props <PRLink id={618} />
-
-<PackageRelease name="Tooltip" version="0.0.17" major />
-
-- **\[Breaking\]** Remove `anchorRef` prop <PRLink id={580} />
-
-<Separator mt="7" />
-
-## March 26, 2021
-
-<PackageRelease name="All primitives" />
-
-- Improve tree-shaking <PRLink id={577} />
-
-<PackageRelease name="Context Menu" version="0.0.17" />
-
-- Ensure you can open a context menu when one is already open <PRLink id={565} />
-
-<PackageRelease name="Dropdown Menu" version="0.0.17" />
-
-- Fix potential overlap issue <PRLink id={541} />
-
-<PackageRelease name="Popover" version="0.0.15" />
-
-- Ensure `Content` closes when it has multiple close animations <PRLink id={571} />
-
-<PackageRelease name="Toggle" version="0.0.6" major />
-
-- **\[Breaking\]** Rename `ToggleButton` primitive to `Toggle` <PRLink id={546} />
-- **\[Breaking\]** Rename `toggled` prop to `pressed` <PRLink id={546} />
-- **\[Breaking\]** Rename `defaultToggled` prop to `defaultPressed` <PRLink id={546} />
-- **\[Breaking\]** Rename `onToggledChange` prop to `onPressedChange` <PRLink id={546} />
-
-<PackageRelease name="Toggle Group" version="0.0.6" />
-
-- New primitive <PRLink id={376} />
-
-<PackageRelease name="Toolbar" version="0.0.9" />
-
-- New primitive <PRLink id={[412,451,545]} />
-
-<PackageRelease name="Tooltip" version="0.0.16" />
-
-- Add custom timing support <PRLink id={[550,551,554,558]} />
-- Add unmount animation support <PRLink id={558} />
-
-<Separator mt="7" />
-
-## March 5, 2021
-
-<PackageRelease name="Accordion" version="0.0.7" />
-
-- Add height CSS custom property to panel for easier animation <PRLink id={537} />
-
-<PackageRelease name="Collapsible" version="0.0.7" />
-
-- Add height CSS custom property to content for easier animation <PRLink id={537} />
-
-<PackageRelease name="Tooltip" version="0.0.9" />
-
-- Fix type definition conflicts <PRLink id={538} />
-
-<Separator mt="7" />
-
-## March 3, 2021
-
-<PackageRelease name="All primitives" />
-
-- Add support for SSR
-- **\[Breaking\]** Remove `selector` prop and `data-radix-*` atributes <PRLink id={517} />
-
-<PackageRelease name="Accordion" version="0.0.6" major />
-
-- **\[Breaking\]** Add support for multiple values. Note that this is a breaking change because the new `type` prop is required <PRLink id={527} />
-
-<PackageRelease name="Slider" version="0.0.6" />
-
-- Ensure `step` is rounded correctly <PRLink id={463} />
-
-<PackageRelease name="Tabs" version="0.0.6" />
-
-- Add RTL support (`dir` prop) <PRLink id={497} />
-
-<Separator mt="7" />
-
-## February 17, 2021
-
-<PackageRelease name="Tooltip" version="0.0.7" />
-
-- Ensure events are composed when using `<Trigger as={Slot}>` <PRLink id={461} />
-
-<Separator mt="7" />
-
-## February 15, 2021
-
-<PackageRelease name="Context Menu" version="0.0.8" />
-
-- Expose `onCloseAutoFocus` prop <PRLink id={456} />
-
-<PackageRelease name="Dropdown Menu" version="0.0.8" />
-
-- Expose `onCloseAutoFocus` prop <PRLink id={456} />
-
-<Separator mt="7" />
-
-## February 10, 2021
-
-<PackageRelease name="All primitives" />
-
-- Fix type autocompletion when using `as` prop <PRLink id={421} />
-
-<PackageRelease name="Accordion" version="0.0.5" />
-
-- Prevent open/close flickering <PRLink id={431} />
-
-<PackageRelease name="Dialog" version="0.0.6" />
-
-- Ensure focus is returned properly on close <PRLink id={422} />
-
-<PackageRelease name="Radio Group" version="0.0.5" major />
-
-- **\[Breaking\]** Move `name` prop from `Item` to `Root` <PRLink id={424} />
-
-<Separator mt="7" />
-
-## February 1, 2021
-
-<PackageRelease name="Context Menu" version="0.0.6" />
-
-- Re–add missing `children` <PRLink id={414} />
-
-<PackageRelease name="Dropdown Menu" version="0.0.6" />
-
-- Re–add missing `children` <PRLink id={414} />
-
-<PackageRelease name="Popover" version="0.0.5" />
-
-- Prevent flickering (sliding) issue <PRLink id={415} />
-
-<Separator mt="7" />
-
-## January 29, 2021
-
-<PackageRelease name="Slot" version="0.0.1" />
-
-- New utility <PRLink id={409} />
-
-<Separator mt="7" />
-
-## January 25, 2021
-
-<PackageRelease name="Dialog" version="0.0.3" />
-
-- Fix regression when tabbing out would close <PRLink id={403} />
-
-<PackageRelease name="Dropdown Menu" version="0.0.3" />
-
-- Fix broken arrow keys navigation <PRLink id={404} />
-
-<Separator mt="7" />
-
-## January 22, 2021
-
-<PackageRelease name="All primitives" />
-
-- Add `selector` prop <PRLink id={347} />
-
-<PackageRelease name="Accordion" version="0.0.2" />
-
-- Ensure setting `disabled={false}` on `Root` doesn't enable disabled items <PRLink id={400} />
-
-<PackageRelease name="Dropdown Menu" version="0.0.2" />
-
-- Add enter key support on trigger <PRLink id={381} />
-- Prevent focus race condition <PRLink id={394} />
-
-<PackageRelease name="Popover" version="0.0.2" />
-
-- Ensure `Content` repositions on window resize <PRLink id={359} />
-- Ensure last element inside `Content` triggers blur event <PRLink id={395} />
-
-<Separator mt="7" />
-
-## December 15, 2020
-
-<PackageRelease name="All primitives" version="0.0.1" major />
-
-- Initial release! 🎉 <PRLink id={338} />
-
-
----
-metaTitle: Accessible Icon
-metaDescription: Makes icons accessible by adding a label.
-name: accessible-icon
----
-
-# Accessible Icon
-
-<Description>Makes icons accessible by adding a label.</Description>
-
-<Highlights
-	features={[
-		"Quickly make any icon accessible by wrapping it and providing a meaningful label.",
-		"No visual difference, but announced correctly by screen readers.",
-	]}
-/>
-
-## Installation
-
-Install the component from your command line.
-
-```bash
-npm install @radix-ui/react-accessible-icon
-```
-
-## Anatomy
-
-Import the component.
-
-```jsx
-import { AccessibleIcon } from "radix-ui";
-
-export default () => <AccessibleIcon.Root />;
-```
-
-## API Reference
-
-### Root
-
-Contains the icon to make accessible.
-
-<PropsTable
-	data={[
-		{
-			name: "label",
-			required: true,
-			type: "string",
-			description: (
-				<span>
-					The accessible label for the icon. This label will be visually hidden
-					but announced to screen reader users, similar to <Code>alt</Code> text
-					for <Code>img</Code>
-					tags.
-				</span>
-			),
-		},
-	]}
-/>
-
-## Accessibility
-
-Most icons or icon systems come with no accessibility built-in. For example, the same visual **cross** icon may in fact mean **"close"** or **"delete"**. This component lets you give meaning to icons used throughout your app.
-
-This is built with [Visually Hidden](../utilities/visually-hidden).
-
-
----
-metaTitle: Direction Provider
-metaDescription: Wraps your app to provide global reading direction.
-name: direction
----
-
-# Direction Provider
-
-<Description>Wraps your app to provide global reading direction.</Description>
-
-<Highlights
-	features={["Enables all primitives to inherit global reading direction."]}
-/>
-
-## Installation
-
-Install the component from your command line.
-
-```bash
-npm install @radix-ui/react-direction
-```
-
-## Anatomy
-
-Import the component.
-
-```jsx
-import { Direction } from "radix-ui";
-
-export default () => <Direction.Provider />;
-```
-
-## API Reference
-
-### Provider
-
-When creating localized apps that require right-to-left (RTL) reading direction, you need to wrap your application with the `Direction.Provider` component to ensure all of the primitives adjust their behavior based on the `dir` prop.
-
-<PropsTable
-	data={[
-		{
-			name: "dir",
-			required: false,
-			type: '"ltr" | "rtl"',
-			typeSimple: "enum",
-			description: (
-				<span>
-					The global reading direction of your application. This will be
-					inherited by all primitives.
-				</span>
-			),
-		},
-	]}
-/>
-
-## Example
-
-Use the direction provider.
-
-```jsx
-import { Direction } from "radix-ui";
-
-export default () => (
-	<Direction.Provider dir="rtl">{/* your app */}</Direction.Provider>
-);
-```
-
-
----
-metaTitle: Portal
-metaDescription: Renders a React subtree in a different part of the DOM.
-name: portal
----
-
-# Portal
-
-<Description>
-	Renders a React subtree in a different part of the DOM.
-</Description>
-
-<Highlights
-	features={[
-		"Render any React subtree outside of your App.",
-		"Appends to `document.body` by default but can be customized to use a different container.",
-	]}
-/>
-
-## Installation
-
-Install the component from your command line.
-
-```bash
-npm install @radix-ui/react-portal
-```
-
-## Anatomy
-
-Import the component.
-
-```jsx
-import { Portal } from "radix-ui";
-
-export default () => <Portal.Root />;
-```
-
-## Basic example
-
-Use the portal primitive.
-
-```jsx
-import { Portal } from "radix-ui";
-
-export default () => <Portal.Root>Content</Portal.Root>;
-```
-
-## API Reference
-
-### Root
-
-Anything you put inside this component will be rendered in a separate `<div>` element. By default, this element will be appended to `document.body` but you can choose a different container by using the `container` prop.
-
-<PropsTable
-	data={[
-		{
-			name: "asChild",
-			required: false,
-			type: "boolean",
-			default: "false",
-			description: (
-				<>
-					Change the default rendered element for the one passed as a child,
-					merging their props and behavior.
-					<br />
-					<br />
-					Read our <a href="../guides/composition">Composition</a> guide for
-					more details.
-				</>
-			),
-		},
-		{
-			name: "container",
-			type: "HTMLElement",
-			description:
-				"A optional different container where the portaled content should be appended.",
-		},
-	]}
-/>
-
-
----
-metaTitle: Slot
-metaDescription: Merges its props onto its immediate child.
-name: slot
----
-
-# Slot
-
-<Description>Merges its props onto its immediate child.</Description>
-
-<Highlights features={["Can be used to support your own `asChild` prop."]} />
-
-## Installation
-
-Install the component from your command line.
-
-```bash
-npm install @radix-ui/react-slot
-```
-
-## Anatomy
-
-Import the component.
-
-```jsx
-import { Slot } from "radix-ui";
-
-export default () => (
-	<Slot.Root>
-		<div>Hello</div>
-	</Slot.Root>
-);
-```
-
-## Basic example
-
-Use to create your own `asChild` API.
-
-When your component has a single children element:
-
-```jsx line=9
-// your-button.jsx
-import * as React from "react";
-import { Slot } from "radix-ui";
-
-function Button({ asChild, ...props }) {
-	const Comp = asChild ? Slot.Root : "button";
-	return <Comp {...props} />;
-}
-```
-
-Use `Slottable` when your component has multiple children to pass the props to the correct element:
-
-```jsx
-// your-button.jsx
-import * as React from "react";
-import { Slot } from "radix-ui";
-
-function Button({ asChild, children, leftElement, rightElement, ...props }) {
-	const Comp = asChild ? Slot.Root : "button";
-	return (
-		<Comp {...props}>
-			{leftElement}
-			<Slot.Slottable>{children}</Slottable>
-			{rightElement}
-		</Comp>
-	);
-}
-```
-
-### Usage
-
-```jsx
-import { Button } from "./your-button";
-
-export default () => (
-	<Button asChild>
-		<a href="/contact">Contact</a>
-	</Button>
-);
-```
-
-### Event handlers
-
-Any prop that starts with `on` (e.g., `onClick`) is considered an event handler.
-
-When merging event handlers, `Slot` will create a new function where the child handler takes precedence over the slot handler.
-
-If one of the event handlers relies on `event.defaultPrevented` make sure that the order is correct.
-
-```jsx
-import { Slot } from "radix-ui";
-
-export default () => (
-	<Slot.Root
-		onClick={(event) => {
-			if (!event.defaultPrevented)
-				console.log("Not logged because default is prevented.");
-		}}
-	>
-		<button onClick={(event) => event.preventDefault()} />
-	</Slot>
-);
-```
-
-
+visually-hidden.mdx
 ---
 metaTitle: Visually Hidden
 metaDescription: Hides content from the screen in an accessible way.
