@@ -1,4 +1,4 @@
-
+accordion-demo.tsx
 import {
   Accordion,
   AccordionContent,
@@ -33,7 +33,7 @@ export default function AccordionDemo() {
   )
 }
 
-
+alert-demo.tsx
 import { Terminal } from "lucide-react"
 
 import {
@@ -54,7 +54,7 @@ export default function AlertDemo() {
   )
 }
 
-
+alert-destructive.tsx
 import { AlertCircle } from "lucide-react"
 
 import {
@@ -75,7 +75,7 @@ export default function AlertDestructive() {
   )
 }
 
-
+alert-dialog-demo.tsx
 import {
   AlertDialog,
   AlertDialogAction,
@@ -112,7 +112,7 @@ export default function AlertDialogDemo() {
   )
 }
 
-
+aspect-ratio-demo.tsx
 import Image from "next/image"
 
 import { AspectRatio } from "@/registry/default/ui/aspect-ratio"
@@ -130,7 +130,7 @@ export default function AspectRatioDemo() {
   )
 }
 
-
+avatar-demo.tsx
 import {
   Avatar,
   AvatarFallback,
@@ -146,35 +146,35 @@ export default function AvatarDemo() {
   )
 }
 
-
+badge-demo.tsx
 import { Badge } from "@/registry/default/ui/badge"
 
 export default function BadgeDemo() {
   return <Badge>Badge</Badge>
 }
 
-
+badge-destructive.tsx
 import { Badge } from "@/registry/default/ui/badge"
 
 export default function BadgeDestructive() {
   return <Badge variant="destructive">Destructive</Badge>
 }
 
-
+badge-outline.tsx
 import { Badge } from "@/registry/default/ui/badge"
 
 export default function BadgeOutline() {
   return <Badge variant="outline">Outline</Badge>
 }
 
-
+badge-secondary.tsx
 import { Badge } from "@/registry/default/ui/badge"
 
 export default function BadgeSecondary() {
   return <Badge variant="secondary">Secondary</Badge>
 }
 
-
+breadcrumb-demo.tsx
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -225,7 +225,7 @@ export default function BreadcrumbDemo() {
   )
 }
 
-
+breadcrumb-dropdown.tsx
 import { ChevronDown, Slash } from "lucide-react"
 
 import {
@@ -277,7 +277,7 @@ export default function BreadcrumbWithDropdown() {
   )
 }
 
-
+breadcrumb-ellipsis.tsx
 import Link from "next/link"
 
 import {
@@ -318,7 +318,7 @@ export default function BreadcrumbCollapsed() {
   )
 }
 
-
+breadcrumb-link.tsx
 import Link from "next/link"
 
 import {
@@ -354,7 +354,7 @@ export default function BreadcrumbWithCustomSeparator() {
   )
 }
 
-
+breadcrumb-responsive.tsx
 "use client"
 
 import * as React from "react"
@@ -489,7 +489,7 @@ export default function BreadcrumbResponsive() {
   )
 }
 
-
+breadcrumb-separator.tsx
 import { Slash } from "lucide-react"
 
 import {
@@ -525,7 +525,7 @@ export default function BreadcrumbWithCustomSeparator() {
   )
 }
 
-
+button-as-child.tsx
 import Link from "next/link"
 
 import { Button } from "@/registry/default/ui/button"
@@ -538,28 +538,28 @@ export default function ButtonAsChild() {
   )
 }
 
-
+button-demo.tsx
 import { Button } from "@/registry/default/ui/button"
 
 export default function ButtonDemo() {
   return <Button>Button</Button>
 }
 
-
+button-destructive.tsx
 import { Button } from "@/registry/default/ui/button"
 
 export default function ButtonDestructive() {
   return <Button variant="destructive">Destructive</Button>
 }
 
-
+button-ghost.tsx
 import { Button } from "@/registry/default/ui/button"
 
 export default function ButtonGhost() {
   return <Button variant="ghost">Ghost</Button>
 }
 
-
+button-icon.tsx
 import { ChevronRight } from "lucide-react"
 
 import { Button } from "@/registry/default/ui/button"
@@ -572,14 +572,14 @@ export default function ButtonIcon() {
   )
 }
 
-
+button-link.tsx
 import { Button } from "@/registry/default/ui/button"
 
 export default function ButtonLink() {
   return <Button variant="link">Link</Button>
 }
 
-
+button-loading.tsx
 import { Loader2 } from "lucide-react"
 
 import { Button } from "@/registry/default/ui/button"
@@ -593,21 +593,21 @@ export default function ButtonLoading() {
   )
 }
 
-
+button-outline.tsx
 import { Button } from "@/registry/default/ui/button"
 
 export default function ButtonOutline() {
   return <Button variant="outline">Outline</Button>
 }
 
-
+button-secondary.tsx
 import { Button } from "@/registry/default/ui/button"
 
 export default function ButtonSecondary() {
   return <Button variant="secondary">Secondary</Button>
 }
 
-
+button-with-icon.tsx
 import { Mail } from "lucide-react"
 
 import { Button } from "@/registry/default/ui/button"
@@ -620,7 +620,7 @@ export default function ButtonWithIcon() {
   )
 }
 
-
+calendar-demo.tsx
 "use client"
 
 import * as React from "react"
@@ -640,7 +640,7 @@ export default function CalendarDemo() {
   )
 }
 
-
+calendar-form.tsx
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -743,7 +743,7 @@ export default function CalendarForm() {
   )
 }
 
-
+calendar-react-hook-form.tsx
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -846,7 +846,7 @@ export default function CalendarForm() {
   )
 }
 
-
+card-demo.tsx
 import { BellRing, Check } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -926,7 +926,7 @@ export default function CardDemo({ className, ...props }: CardProps) {
   )
 }
 
-
+card-with-form.tsx
 import * as React from "react"
 
 import { Button } from "@/registry/default/ui/button"
@@ -987,7 +987,7 @@ export default function CardWithForm() {
   )
 }
 
-
+carousel-api.tsx
 import * as React from "react"
 
 import { Card, CardContent } from "@/registry/default/ui/card"
@@ -1042,7 +1042,7 @@ export default function CarouselDApiDemo() {
   )
 }
 
-
+carousel-demo.tsx
 import * as React from "react"
 
 import { Card, CardContent } from "@/registry/default/ui/card"
@@ -1076,7 +1076,7 @@ export default function CarouselDemo() {
   )
 }
 
-
+carousel-orientation.tsx
 import * as React from "react"
 
 import { Card, CardContent } from "@/registry/default/ui/card"
@@ -1116,7 +1116,7 @@ export default function CarouselOrientation() {
   )
 }
 
-
+carousel-plugin.tsx
 import * as React from "react"
 import Autoplay from "embla-carousel-autoplay"
 
@@ -1160,7 +1160,7 @@ export default function CarouselPlugin() {
   )
 }
 
-
+carousel-size.tsx
 import * as React from "react"
 
 import { Card, CardContent } from "@/registry/default/ui/card"
@@ -1199,7 +1199,7 @@ export default function CarouselSize() {
   )
 }
 
-
+carousel-spacing.tsx
 import * as React from "react"
 
 import { Card, CardContent } from "@/registry/default/ui/card"
@@ -1233,7 +1233,7 @@ export default function CarouselSpacing() {
   )
 }
 
-
+chart-bar-demo-axis.tsx
 "use client"
 
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
@@ -1279,7 +1279,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-demo-grid.tsx
 "use client"
 
 import { Bar, BarChart, CartesianGrid } from "recharts"
@@ -1318,7 +1318,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-demo-legend.tsx
 "use client"
 
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
@@ -1373,7 +1373,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-demo-tooltip.tsx
 "use client"
 
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
@@ -1425,7 +1425,7 @@ export default function Component() {
   )
 }
 
-
+chart-bar-demo.tsx
 "use client"
 
 import { Bar, BarChart } from "recharts"
@@ -1463,7 +1463,7 @@ export default function Component() {
   )
 }
 
-
+chart-tooltip-demo.tsx
 "use client"
 
 import * as React from "react"
@@ -1683,7 +1683,7 @@ function TooltipDemo({
   )
 }
 
-
+checkbox-demo.tsx
 "use client"
 
 import { Checkbox } from "@/registry/default/ui/checkbox"
@@ -1702,7 +1702,7 @@ export default function CheckboxDemo() {
   )
 }
 
-
+checkbox-disabled.tsx
 import { Checkbox } from "@/registry/default/ui/checkbox"
 
 export default function CheckboxDisabled() {
@@ -1719,7 +1719,7 @@ export default function CheckboxDisabled() {
   )
 }
 
-
+checkbox-form-multiple.tsx
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -1848,7 +1848,7 @@ export default function CheckboxReactHookFormMultiple() {
   )
 }
 
-
+checkbox-form-single.tsx
 "use client"
 
 import Link from "next/link"
@@ -1923,7 +1923,7 @@ export default function CheckboxReactHookFormSingle() {
   )
 }
 
-
+checkbox-with-text.tsx
 "use client"
 
 import { Checkbox } from "@/registry/default/ui/checkbox"
@@ -1947,7 +1947,7 @@ export default function CheckboxWithText() {
   )
 }
 
-
+collapsible-demo.tsx
 "use client"
 
 import * as React from "react"
@@ -1995,7 +1995,7 @@ export default function CollapsibleDemo() {
   )
 }
 
-
+combobox-demo.tsx
 "use client"
 
 import * as React from "react"
@@ -2091,7 +2091,7 @@ export default function ComboboxDemo() {
   )
 }
 
-
+combobox-dropdown-menu.tsx
 "use client"
 
 import * as React from "react"
@@ -2204,7 +2204,7 @@ export default function ComboboxDropdownMenu() {
   )
 }
 
-
+combobox-form.tsx
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -2344,7 +2344,7 @@ export default function ComboboxForm() {
   )
 }
 
-
+combobox-popover.tsx
 "use client"
 
 import * as React from "react"
@@ -2471,7 +2471,7 @@ export default function ComboboxPopover() {
   )
 }
 
-
+combobox-responsive.tsx
 "use client"
 
 import * as React from "react"
@@ -2596,7 +2596,7 @@ function StatusList({
   )
 }
 
-
+command-demo.tsx
 import {
   Calculator,
   Calendar,
@@ -2660,7 +2660,7 @@ export default function CommandDemo() {
   )
 }
 
-
+command-dialog.tsx
 "use client"
 
 import * as React from "react"
@@ -2749,7 +2749,7 @@ export default function CommandDialogDemo() {
   )
 }
 
-
+context-menu-demo.tsx
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -2818,7 +2818,7 @@ export default function ContextMenuDemo() {
   )
 }
 
-
+data-table-demo.tsx
 "use client"
 
 import * as React from "react"
@@ -3132,7 +3132,7 @@ export default function DataTableDemo() {
   )
 }
 
-
+date-picker-demo.tsx
 "use client"
 
 import * as React from "react"
@@ -3177,7 +3177,7 @@ export default function DatePickerDemo() {
   )
 }
 
-
+date-picker-form.tsx
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -3280,7 +3280,7 @@ export default function DatePickerForm() {
   )
 }
 
-
+date-picker-with-presets.tsx
 "use client"
 
 import * as React from "react"
@@ -3344,7 +3344,7 @@ export default function DatePickerWithPresets() {
   )
 }
 
-
+date-picker-with-range.tsx
 "use client"
 
 import * as React from "react"
@@ -3411,7 +3411,7 @@ export default function DatePickerWithRange({
   )
 }
 
-
+dialog-close-button.tsx
 import { Copy } from "lucide-react"
 
 import { Button } from "@/registry/default/ui/button"
@@ -3469,7 +3469,7 @@ export default function DialogCloseButton() {
   )
 }
 
-
+dialog-demo.tsx
 import { Button } from "@/registry/default/ui/button"
 import {
   Dialog,
@@ -3526,7 +3526,7 @@ export default function DialogDemo() {
   )
 }
 
-
+drawer-demo.tsx
 "use client"
 
 import * as React from "react"
@@ -3664,7 +3664,7 @@ export default function DrawerDemo() {
   )
 }
 
-
+drawer-dialog.tsx
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
@@ -3753,7 +3753,7 @@ function ProfileForm({ className }: React.ComponentProps<"form">) {
   )
 }
 
-
+dropdown-menu-checkboxes.tsx
 "use client"
 
 import * as React from "react"
@@ -3808,7 +3808,7 @@ export default function DropdownMenuCheckboxes() {
   )
 }
 
-
+dropdown-menu-demo.tsx
 import {
   Cloud,
   CreditCard,
@@ -3932,7 +3932,7 @@ export default function DropdownMenuDemo() {
   )
 }
 
-
+dropdown-menu-radio-group.tsx
 "use client"
 
 import * as React from "react"
@@ -3969,7 +3969,7 @@ export default function DropdownMenuRadioGroupDemo() {
   )
 }
 
-
+hover-card-demo.tsx
 import { CalendarDays } from "lucide-react"
 
 import {
@@ -4014,21 +4014,21 @@ export default function HoverCardDemo() {
   )
 }
 
-
+input-demo.tsx
 import { Input } from "@/registry/default/ui/input"
 
 export default function InputDemo() {
   return <Input type="email" placeholder="Email" />
 }
 
-
+input-disabled.tsx
 import { Input } from "@/registry/default/ui/input"
 
 export default function InputDisabled() {
   return <Input disabled type="email" placeholder="Email" />
 }
 
-
+input-file.tsx
 import { Input } from "@/registry/default/ui/input"
 import { Label } from "@/registry/default/ui/label"
 
@@ -4041,7 +4041,7 @@ export default function InputFile() {
   )
 }
 
-
+input-form.tsx
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -4111,7 +4111,7 @@ export default function InputForm() {
   )
 }
 
-
+input-otp-controlled.tsx
 "use client"
 
 import * as React from "react"
@@ -4152,7 +4152,7 @@ export default function InputOTPControlled() {
   )
 }
 
-
+input-otp-demo.tsx
 import {
   InputOTP,
   InputOTPGroup,
@@ -4178,7 +4178,7 @@ export default function InputOTPDemo() {
   )
 }
 
-
+input-otp-form.tsx
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -4262,7 +4262,7 @@ export default function InputOTPForm() {
   )
 }
 
-
+input-otp-pattern.tsx
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
 
 import {
@@ -4286,7 +4286,7 @@ export default function InputOTPPattern() {
   )
 }
 
-
+input-otp-separator.tsx
 import React from "react"
 
 import {
@@ -4317,7 +4317,7 @@ export default function InputOTPWithSeparator() {
   )
 }
 
-
+input-with-button.tsx
 import { Button } from "@/registry/default/ui/button"
 import { Input } from "@/registry/default/ui/input"
 
@@ -4330,7 +4330,7 @@ export default function InputWithButton() {
   )
 }
 
-
+input-with-label.tsx
 import { Input } from "@/registry/default/ui/input"
 import { Label } from "@/registry/default/ui/label"
 
@@ -4343,7 +4343,7 @@ export default function InputWithLabel() {
   )
 }
 
-
+input-with-text.tsx
 import { Input } from "@/registry/default/ui/input"
 import { Label } from "@/registry/default/ui/label"
 
@@ -4357,7 +4357,7 @@ export default function InputWithText() {
   )
 }
 
-
+label-demo.tsx
 import { Checkbox } from "@/registry/default/ui/checkbox"
 import { Label } from "@/registry/default/ui/label"
 
@@ -4372,7 +4372,7 @@ export default function LabelDemo() {
   )
 }
 
-
+menubar-demo.tsx
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -4481,7 +4481,7 @@ export default function MenubarDemo() {
   )
 }
 
-
+mode-toggle.tsx
 "use client"
 
 import * as React from "react"
@@ -4523,7 +4523,7 @@ export default function ModeToggle() {
   )
 }
 
-
+navigation-menu-demo.tsx
 "use client"
 
 import * as React from "react"
@@ -4671,7 +4671,7 @@ const ListItem = React.forwardRef<
 })
 ListItem.displayName = "ListItem"
 
-
+pagination-demo.tsx
 import {
   Pagination,
   PaginationContent,
@@ -4711,7 +4711,7 @@ export default function PaginationDemo() {
   )
 }
 
-
+popover-demo.tsx
 import { Button } from "@/registry/default/ui/button"
 import { Input } from "@/registry/default/ui/input"
 import { Label } from "@/registry/default/ui/label"
@@ -4775,7 +4775,7 @@ export default function PopoverDemo() {
   )
 }
 
-
+progress-demo.tsx
 "use client"
 
 import * as React from "react"
@@ -4793,7 +4793,7 @@ export default function ProgressDemo() {
   return <Progress value={progress} className="w-[60%]" />
 }
 
-
+radio-group-demo.tsx
 import { Label } from "@/registry/default/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
 
@@ -4816,7 +4816,7 @@ export default function RadioGroupDemo() {
   )
 }
 
-
+radio-group-form.tsx
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -4906,7 +4906,7 @@ export default function RadioGroupForm() {
   )
 }
 
-
+resizable-demo-with-handle.tsx
 import {
   ResizableHandle,
   ResizablePanel,
@@ -4944,7 +4944,7 @@ export default function ResizableDemo() {
   )
 }
 
-
+resizable-demo.tsx
 import {
   ResizableHandle,
   ResizablePanel,
@@ -4982,7 +4982,7 @@ export default function ResizableDemo() {
   )
 }
 
-
+resizable-handle.tsx
 import {
   ResizableHandle,
   ResizablePanel,
@@ -5010,7 +5010,7 @@ export default function ResizableDemo() {
   )
 }
 
-
+resizable-vertical.tsx
 import {
   ResizableHandle,
   ResizablePanel,
@@ -5038,7 +5038,7 @@ export default function ResizableDemo() {
   )
 }
 
-
+scroll-area-demo.tsx
 import * as React from "react"
 
 import { ScrollArea } from "@/registry/default/ui/scroll-area"
@@ -5066,7 +5066,7 @@ export default function ScrollAreaDemo() {
   )
 }
 
-
+scroll-area-horizontal-demo.tsx
 import * as React from "react"
 import Image from "next/image"
 
@@ -5121,7 +5121,7 @@ export default function ScrollAreaHorizontalDemo() {
   )
 }
 
-
+select-demo.tsx
 import * as React from "react"
 
 import {
@@ -5154,7 +5154,7 @@ export default function SelectDemo() {
   )
 }
 
-
+select-form.tsx
 "use client"
 
 import Link from "next/link"
@@ -5240,7 +5240,7 @@ export default function SelectForm() {
   )
 }
 
-
+select-scrollable.tsx
 import * as React from "react"
 
 import {
@@ -5317,7 +5317,7 @@ export default function SelectScrollable() {
   )
 }
 
-
+separator-demo.tsx
 import { Separator } from "@/registry/default/ui/separator"
 
 export default function SeparatorDemo() {
@@ -5341,7 +5341,7 @@ export default function SeparatorDemo() {
   )
 }
 
-
+sheet-demo.tsx
 import { Button } from "@/registry/default/ui/button"
 import { Input } from "@/registry/default/ui/input"
 import { Label } from "@/registry/default/ui/label"
@@ -5393,7 +5393,7 @@ export default function SheetDemo() {
   )
 }
 
-
+sheet-side.tsx
 "use client"
 
 import { Button } from "@/registry/default/ui/button"
@@ -5455,7 +5455,7 @@ export default function SheetSide() {
   )
 }
 
-
+skeleton-card.tsx
 import { Skeleton } from "@/registry/default/ui/skeleton"
 
 export default function SkeletonCard() {
@@ -5470,7 +5470,7 @@ export default function SkeletonCard() {
   )
 }
 
-
+skeleton-demo.tsx
 import { Skeleton } from "@/registry/default/ui/skeleton"
 
 export default function SkeletonDemo() {
@@ -5485,7 +5485,7 @@ export default function SkeletonDemo() {
   )
 }
 
-
+slider-demo.tsx
 import { cn } from "@/lib/utils"
 import { Slider } from "@/registry/default/ui/slider"
 
@@ -5503,7 +5503,7 @@ export default function SliderDemo({ className, ...props }: SliderProps) {
   )
 }
 
-
+sonner-demo.tsx
 "use client"
 
 import { toast } from "sonner"
@@ -5529,7 +5529,7 @@ export default function SonnerDemo() {
   )
 }
 
-
+switch-demo.tsx
 import { Label } from "@/registry/default/ui/label"
 import { Switch } from "@/registry/default/ui/switch"
 
@@ -5542,7 +5542,7 @@ export default function SwitchDemo() {
   )
 }
 
-
+switch-form.tsx
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -5643,7 +5643,7 @@ export default function SwitchForm() {
   )
 }
 
-
+table-demo.tsx
 import {
   Table,
   TableBody,
@@ -5732,7 +5732,7 @@ export default function TableDemo() {
   )
 }
 
-
+tabs-demo.tsx
 import { Button } from "@/registry/default/ui/button"
 import {
   Card,
@@ -5808,21 +5808,21 @@ export default function TabsDemo() {
   )
 }
 
-
+textarea-demo.tsx
 import { Textarea } from "@/registry/default/ui/textarea"
 
 export default function TextareaDemo() {
   return <Textarea placeholder="Type your message here." />
 }
 
-
+textarea-disabled.tsx
 import { Textarea } from "@/registry/default/ui/textarea"
 
 export default function TextareaDisabled() {
   return <Textarea placeholder="Type your message here." disabled />
 }
 
-
+textarea-form.tsx
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -5898,7 +5898,7 @@ export default function TextareaForm() {
   )
 }
 
-
+textarea-with-button.tsx
 import { Button } from "@/registry/default/ui/button"
 import { Textarea } from "@/registry/default/ui/textarea"
 
@@ -5911,7 +5911,7 @@ export default function TextareaWithButton() {
   )
 }
 
-
+textarea-with-label.tsx
 import { Label } from "@/registry/default/ui/label"
 import { Textarea } from "@/registry/default/ui/textarea"
 
@@ -5924,7 +5924,7 @@ export default function TextareaWithLabel() {
   )
 }
 
-
+textarea-with-text.tsx
 import { Label } from "@/registry/default/ui/label"
 import { Textarea } from "@/registry/default/ui/textarea"
 
@@ -5940,7 +5940,7 @@ export default function TextareaWithText() {
   )
 }
 
-
+toast-demo.tsx
 "use client"
 
 import { useToast } from "@/registry/default/hooks/use-toast"
@@ -5968,7 +5968,7 @@ export default function ToastDemo() {
   )
 }
 
-
+toast-destructive.tsx
 "use client"
 
 import { useToast } from "@/registry/default/hooks/use-toast"
@@ -5995,7 +5995,7 @@ export default function ToastDestructive() {
   )
 }
 
-
+toast-simple.tsx
 "use client"
 
 import { useToast } from "@/registry/default/hooks/use-toast"
@@ -6018,7 +6018,7 @@ export default function ToastSimple() {
   )
 }
 
-
+toast-with-action.tsx
 "use client"
 
 import { useToast } from "@/registry/default/hooks/use-toast"
@@ -6044,7 +6044,7 @@ export default function ToastWithAction() {
   )
 }
 
-
+toast-with-title.tsx
 "use client"
 
 import { useToast } from "@/registry/default/hooks/use-toast"
@@ -6068,7 +6068,7 @@ export default function ToastWithTitle() {
   )
 }
 
-
+toggle-demo.tsx
 import { Bold } from "lucide-react"
 
 import { Toggle } from "@/registry/default/ui/toggle"
@@ -6081,7 +6081,7 @@ export default function ToggleDemo() {
   )
 }
 
-
+toggle-disabled.tsx
 import { Underline } from "lucide-react"
 
 import { Toggle } from "@/registry/default/ui/toggle"
@@ -6094,7 +6094,7 @@ export default function ToggleDisabled() {
   )
 }
 
-
+toggle-group-demo.tsx
 import { Bold, Italic, Underline } from "lucide-react"
 
 import {
@@ -6118,7 +6118,7 @@ export default function ToggleGroupDemo() {
   )
 }
 
-
+toggle-group-disabled.tsx
 import { Bold, Italic, Underline } from "lucide-react"
 
 import {
@@ -6142,7 +6142,7 @@ export default function ToggleGroupDemo() {
   )
 }
 
-
+toggle-group-lg.tsx
 import { Bold, Italic, Underline } from "lucide-react"
 
 import {
@@ -6166,7 +6166,7 @@ export default function ToggleGroupDemo() {
   )
 }
 
-
+toggle-group-outline.tsx
 import { Bold, Italic, Underline } from "lucide-react"
 
 import {
@@ -6190,7 +6190,7 @@ export default function ToggleGroupDemo() {
   )
 }
 
-
+toggle-group-single.tsx
 import { Bold, Italic, Underline } from "lucide-react"
 
 import {
@@ -6214,7 +6214,7 @@ export default function ToggleGroupDemo() {
   )
 }
 
-
+toggle-group-sm.tsx
 import { Bold, Italic, Underline } from "lucide-react"
 
 import {
@@ -6238,7 +6238,7 @@ export default function ToggleGroupDemo() {
   )
 }
 
-
+toggle-lg.tsx
 import { Italic } from "lucide-react"
 
 import { Toggle } from "@/registry/default/ui/toggle"
@@ -6251,7 +6251,7 @@ export default function ToggleLg() {
   )
 }
 
-
+toggle-outline.tsx
 import { Italic } from "lucide-react"
 
 import { Toggle } from "@/registry/default/ui/toggle"
@@ -6264,7 +6264,7 @@ export default function ToggleOutline() {
   )
 }
 
-
+toggle-sm.tsx
 import { Italic } from "lucide-react"
 
 import { Toggle } from "@/registry/default/ui/toggle"
@@ -6277,7 +6277,7 @@ export default function ToggleSm() {
   )
 }
 
-
+toggle-with-text.tsx
 import { Italic } from "lucide-react"
 
 import { Toggle } from "@/registry/default/ui/toggle"
@@ -6291,7 +6291,7 @@ export default function ToggleWithText() {
   )
 }
 
-
+tooltip-demo.tsx
 import { Button } from "@/registry/default/ui/button"
 import {
   Tooltip,
@@ -6315,7 +6315,7 @@ export default function TooltipDemo() {
   )
 }
 
-
+typography-blockquote.tsx
 export default function TypographyBlockquote() {
   return (
     <blockquote className="mt-6 border-l-2 pl-6 italic">
@@ -6325,7 +6325,7 @@ export default function TypographyBlockquote() {
   )
 }
 
-
+typography-demo.tsx
 export default function TypographyDemo() {
   return (
     <div>
@@ -6446,7 +6446,7 @@ export default function TypographyDemo() {
   )
 }
 
-
+typography-h1.tsx
 export default function TypographyH1() {
   return (
     <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
@@ -6455,7 +6455,7 @@ export default function TypographyH1() {
   )
 }
 
-
+typography-h2.tsx
 export default function TypographyH2() {
   return (
     <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
@@ -6464,7 +6464,7 @@ export default function TypographyH2() {
   )
 }
 
-
+typography-h3.tsx
 export default function TypographyH3() {
   return (
     <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
@@ -6473,7 +6473,7 @@ export default function TypographyH3() {
   )
 }
 
-
+typography-h4.tsx
 export default function TypographyH4() {
   return (
     <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
@@ -6482,7 +6482,7 @@ export default function TypographyH4() {
   )
 }
 
-
+typography-inline-code.tsx
 export default function TypographyInlineCode() {
   return (
     <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
@@ -6491,12 +6491,12 @@ export default function TypographyInlineCode() {
   )
 }
 
-
+typography-large.tsx
 export default function TypographyLarge() {
   return <div className="text-lg font-semibold">Are you absolutely sure?</div>
 }
 
-
+typography-lead.tsx
 export default function TypographyLead() {
   return (
     <p className="text-xl text-muted-foreground">
@@ -6506,7 +6506,7 @@ export default function TypographyLead() {
   )
 }
 
-
+typography-list.tsx
 export default function TypographyList() {
   return (
     <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
@@ -6517,14 +6517,14 @@ export default function TypographyList() {
   )
 }
 
-
+typography-muted.tsx
 export default function TypographyMuted() {
   return (
     <p className="text-sm text-muted-foreground">Enter your email address.</p>
   )
 }
 
-
+typography-p.tsx
 export default function TypographyP() {
   return (
     <p className="leading-7 [&:not(:first-child)]:mt-6">
@@ -6534,14 +6534,14 @@ export default function TypographyP() {
   )
 }
 
-
+typography-small.tsx
 export default function TypographySmall() {
   return (
     <small className="text-sm font-medium leading-none">Email address</small>
   )
 }
 
-
+typography-table.tsx
 export default function TypographyTable() {
   return (
     <div className="my-6 w-full overflow-y-auto">

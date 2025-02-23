@@ -1,4 +1,4 @@
-
+accessible-icon.mdx
 ---
 metaTitle: Accessible Icon
 metaDescription: Makes icons accessible by adding a label.
@@ -9,7 +9,7 @@ sourcePath: components/accessible-icon
 
 This component inherits all props and functionality from the [Accessible Icon primitive](/primitives/docs/utilities/accessible-icon) utility.
 
-
+alert-dialog.mdx
 ---
 metaTitle: Alert Dialog
 metaDescription: Modal confirmation dialog that interrupts the user and expects a response.
@@ -191,7 +191,7 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
 </AlertDialog.Root>
 ```
 
-
+aspect-ratio.mdx
 ---
 metaTitle: Aspect Ratio
 metaDescription: Displays content within a desired ratio.
@@ -217,7 +217,7 @@ sourcePath: components/aspect-ratio
 
 This component inherits props from the [Aspect Ratio primitive](/primitives/docs/components/aspect-ratio).
 
-
+avatar.mdx
 ---
 metaTitle: Avatar
 metaDescription: Profile picture, user initials or fallback icon.
@@ -366,7 +366,7 @@ Use the `fallback` prop to modify the rendered fallback element.
 </Flex>
 ```
 
-
+badge.mdx
 ---
 metaTitle: Badge
 metaDescription: Stylized badge element.
@@ -496,7 +496,7 @@ Use the `radius` prop to assign a specific radius value.
 </Flex>
 ```
 
-
+blockquote.mdx
 ---
 metaTitle: Blockquote
 metaDescription: Block-level quotation from another source.
@@ -659,7 +659,7 @@ Use the `truncate` prop to truncate text with an ellipsis when it overflows its 
 </Flex>
 ```
 
-
+box.mdx
 ---
 metaTitle: Box
 metaDescription: Fundamental layout building block.
@@ -684,7 +684,7 @@ The following props are shared between [Box](./box), [Flex](./flex), [Grid](./gr
 
 <ThemesPropsTable defs="layoutPropDefs" />
 
-
+button.mdx
 ---
 metaTitle: Button
 metaDescription: Trigger an action or event, such as submitting a form or displaying a dialog.
@@ -912,7 +912,7 @@ If you have an icon inside the button, you can use the button’s `disabled` sta
 </Flex>
 ```
 
-
+callout.mdx
 ---
 metaTitle: Callout
 metaDescription: Short message to attract user’s attention.
@@ -1100,7 +1100,7 @@ Add a native [WAI-ARIA `alert` role](https://developer.mozilla.org/en-US/docs/We
 </Callout.Root>
 ```
 
-
+card.mdx
 ---
 metaTitle: Card
 metaDescription: Container that groups related content and actions.
@@ -1267,7 +1267,7 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
 </Box>
 ```
 
-
+checkbox-cards.mdx
 ---
 metaTitle: Checkbox Cards
 metaDescription: Set of interactive cards where multiple options can be selected at a time.
@@ -1433,7 +1433,7 @@ Use the `highContrast` prop to increase color contrast with the background.
 </Flex>
 ```
 
-
+checkbox-group.mdx
 ---
 metaTitle: Checkbox Group
 metaDescription: Set of interactive buttons where multiple options can be selected at a time.
@@ -1659,7 +1659,7 @@ Use the native `disabled` attribute to create a disabled checkbox.
 </Flex>
 ```
 
-
+checkbox.mdx
 ---
 metaTitle: Checkbox
 metaDescription: Base input element to toggle an option on and off.
@@ -1837,7 +1837,7 @@ Use the `"indeterminate"` value to create an indeterminate checkbox.
 </Flex>
 ```
 
-
+code.mdx
 ---
 metaTitle: Code
 metaDescription: Marks text to signify a short fragment of computer code.
@@ -1959,7 +1959,7 @@ Use the `truncate` prop to truncate text with an ellipsis when it overflows its 
 </Flex>
 ```
 
-
+container.mdx
 ---
 metaTitle: Container
 metaDescription: Constrains the maximum width of page content.
@@ -2026,7 +2026,7 @@ The following props are shared between [Box](./box), [Flex](./flex), [Grid](./gr
 
 <ThemesPropsTable defs="layoutPropDefs" />
 
-
+context-menu.mdx
 ---
 metaTitle: Context Menu
 metaDescription: Menu representing a set of actions, displayed at the point of right click or long press.
@@ -2319,7 +2319,7 @@ Use the `highContrast` prop to increase color contrast with the background.
 </Grid>
 ```
 
-
+data-list.mdx
 ---
 metaTitle: Data List
 metaDescription: Displays metadata as a list of key-value pairs.
@@ -2578,7 +2578,7 @@ Use the `highContrast` prop increase color contrast with the background.
 </Flex>
 ```
 
-
+dialog.mdx
 ---
 metaTitle: Dialog
 metaDescription: Modal dialog window displayed above the page.
@@ -2785,7 +2785,7 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
 </Dialog.Root>
 ```
 
-
+dropdown-menu.mdx
 ---
 metaTitle: Dropdown Menu
 metaDescription: Menu representing a set of actions, triggered by a button.
@@ -3126,7 +3126,7 @@ Use the `highContrast` prop to increase color contrast with the background.
 </Grid>
 ```
 
-
+em.mdx
 ---
 metaTitle: Em
 metaDescription: Marks text to stress emphasis.
@@ -3161,7 +3161,7 @@ Use the `truncate` prop to truncate text with an ellipsis when it overflows its 
 </Flex>
 ```
 
-
+flex.mdx
 ---
 metaTitle: Flex
 metaDescription: Component for creating flex layouts.
@@ -3200,7 +3200,7 @@ The following props are shared between [Box](./box), [Flex](./flex), [Grid](./gr
 
 <ThemesPropsTable defs="layoutPropDefs" />
 
-
+grid.mdx
 ---
 metaTitle: Grid
 metaDescription: Component for creating grid layouts.
@@ -3247,7 +3247,7 @@ All props marked `Responsive`, such as `columns` and `rows` accept a [breakpoint
 </Grid>
 ```
 
-
+heading.mdx
 ---
 metaTitle: Heading
 metaDescription: Semantic heading element.
@@ -3495,7 +3495,7 @@ Use the `highContrast` prop to increase color contrast with the background.
 </Flex>
 ```
 
-
+hover-card.mdx
 ---
 metaTitle: Hover Card
 metaDescription: For sighted users to preview content available behind a link.
@@ -3646,7 +3646,7 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
 </Text>
 ```
 
-
+icon-button.mdx
 ---
 metaTitle: Icon Button
 metaDescription: Button designed specifically for usage with a single icon.
@@ -3827,7 +3827,7 @@ Use the `loading` prop to display a loading spinner in place of button content. 
 </Flex>
 ```
 
-
+inset.mdx
 ---
 metaTitle: Inset
 metaDescription: Applies a negative margin to allow content to bleed into the surrounding container.
@@ -3864,7 +3864,7 @@ This component is based on the `div` element and supports [common margin props](
 
 <ThemesPropsTable defs="insetPropDefs" />
 
-
+kbd.mdx
 ---
 metaTitle: Kbd
 metaDescription: Represents keyboard input or a hotkey.
@@ -3901,7 +3901,7 @@ Use the `size` prop to control text size.
 </Flex>
 ```
 
-
+link.mdx
 ---
 metaTitle: Link
 metaDescription: Semantic element for navigation between pages.
@@ -4037,7 +4037,7 @@ Use the `underline` prop to manage the visibility of the underline affordance.
 </Flex>
 ```
 
-
+popover.mdx
 ---
 metaTitle: Popover
 metaDescription: Floating element for displaying rich content, triggered by a button.
@@ -4200,7 +4200,7 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
 </Popover.Root>
 ```
 
-
+portal.mdx
 ---
 metaTitle: Portal
 metaDescription: Renders a React subtree in a different part of the DOM.
@@ -4211,7 +4211,7 @@ sourcePath: components/portal
 
 This component inherits all props and functionality from the [Portal primitive](/primitives/docs/utilities/portal) utility.
 
-
+progress.mdx
 ---
 metaTitle: Progress
 metaDescription: Displays a progress bar related to a task.
@@ -4318,7 +4318,7 @@ Use the `duration` prop to indicate an approximate duration of an indeterminate 
 
 When an approximate duration can be estimated, the Progress component is still useful over [Spinner](./spinner), which doesn’t provide any visual cues towards the progress of the task.
 
-
+quote.mdx
 ---
 metaTitle: Quote
 metaDescription: Short inline quotation.
@@ -4355,7 +4355,7 @@ Use the `truncate` prop to truncate text with an ellipsis when it overflows its 
 </Flex>
 ```
 
-
+radio-cards.mdx
 ---
 metaTitle: Radio Cards
 metaDescription: Set of interactive cards where only one can be selected at a time.
@@ -4521,7 +4521,7 @@ Use the `highContrast` prop to increase color contrast with the background.
 </Flex>
 ```
 
-
+radio-group.mdx
 ---
 metaTitle: Radio Group
 metaDescription: Set of interactive radio buttons where only one can be selected at a time.
@@ -4747,7 +4747,7 @@ Use the native `disabled` attribute to create a disabled radiobutton.
 </Flex>
 ```
 
-
+radio.mdx
 ---
 metaTitle: Radio
 metaDescription: Standalone radio button that can be used in any layout.
@@ -4965,7 +4965,7 @@ Use the native `disabled` attribute to create a disabled radio button.
 </Flex>
 ```
 
-
+reset.mdx
 ---
 metaTitle: Reset
 metaDescription: Removes default browser styles from any component.
@@ -5549,7 +5549,7 @@ When reset, `<svg>` elements get `display: block`, `max-width: 100%`, and `flex-
 </Reset>
 ```
 
-
+scroll-area.mdx
 ---
 metaTitle: Scroll Area
 metaDescription: Custom-styled scrollable area using native functionality.
@@ -5705,7 +5705,7 @@ Use the `scrollbars` prop to limit scrollable axes.
 </Flex>
 ```
 
-
+section.mdx
 ---
 metaTitle: Section
 metaDescription: Denotes a section of page content.
@@ -5733,7 +5733,7 @@ The following props are shared between [Box](./box), [Flex](./flex), [Grid](./gr
 
 <ThemesPropsTable defs="layoutPropDefs" />
 
-
+segmented-control.mdx
 ---
 metaTitle: Segmented Control
 metaDescription: Toggle buttons for switching between different values or views.
@@ -5848,7 +5848,7 @@ Use the `radius` prop to assign a specific radius value.
 </Flex>
 ```
 
-
+select.mdx
 ---
 metaTitle: Select
 metaDescription: Displays a list of options for the user to pick from—triggered by a button.
@@ -6192,7 +6192,7 @@ You can customise how Trigger renders the value by controlling its children manu
 };
 ```
 
-
+separator.mdx
 ---
 metaTitle: Separator
 metaDescription: Visually or semantically separates content.
@@ -6269,7 +6269,7 @@ Use the `orientation` prop to control whether the separator is horizontal or ver
 </Flex>
 ```
 
-
+skeleton.mdx
 ---
 metaTitle: Skeleton
 metaDescription: Replaces content with same shape placeholder that indicates a loading state.
@@ -6354,7 +6354,7 @@ The difference is especially noticeable when wrapping longer paragraphs:
 </Container>
 ```
 
-
+slider.mdx
 ---
 metaTitle: Slider
 metaDescription: Provides user selection from a range of values.
@@ -6449,7 +6449,7 @@ Provide multiple values to create a range slider.
 <Slider defaultValue={[25, 75]} />
 ```
 
-
+slot.mdx
 ---
 metaTitle: Slot
 metaDescription: Merges its props onto its immediate child.
@@ -6460,7 +6460,7 @@ sourcePath: components/slot
 
 This component inherits all props and functionality from the [Slot primitive](/primitives/docs/utilities/slot) utility.
 
-
+spinner.mdx
 ---
 metaTitle: Spinner
 metaDescription: Displays an animated loading indicator.
@@ -6526,7 +6526,7 @@ If you have an icon inside the button, you can use the button’s `disabled` sta
 </Button>
 ```
 
-
+strong.mdx
 ---
 metaTitle: Strong
 metaDescription: Marks text to signify strong importance.
@@ -6561,7 +6561,7 @@ Use the `truncate` prop to truncate text with an ellipsis when it overflows its 
 </Flex>
 ```
 
-
+switch.mdx
 ---
 metaTitle: Switch
 metaDescription: Toggle switch alternative to the checkbox.
@@ -6720,7 +6720,7 @@ Use the native `disabled` attribute to create a disabled switch.
 </Flex>
 ```
 
-
+tab-nav.mdx
 ---
 metaTitle: Tab Nav
 metaDescription: Navigation menu with links styled as tabs.
@@ -6861,7 +6861,7 @@ Use the `asChild` prop to compose `TabNav.Link` with your app’s router link co
 </TabNav.Root>
 ```
 
-
+table.mdx
 ---
 metaTitle: Table
 metaDescription: Semantic table element for presenting data.
@@ -7046,7 +7046,7 @@ Use `variant="surface"` to add a visually enclosed backplate to the table.
 </Table.Root>
 ```
 
-
+tabs.mdx
 ---
 metaTitle: Tabs
 metaDescription: Set of content sections to be displayed one at a time.
@@ -7195,483 +7195,575 @@ Use the `highContrast` prop to increase color contrast with the background.
 
 Tabs should not be used for page navigation. Use [Tab Nav](/themes/docs/components/tab-nav) instead, which is designed for this purpose and has equivalent styles.
 
-
+breakpoints.mdx
 ---
-metaTitle: Text Area
-metaDescription: Captures multi-line user input.
-sourcePath: components/text-area
----
-
-```jsx live=true
-<TextArea placeholder="Reply to comment…" />
-```
-
-## API Reference
-
-This component is based on the `textarea` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
-
-<ThemesPropsTable defs="textAreaPropDefs" />
-
-## Examples
-
-### Size
-
-Use the `size` prop to control the size.
-
-```jsx live=true
-<Flex direction="column" gap="3">
-	<Box maxWidth="200px">
-		<TextArea size="1" placeholder="Reply to comment…" />
-	</Box>
-	<Box maxWidth="250px">
-		<TextArea size="2" placeholder="Reply to comment…" />
-	</Box>
-	<Box maxWidth="300px">
-		<TextArea size="3" placeholder="Reply to comment…" />
-	</Box>
-</Flex>
-```
-
-### Variant
-
-Use the `variant` prop to control the visual style.
-
-```jsx live=true
-<Flex direction="column" gap="3" maxWidth="250px">
-	<TextArea variant="surface" placeholder="Reply to comment…" />
-	<TextArea variant="classic" placeholder="Reply to comment…" />
-	<TextArea variant="soft" placeholder="Reply to comment…" />
-</Flex>
-```
-
-### Color
-
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
-
-```jsx live=true
-<Flex direction="column" gap="3" maxWidth="250px">
-	<TextArea color="blue" variant="soft" placeholder="Reply to comment…" />
-	<TextArea color="green" variant="soft" placeholder="Reply to comment…" />
-	<TextArea color="red" variant="soft" placeholder="Reply to comment…" />
-</Flex>
-```
-
-### Radius
-
-Use the `radius` prop to assign a specific radius value.
-
-```jsx live=true
-<Flex direction="column" gap="3" maxWidth="250px">
-	<TextArea radius="none" placeholder="Search the docs…" />
-	<TextArea radius="large" placeholder="Search the docs…" />
-	<TextArea radius="full" placeholder="Search the docs…" />
-</Flex>
-```
-
-### Resize
-
-Use the `resize` prop to enable resizing on one or both axis.
-
-```jsx live=true
-<Flex direction="column" gap="3" maxWidth="250px">
-	<TextArea resize="none" placeholder="Search the docs…" />
-	<TextArea resize="vertical" placeholder="Search the docs…" />
-	<TextArea resize="horizontal" placeholder="Search the docs…" />
-	<TextArea resize="both" placeholder="Search the docs…" />
-</Flex>
-```
-
-
----
-metaTitle: Text Field
-metaDescription: Captures user input with an optional slot for buttons and icons.
-sourcePath: components/text-field
+metaTitle: Breakpoints
+metaDescription: Built-in breakpoints allow you to easily build
+  adapative layouts.
 ---
 
-```jsx live=true
-<TextField.Root placeholder="Search the docs…">
-	<TextField.Slot>
-		<MagnifyingGlassIcon height="16" width="16" />
-	</TextField.Slot>
-</TextField.Root>
+# Breakpoints
+
+<Description>
+	Built-in breakpoints allow you to easily build adaptive layouts.
+</Description>
+
+## Available sizes
+
+Each breakpoint matches a fixed screen width. Values are `min-width` based and apply when the screen width is equal or greater.
+
+<ThemesBreakpointsTable />
+
+## Usage
+
+Most component size and layout props will accept an additional `Responsive` object shape for modifying the given prop across breakpoints.
+
+Each size maps to a corresponding key, the value of each will be applied when the screen size is greater than or equal to the named breakpoint.
+
+```jsx
+<Heading
+	size={{
+		initial: "3",
+		md: "5",
+		xl: "7",
+	}}
+/>
 ```
 
-## API Reference
-
-### Root
-
-Groups Slot and Input parts. This component is based on the `div` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
-
-<ThemesPropsTable defs="textFieldRootPropDefs" />
-
-### Slot
-
-Contains icons or buttons associated with an Input.
-
-<ThemesPropsTable defs="textFieldSlotPropDefs" />
-
-## Examples
-
-### Size
-
-Use the `size` prop to control the size.
-
-```jsx live=true
-<Flex direction="column" gap="3">
-	<Box maxWidth="200px">
-		<TextField.Root size="1" placeholder="Search the docs…" />
-	</Box>
-	<Box maxWidth="250px">
-		<TextField.Root size="2" placeholder="Search the docs…" />
-	</Box>
-	<Box maxWidth="300px">
-		<TextField.Root size="3" placeholder="Search the docs…" />
-	</Box>
-</Flex>
-```
-
-Use matching component sizes when composing Text Field with buttons. However, don’t use size 1 inputs with buttons—at this size, there is not enough vertical space to nest other interactive elements.
-
-```jsx live=true
-<Flex direction="column" gap="3" maxWidth="400px">
-	<Box maxWidth="200px">
-		<TextField.Root placeholder="Search the docs…" size="1">
-			<TextField.Slot>
-				<MagnifyingGlassIcon height="16" width="16" />
-			</TextField.Slot>
-		</TextField.Root>
-	</Box>
-
-	<Box maxWidth="250px">
-		<TextField.Root placeholder="Search the docs…" size="2">
-			<TextField.Slot>
-				<MagnifyingGlassIcon height="16" width="16" />
-			</TextField.Slot>
-			<TextField.Slot>
-				<IconButton size="1" variant="ghost">
-					<DotsHorizontalIcon height="14" width="14" />
-				</IconButton>
-			</TextField.Slot>
-		</TextField.Root>
-	</Box>
-
-	<Box maxWidth="300px">
-		<TextField.Root placeholder="Search the docs…" size="3">
-			<TextField.Slot>
-				<MagnifyingGlassIcon height="16" width="16" />
-			</TextField.Slot>
-			<TextField.Slot pr="3">
-				<IconButton size="2" variant="ghost">
-					<DotsHorizontalIcon height="16" width="16" />
-				</IconButton>
-			</TextField.Slot>
-		</TextField.Root>
-	</Box>
-</Flex>
-```
-
-### Variant
-
-Use the `variant` prop to control the visual style.
-
-```jsx live=true
-<Flex direction="column" gap="3" maxWidth="250px">
-	<TextField.Root variant="surface" placeholder="Search the docs…" />
-	<TextField.Root variant="classic" placeholder="Search the docs…" />
-	<TextField.Root variant="soft" placeholder="Search the docs…" />
-</Flex>
-```
-
-### Color
-
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
-
-```jsx live=true
-<Flex direction="column" gap="3" maxWidth="250px">
-	<TextField.Root
-		color="indigo"
-		variant="soft"
-		placeholder="Search the docs…"
-	/>
-	<TextField.Root color="green" variant="soft" placeholder="Search the docs…" />
-	<TextField.Root color="red" variant="soft" placeholder="Search the docs…" />
-</Flex>
-```
-
-### Radius
-
-Use the `radius` prop to assign a specific radius value.
-
-```jsx live=true
-<Flex direction="column" gap="3" maxWidth="250px">
-	<TextField.Root radius="none" placeholder="Search the docs…" />
-	<TextField.Root radius="large" placeholder="Search the docs…" />
-	<TextField.Root radius="full" placeholder="Search the docs…" />
-</Flex>
-```
-
-
+color.mdx
 ---
-metaTitle: Text
-metaDescription: Foundational text primitive.
-sourcePath: components/text
+metaTitle: Color
+metaDescription: Understanding the color system and it’s application in your theme.
 ---
 
-```jsx live=true
-<Text>The quick brown fox jumps over the lazy dog.</Text>
+# Color
+
+<Description>
+	Understanding the color system and its application in your theme.
+</Description>
+
+Radix Themes comes with a number of color scales, each with their own light, dark and alpha variants. Under the hood, the color system is powered by [Radix Colors](/colors).
+
+## Accents
+
+Accent color is the most dominant color in your theme. It is used for primary buttons, links and other interactive elements. `accentColor` is specified directly on the [Theme](/themes/docs/components/theme) component:
+
+```jsx
+<Theme accentColor="indigo">
+	<MyApp />
+</Theme>
 ```
 
-## API Reference
+#### Available accent colors
 
-This component is based on the `span` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+There is a range of accent colors to choose from:
 
-<ThemesPropsTable defs="textPropDefs" />
+<Box mt="5" mb="8">
+	<ThemesAccentSwatches />
+</Box>
 
-## Examples
+#### Accent scale anatomy
 
-### As another element
+Each accent is a 12-step scale that includes a solid and a transparent variant of each color. For example, here’s the `indigo` color scale:
 
-Use the `as` prop to render text as a `p`, `label`, `div` or `span`. This prop is purely semantic and does not alter visual appearance.
+<Box mt="5" mb="8">
+	<ThemesColorScale type="accent" />
+</Box>
 
-```jsx live=true
-<Text as="p">This is a <Strong>paragraph</Strong> element.</Text>
-<Text as="label">This is a <Strong>label</Strong> element.</Text>
-<Text as="div">This is a <Strong>div</Strong> element.</Text>
-<Text as="span">This is a <Strong>span</Strong> element.</Text>
+#### Accent scale tokens
+
+Accent color tokens can be accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are accessible and consistent with the rest of your theme.
+
+```css
+/* Backgrounds */
+var(--accent-1);
+var(--accent-2);
+
+/* Interactive components */
+var(--accent-3);
+var(--accent-4);
+var(--accent-5);
+
+/* Borders and separators */
+var(--accent-6);
+var(--accent-7);
+var(--accent-8);
+
+/* Solid colors */
+var(--accent-9);
+var(--accent-10);
+
+/* Accessible text */
+var(--accent-11);
+var(--accent-12);
+
+/* Functional colors */
+var(--accent-surface);
+var(--accent-indicator);
+var(--accent-track);
+var(--accent-contrast);
 ```
 
-### Size
+---
 
-Use the `size` prop to control text size. This prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
+## Grays
 
-```jsx live=true scroll=true
-<Flex direction="column" gap="3">
-	<Text size="1">The quick brown fox jumps over the lazy dog.</Text>
-	<Text size="2">The quick brown fox jumps over the lazy dog.</Text>
-	<Text size="3">The quick brown fox jumps over the lazy dog.</Text>
-	<Text size="4">The quick brown fox jumps over the lazy dog.</Text>
-	<Text size="5">The quick brown fox jumps over the lazy dog.</Text>
-	<Text size="6">The quick brown fox jumps over the lazy dog.</Text>
-	<Text size="7">The quick brown fox jumps over the lazy dog.</Text>
-	<Text size="8">The quick brown fox jumps over the lazy dog.</Text>
-	<Text size="9">The quick brown fox jumps over the lazy dog.</Text>
-</Flex>
+You can also choose between a pure gray or a number of tinted grays. Your accent color will be automatically paired with a gray shade that compliments it. However, you can also specify a custom `grayColor` directly on the [Theme](/themes/docs/components/theme) component:
+
+```jsx
+<Theme grayColor="mauve">
+	<MyApp />
+</Theme>
 ```
 
-Sizes 2–4 are designed to work well for long-form content.
+#### Available gray colors
 
-```jsx live=true
-<Text as="p" mb="5" size="4">
-  The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
-</Text>
+There is 6 grays to choose from. The difference may seem subtle, but it is impactful especially on pages with a lot of text or in dense UIs.
 
-<Text as="p" mb="5" size="3">
-  The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
-</Text>
+<Box mt="5" mb="8">
+	<ThemeGraySwatches />
+</Box>
 
-<Text as="p" size="2" color="gray">
-  The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
-</Text>
+#### Gray scale anatomy
+
+Grays are based on the same 12-step color scale that includes a solid and a transparent variant of each color. For example, here’s the `slate` color scale:
+
+<Box mt="5" mb="8">
+	<ThemesColorScale type="gray" />
+</Box>
+
+#### Gray scale tokens
+
+Gray color tokens can be accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are accessible and consistent with the rest of your theme.
+
+```css
+/* Backgrounds */
+var(--gray-1);
+var(--gray-2);
+
+/* Interactive components */
+var(--gray-3);
+var(--gray-4);
+var(--gray-5);
+
+/* Borders and separators */
+var(--gray-6);
+var(--gray-7);
+var(--gray-8);
+
+/* Solid colors */
+var(--gray-9);
+var(--gray-10);
+
+/* Accessible text */
+var(--gray-11);
+var(--gray-12);
+
+/* Functional colors */
+var(--gray-surface);
+var(--gray-indicator);
+var(--gray-track);
+var(--gray-contrast);
 ```
 
-Sizes 1–3 are designed to work well for UI labels.
+---
 
-```jsx live=true
-<Grid align="center" columns="2" gap="5" p="3">
-	<Flex direction="column">
-		<Text size="3" weight="bold">
-			Get started
-		</Text>
-		<Text color="gray" size="2">
-			Start your next project in minutes
-		</Text>
+## Color overrides
+
+When available, the `color` prop on the components can be used to override the theme accent.
+Nested components will automatically inherit the new accent color.
+
+```jsx live=true line=17
+<Theme accentColor="indigo">
+	<Flex align="start" direction={{ initial: "column", sm: "row" }} gap="4">
+		<Callout.Root>
+			<Callout.Icon>
+				<InfoCircledIcon />
+			</Callout.Icon>
+			<Callout.Text>
+				<Flex as="span" align="center" gap="4">
+					<Text>There are new commits.</Text>
+					<Button variant="surface" size="1" my="-2">
+						Refresh
+					</Button>
+				</Flex>
+			</Callout.Text>
+		</Callout.Root>
+
+		<Callout.Root color="gray">
+			<Callout.Icon>
+				<InfoCircledIcon />
+			</Callout.Icon>
+			<Callout.Text>
+				<Flex as="span" align="center" gap="4">
+					<Text>There are new commits.</Text>
+					<Button variant="surface" size="1" my="-2">
+						Refresh
+					</Button>
+				</Flex>
+			</Callout.Text>
+		</Callout.Root>
 	</Flex>
-
-	<Flex direction="column">
-		<Text size="2" weight="bold">
-			Get started
-		</Text>
-		<Text color="gray" size="2">
-			Start your next project in minutes
-		</Text>
-	</Flex>
-
-	<Flex direction="column">
-		<Text size="2" weight="bold">
-			Get started
-		</Text>
-		<Text color="gray" size="1">
-			Start your next project in minutes
-		</Text>
-	</Flex>
-
-	<Flex direction="column">
-		<Text size="1" weight="bold">
-			Get started
-		</Text>
-		<Text color="gray" size="1">
-			Start your next project in minutes
-		</Text>
-	</Flex>
-</Grid>
+</Theme>
 ```
 
-### Weight
+#### Individual color tokens
 
-Use the `weight` prop to set the text weight.
+Individual colors can be accessed directly using similar CSS variables by their corresponding names. For example, the reds are accessed via `--red-1`, `--red-2`, and so on up to `--red-12`.
 
-```jsx live=true scroll=true
-<Text weight="regular" as="div">
-  The quick brown fox jumps over the lazy dog.
-</Text>
+---
 
-<Text weight="medium" as="div">
-  The quick brown fox jumps over the lazy dog.
-</Text>
+## High contrast
 
-<Text weight="bold" as="div">
-  The quick brown fox jumps over the lazy dog.
-</Text>
-```
+Most of the time, components with a `color` prop also provide a `highContrast` option that achieves appearance that stands out against the page background:
 
-### Align
-
-Use the `align` prop to set text alignment.
-
-```jsx live=true
-<Text align="left" as="div">Left-aligned</Text>
-<Text align="center" as="div">Center-aligned</Text>
-<Text align="right" as="div">Right-aligned</Text>
-```
-
-### Trim
-
-Use the `trim` prop to trim the leading space at the start, end, or both sides of the text box.
-
-The prop works similarly to the upcoming [half-leading control](https://www.w3.org/TR/css-inline-3/#leading-trim) spec, but uses a common [negative margin workaround](https://seek-oss.github.io/capsize/) under the hood for cross-browser support.
-
-```jsx live="true"
-<Flex direction="column" gap="3">
-	<Text
-		trim="normal"
-		style={{
-			background: "var(--gray-a2)",
-			borderTop: "1px dashed var(--gray-a7)",
-			borderBottom: "1px dashed var(--gray-a7)",
-		}}
-	>
-		Without trim
-	</Text>
-	<Text
-		trim="both"
-		style={{
-			background: "var(--gray-a2)",
-			borderTop: "1px dashed var(--gray-a7)",
-			borderBottom: "1px dashed var(--gray-a7)",
-		}}
-	>
-		With trim
-	</Text>
+```jsx live=true line="5"
+<Flex gap="4">
+	<Button variant="classic" color="gray">
+		Edit profile
+	</Button>
+	<Button variant="classic" color="gray" highContrast>
+		Edit profile
+	</Button>
 </Flex>
 ```
 
-Trimming the leading is useful when dialing in vertical spacing in cards or other “boxy” components. Otherwise, padding looks larger on top and bottom than on the sides.
+---
 
-```jsx live="true"
-<Flex direction="column" gap="3">
-	<Box
-		style={{
-			background: "var(--gray-a2)",
-			border: "1px dashed var(--gray-a7)",
-		}}
-		p="4"
-	>
-		<Heading mb="1" size="3">
-			Without trim
-		</Heading>
+## Focus and selection
+
+Radix Themes automatically adjusts the focus and selection colors depending on the accent color of the current component. Most of the time, setting the `color` prop will intelligently change the focus and selection colors to avoid a mismatch of conflicting hues:
+
+```jsx live=true line="1,6,9"
+<Theme accentColor="indigo">
+	<Flex direction="column" gap="4">
 		<Text>
-			The goal of typography is to relate font size, line height, and line width
-			in a proportional way that maximizes beauty and makes reading easier and
-			more pleasant.
+			Complete your account setup in <Link href="#">settings</Link>
 		</Text>
-	</Box>
-
-	<Box
-		p="4"
-		style={{
-			background: "var(--gray-a2)",
-			border: "1px dashed var(--gray-a7)",
-		}}
-	>
-		<Heading mb="1" size="3" trim="start">
-			With trim
-		</Heading>
-		<Text trim="end">
-			The goal of typography is to relate font size, line height, and line width
-			in a proportional way that maximizes beauty and makes reading easier and
-			more pleasant.
+		<Text color="gray">
+			Complete your account setup in <Link href="#">settings</Link>
 		</Text>
-	</Box>
-</Flex>
+		<Text color="red">
+			Complete your account setup in <Link href="#">settings</Link>
+		</Text>
+	</Flex>
+</Theme>
 ```
 
-The default trim values are configured for the system font stack that’s used by Radix Themes. If you are using custom fonts, you can [adjust](/themes/docs/theme/typography#customization) the trim values using the corresponding CSS variables.
+#### Focus scale tokens
+
+Focus color tokens can be accessed using CSS variables that follow a similar naming structure like the other scales, e.g. `--focus-1`, `--focus-2`, and so on up to `--focus-12`.
+
+Most of the components use `--focus-8` for the focus outline color.
+
+---
+
+## Alpha colors
+
+Every color has an alpha variant which is designed to appear visually the same when placed over the page background. This is a powerful tool that allows colors to look naturally when overlayed over another background. All numerical color steps have a corresponding alpha variant.
+
+```css
+/* Solid colors */
+var(--red-1);
+var(--red-2);
+...
+var(--red-12);
+
+/* Alpha colors */
+var(--red-a1);
+var(--red-a2);
+...
+var(--red-a12);
+```
+
+Alpha colors are used automatically within Radix Themes components—no additional configuration is required.
+
+---
+
+## Backgrounds
+
+A number of background colors are used to create a sense of visual hierarchy in Radix Themes UIs. These colors are used for backgrounds, cards, and other surfaces.
+
+```css
+/* Page background */
+var(--color-background);
+
+/* Panel backgrounds, such as cards, tables, popovers, dropdown menus, etc. */
+var(--color-panel-solid);
+var(--color-panel-translucent);
+
+/* Form component backgrounds, such as text fields, checkboxes, select, etc. */
+var(--color-surface);
+
+/* Dialog overlays */
+var(--color-overlay);
+```
+
+### Panel background
+
+The `panelBackground` prop controls whether panelled elements use a solid or a translucent background color. The default `translucent` value creates a subtle overlay effect:
+
+```jsx
+<Theme panelBackground="translucent">
+	<MyApp />
+</Theme>
+```
+
+<Box mt="5" mb="6">
+	<ThemesPanelCardExample panelBackground="translucent" />
+</Box>
+
+While `solid` is useful when you'd prefer to present information unobstructed.
+
+```jsx
+<Theme panelBackground="solid">
+	<MyApp />
+</Theme>
+```
+
+<Box mt="5" mb="6">
+	<ThemesPanelCardExample panelBackground="solid" />
+</Box>
+
+---
+
+## Customization
+
+Radix Themes colors can be customized by overriding the corresponding CSS variables of the token system. Refer to the [source code](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/color.css) for the full list of the color tokens.
+
+Make sure that your CSS is applied after the Radix Themes styles so that it takes precedence.
+
+### Brand color
+
+You can replace a specific color with your brand color by remapping the corresponding token. Usually, you’d override **step 9** of the scale that you are using as your theme accent.
 
 ```css
 .radix-themes {
-	--default-leading-trim-start: 0.42em;
-	--default-leading-trim-end: 0.36em;
-	--heading-leading-trim-start: 0.42em;
-	--heading-leading-trim-end: 0.36em;
+	--my-brand-color: #3052f6;
+	--indigo-9: var(--my-brand-color);
+	--indigo-a9: var(--my-brand-color);
 }
 ```
 
-### Truncate
+In this example, using solid-colored `indigo` components will now reference your custom color.
 
-Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
+### Custom palette
 
-```jsx live=true line=2
-<Flex maxWidth="300px">
-	<Text truncate>
-		The goal of typography is to relate font size, line height, and line width
-		in a proportional way that maximizes beauty and makes reading easier and
-		more pleasant.
-	</Text>
+You can use the [custom color palette tool](/colors/custom) to generate a custom palette based just on a couple reference colors. Once you are happy with the result, paste the generated CSS into your project. You can rename the generated colors to match the accent that you want to use in your theme.
+
+To generate dark theme colors, toggle the appearance to use the dark theme. Make sure to paste the generated CSS after your light theme color overrides.
+
+<Text as="div" align="center" my="6">
+	<Box asChild mb="2">
+		<Link asChild>
+			<NextLink href="/colors/custom">
+				<img
+					src="https://workos.imgix.net/images/4c48334e-feb3-4046-9569-bd695b174728.png?auto=format&fit=clip&q=80"
+					style={{
+						width: "100%",
+						display: "block",
+						borderRadius: "var(--radius-4)",
+					}}
+				/>
+			</NextLink>
+		</Link>
+	</Box>
+	{<a href="/colors/custom">Create a custom palette →</a>}
+</Text>
+
+### Color aliasing
+
+You may prefer to use generic color names to refer to the color shades that you want to use. For example, it is common to refer to `crimson`, `jade`, and `indigo` as `red`, `green`, and `blue` respectively.
+
+In this case, you can remap Radix Themes tokens in place of one another and reclaim the color names you want to use:
+
+```css
+.radix-themes {
+	--red-1: var(--ruby-1);
+	--red-2: var(--ruby-2);
+	--red-3: var(--ruby-3);
+	--red-4: var(--ruby-4);
+	--red-5: var(--ruby-5);
+	--red-6: var(--ruby-6);
+	--red-7: var(--ruby-7);
+	--red-8: var(--ruby-8);
+	--red-9: var(--ruby-9);
+	--red-10: var(--ruby-10);
+	--red-11: var(--ruby-11);
+	--red-12: var(--ruby-12);
+
+	--red-a1: var(--ruby-a1);
+	--red-a2: var(--ruby-a2);
+	--red-a3: var(--ruby-a3);
+	--red-a4: var(--ruby-a4);
+	--red-a5: var(--ruby-a5);
+	--red-a6: var(--ruby-a6);
+	--red-a7: var(--ruby-a7);
+	--red-a8: var(--ruby-a8);
+	--red-a9: var(--ruby-a9);
+	--red-a10: var(--ruby-a10);
+	--red-a11: var(--ruby-a11);
+	--red-a12: var(--ruby-a12);
+
+	--red-surface: var(--ruby-surface);
+	--red-indicator: var(--ruby-indicator);
+	--red-track: var(--ruby-track);
+	--red-contrast: var(--ruby-contrast);
+}
+```
+
+In this example, using the `red` color in Radix Themes components and tokens would now reference the original `ruby` scale.
+
+---
+
+## Individual CSS files
+
+Color definitions comprise around 20% of the total CSS size that Radix Themes ships with.
+
+If you’d prefer to reduce your CSS bundle size and have access just to the colors you use, you can import the individual CSS files for each color module. Here’s a sample setup:
+
+```ts
+// Base theme tokens
+import "@radix-ui/themes/tokens/base.css";
+
+// Include just the colors you use, for example `ruby`, `teal`, and `slate`.
+// Remember to import the gray tint that matches your theme setting.
+import "@radix-ui/themes/tokens/colors/ruby.css";
+import "@radix-ui/themes/tokens/colors/teal.css";
+import "@radix-ui/themes/tokens/colors/slate.css";
+
+// Rest of the CSS
+import "@radix-ui/themes/components.css";
+import "@radix-ui/themes/utilities.css";
+```
+
+Please note that the colors you didn’t import will still be accepted by the `color` prop in React. Also, make sure that your developer tooling [preserves](/themes/docs/overview/styling#nextjs-import-order) the order of the imported CSS files.
+
+cursors.mdx
+---
+metaTitle: Cursors
+metaDescription: Customizing cursors used for interactive elements.
+---
+
+# Cursors
+
+<Description>Customizing cursors used for interactive elements.</Description>
+
+## Default cursors
+
+By default, interactive elements that don’t link to another page use the regular arrow cursor. This also matches the browser defaults. However, disabled elements use an explicit disabled cursor.
+
+```jsx live="true"
+<Flex align="center" gap="4" wrap="wrap">
+	<Flex align="center" gap="3" wrap="wrap">
+		<Button>Button</Button>
+		<Button asChild>
+			<a href="#">Link</a>
+		</Button>
+		<Button disabled>Disabled</Button>
+	</Flex>
+	<Button variant="ghost">Ghost button</Button>
+	<Link href="#" size="2">
+		Link
+	</Link>
+	<Checkbox defaultChecked />
+	<Switch defaultChecked />
+	<Switch defaultChecked disabled />
 </Flex>
 ```
 
-### Wrap
+## Cursor tokens
 
-Use the `wrap` prop to control text wrapping.
+Cursor settings can be accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are accessible and consistent with the rest of your theme.
 
-```jsx live=true line=2
-<Flex maxWidth="270px">
-	<Text wrap="nowrap">
-		The goal of typography is to relate font size, line height, and line width
-		in a proportional way that maximizes beauty and makes reading easier and
-		more pleasant.
-	</Text>
-</Flex>
+```css
+/* Available cursor tokens */
+var(--cursor-button);
+var(--cursor-checkbox);
+var(--cursor-disabled);
+var(--cursor-link);
+var(--cursor-menu-item);
+var(--cursor-radio);
+var(--cursor-slider-thumb);
+var(--cursor-slider-thumb-active);
+var(--cursor-switch);
 ```
 
-```jsx live=true line=2
-<Flex maxWidth="270px">
-	<Text wrap="balance">
-		The goal of typography is to relate font size, line height, and line width
-		in a proportional way that maximizes beauty and makes reading easier and
-		more pleasant.
-	</Text>
-</Flex>
+## Customization
+
+It’s common to use a pointer cursor for interactive elements. Radix Themes cursors can be customized by overriding the corresponding CSS variables of the token system.
+
+Here’s an example of how you can customize the cursor tokens to set `cursor: pointer` for most interactive elements in the theme:
+
+```css
+.radix-themes {
+	--cursor-button: pointer;
+	--cursor-checkbox: pointer;
+	--cursor-disabled: default;
+	--cursor-link: pointer;
+	--cursor-menu-item: pointer;
+	--cursor-radio: pointer;
+	--cursor-slider-thumb: grab;
+	--cursor-slider-thumb-active: grabbing;
+	--cursor-switch: pointer;
+}
 ```
 
-```jsx live=true line=2
-<Flex maxWidth="270px">
-	<Text wrap="pretty">
-		The goal of typography is to relate font size, line height, and line width
-		in a proportional way that maximizes beauty and makes reading easier and
-		more pleasant.
-	</Text>
-</Flex>
+Make sure that your CSS is applied after the Radix Themes styles so that it takes precedence.
+
+dark-mode.mdx
+---
+metaTitle: Dark mode
+metaDescription: Using appearance to manage and integrate dark mode.
+---
+
+# Dark mode
+
+<Description>Using appearance to manage and integrate dark mode.</Description>
+
+## Overview
+
+Light and dark modes are supported out of the box, allowing you to easily switch appearance without additional design or styling.
+
+<Box my="5">
+	<ThemesDarkModeExample />
+</Box>
+
+## Basic usage
+
+By default, the root `Theme` appearance is `light`. To set a different appearance pass it via the `appearance` prop. This will force the theme to use the specified setting.
+
+```jsx line=1
+<Theme appearance="dark">
+	<MyApp />
+</Theme>
+```
+
+## Inheriting system appearance
+
+A common requirement is to inherit the appearance setting from a user’s system preferences.
+
+This is a deceptively complex problem to solve given SSR, SSG and client side hydration considerations. To make implementation easier, we recommend integrating with a theme switching library.
+
+### With next-themes
+
+Integration with `next-themes` is simple and straightforward because Radix Themes implements matching class names.
+
+To enable dark mode, use `<ThemeProvider>` from `next-themes` with `attribute="class"`.
+
+```jsx line=6
+import { Theme } from "@radix-ui/themes";
+import { ThemeProvider } from "next-themes";
+
+export default function () {
+	return (
+		<ThemeProvider attribute="class">
+			<Theme>
+				<MyApp />
+			</Theme>
+		</ThemeProvider>
+	);
+}
 ```
 
 {
@@ -7681,246 +7773,26 @@ Use the `wrap` prop to control text wrapping.
 		<InfoCircledIcon />
 	</Callout.Icon>
 	<Callout.Text>
-		<Code>text-wrap: pretty</Code> is an experimental value that is{" "}
-		<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap#browser_compatibility">
-			not yet supported in all browsers
-		</a>
-		. However, it can be treated as a progressive enhancement for browsers that
-		do support it.
+		<Strong>Do not</Strong> try to set{" "}
+		<Code>{"<Theme appearance={resolvedTheme}>"}</Code>. Instead, rely just on
+		class switching that <Code>next-themes</Code> provides. This way{" "}
+		<Code>next-themes</Code> can prevent the appearance flash during initial
+		render.
 	</Callout.Text>
 </Callout.Root>
 
 }
 
-### Color
+### With other libraries
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color). The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
+Any library that supports class switching is compatible. You’ll just need to ensure that the appended class names match those supported by Radix Themes:
 
-```jsx live=true scroll=true
-<Flex direction="column">
-	<Text color="indigo">The quick brown fox jumps over the lazy dog.</Text>
-	<Text color="cyan">The quick brown fox jumps over the lazy dog.</Text>
-	<Text color="orange">The quick brown fox jumps over the lazy dog.</Text>
-	<Text color="crimson">The quick brown fox jumps over the lazy dog.</Text>
-</Flex>
-```
+- `className="light"`
+- `className="light-theme"`
+- `className="dark"`
+- `className="dark-theme"`
 
-### High-contrast
-
-Use the `highContrast` prop to increase color contrast with the background.
-
-```jsx live="true"
-<Flex direction="column">
-	<Text color="gray">The quick brown fox jumps over the lazy dog.</Text>
-	<Text color="gray" highContrast>
-		The quick brown fox jumps over the lazy dog.
-	</Text>
-</Flex>
-```
-
-### With formatting
-
-Compose `Text` with formatting components to add emphasis and structure to content.
-
-```jsx live="true"
-<Text as="p">
-	Look, such a helpful <Link href="#">link</Link>, an <Em>italic emphasis</Em>,
-	a piece of computer <Code>code</Code>, and even a hotkey combination{" "}
-	<Kbd>⇧⌘A</Kbd> within the text.
-</Text>
-```
-
-### With form controls
-
-Composing `Text` with a form control like [`Checkbox`](/themes/docs/components/checkbox), [`RadioGroup`](/themes/docs/components/radio-group), or [`Switch`](/themes/docs/components/switch) automatically centers the control with the first line of text, even when the text is multi-line.
-
-```jsx live="true"
-<Box maxWidth="300px">
-	<Text as="label" size="3">
-		<Flex gap="2">
-			<Checkbox defaultChecked /> I understand that these documents are
-			confidential and cannot be shared with a third party.
-		</Flex>
-	</Text>
-</Box>
-```
-
-
----
-metaTitle: Theme
-metaDescription: Wraps all or part of a React tree to provide theme configuration.
-sourcePath: components/theme
----
-
-## API Reference
-
-For an overview of theming see the [overview page](/themes/docs/theme/overview).
-
-<ThemesPropsTable defs="themePropDefs" />
-
-## Examples
-
-### Basic configuration
-
-Wrap a component tree in the `Theme` component to provide or modify configuration for all children.
-
-```jsx live=true
-<Box maxWidth="400px">
-	<Card size="2">
-		<Flex direction="column" gap="3">
-			<Grid gap="1">
-				<Text as="div" weight="bold" size="2" mb="1">
-					Feedback
-				</Text>
-				<TextArea placeholder="Write your feedback…" />
-			</Grid>
-			<Flex asChild justify="between">
-				<label>
-					<Text color="gray" size="2">
-						Attach screenshot?
-					</Text>
-					<Switch size="1" defaultChecked />
-				</label>
-			</Flex>
-			<Grid columns="2" gap="2">
-				<Button variant="surface">Back</Button>
-				<Button>Send</Button>
-			</Grid>
-		</Flex>
-	</Card>
-</Box>
-```
-
-### Nesting
-
-Nest another theme to modify configuration for a specific subtree. Configuration is inherited from the parent.
-
-```jsx live=true scroll=true line=16,32
-<Card size="2">
-	<Flex gap="6">
-		<Flex direction="column" gap="3">
-			<Heading as="h5" size="2">
-				Global
-			</Heading>
-			<Grid gap="1">
-				<Text as="div" weight="bold" size="2" mb="1">
-					Feedback
-				</Text>
-				<TextArea placeholder="Write your feedback…" />
-			</Grid>
-			<Button>Send</Button>
-		</Flex>
-
-		<Theme __accentColor__="cyan" __radius__="full">
-			<Card size="2">
-				<Flex gap="6">
-					<Flex direction="column" gap="3">
-						<Heading as="h5" size="2">
-							Child
-						</Heading>
-						<Grid gap="1">
-							<Text as="div" weight="bold" size="2" mb="1">
-								Feedback
-							</Text>
-							<TextArea placeholder="Write your feedback…" />
-						</Grid>
-						<Button>Send</Button>
-					</Flex>
-
-					<Theme __accentColor__="orange">
-						<Card size="2">
-							<Flex direction="column" gap="3">
-								<Heading as="h5" size="2">
-									Grandchild
-								</Heading>
-								<Grid gap="1">
-									<Text as="div" weight="bold" size="2" mb="1">
-										Feedback
-									</Text>
-									<TextArea placeholder="Write your feedback…" />
-								</Grid>
-								<Button>Send</Button>
-							</Flex>
-						</Card>
-					</Theme>
-				</Flex>
-			</Card>
-		</Theme>
-	</Flex>
-</Card>
-```
-
-### Component overrides
-
-Override configuration per component by passing any supported prop directly to that component.
-
-```jsx live=true line=15,20
-<Box maxWidth="400px">
-	<Card size="2">
-		<Flex direction="column" gap="3">
-			<Grid gap="1">
-				<Text as="div" weight="bold" size="2" mb="1">
-					Feedback
-				</Text>
-				<TextArea placeholder="Write your feedback…" />
-			</Grid>
-			<Flex asChild justify="between">
-				<label>
-					<Text color="gray" size="2">
-						Attach screenshot?
-					</Text>
-					<Switch
-						size="1"
-						__color__="orange"
-						__radius__="full"
-						defaultChecked
-					/>
-				</label>
-			</Flex>
-			<Grid columns="2" gap="2">
-				<Button variant="surface">Back</Button>
-				<Button __color__="cyan" __radius__="full">
-					Send
-				</Button>
-			</Grid>
-		</Flex>
-	</Card>
-</Box>
-```
-
-
----
-metaTitle: Tooltip
-metaDescription: Floating element that provides a control with contextual information via pointer or focus.
-sourcePath: components/tooltip
----
-
-```jsx live=true
-<Tooltip content="Add to library">
-	<IconButton radius="full">
-		<PlusIcon />
-	</IconButton>
-</Tooltip>
-```
-
-## API Reference
-
-This component inherits and merges props from the Radix Tooltip primitive [Root](/primitives/docs/components/tooltip#root), [Portal](/primitives/docs/components/tooltip#portal) and [Content](/primitives/docs/components/tooltip#content) parts. It supports [common margin props](/themes/docs/overview/layout#margin-props).
-
-<ThemesPropsTable defs="tooltipPropDefs" />
-
-
----
-metaTitle: Visually Hidden
-metaDescription: Hides content from the screen in an accessible way.
-sourcePath: components/visually-hidden
----
-
-## API Reference
-
-This component inherits all props and functionality from the [Visually Hidden primitive](/primitives/docs/utilities/visually-hidden) utility.
-
-
+getting-started.mdx
 ---
 metaTitle: Getting started
 metaDescription: Install Radix Themes and start building in minutes
@@ -8111,7 +7983,7 @@ Get the most out of Radix Themes by exploring more concepts and features.
 
 }
 
-
+layout.mdx
 ---
 metaTitle: Layout
 metaDescription: Get the layout concerns right.
@@ -8277,7 +8149,213 @@ import "@radix-ui/themes/layout.css";
 
 You’ll still have to wrap your app with `Theme` to provide the space scale and scaling factor settings.
 
+overview.mdx
+---
+metaTitle: Theme overview
+metaDescription: Use the Theme component to change the look and feel of your UI.
+---
 
+# Theme overview
+
+<Description>
+	Use the Theme component to change the look and feel of your UI.
+</Description>
+
+## Anatomy
+
+The [Theme component](/themes/docs/components/theme) defines the overall visual look of your application. It can be customized by passing a minimal set of configuration options.
+
+```jsx live=true
+<Theme
+	accentColor="mint"
+	grayColor="gray"
+	panelBackground="solid"
+	scaling="100%"
+	radius="full"
+>
+	<ThemesVolumeControlExample />
+</Theme>
+```
+
+A well tuned set of defaults is provided to get you started, but don’t be afraid to play with all of the available options to find the right visual style for your application. Check out the [Playground](/themes/playground) to see what effect each option has.
+
+## Variants
+
+Variants are visual variations of a component which are used to create visual hierarchies and communicate relative importance.
+
+Each component offers a different set of variants, though all are designed to be consistent and complimentary with each other.
+
+```jsx live=true
+<Flex gap="3" align="center">
+	<Button variant="classic">
+		Get started <ArrowRightIcon />
+	</Button>
+	<Button variant="solid">
+		Get started <ArrowRightIcon />
+	</Button>
+	<Button variant="soft">
+		Get started <ArrowRightIcon />
+	</Button>
+</Flex>
+```
+
+## Examples
+
+Using a combination of component variants alongside customized theme settings allows you to create a multitude of unique-looking interfaces.
+
+For example you could create:
+
+- [Music applications](/themes/example-music-app)
+- [Ecommerce product elements](/themes/example-ecommerce)
+- [SaaS dashboards](/themes/example-dashboard)
+
+Or any number of differing treatments and styles.
+
+<ThemesVariantsExample />
+
+## Tokens
+
+Tokens provide direct access to theme values and give you flexibility to build and customize your own themed components.
+
+For all available theme tokens see the [source code](https://github.com/radix-ui/themes/tree/main/packages/radix-ui-themes/src/styles/tokens), or read more about each type of token in the relevant theme pages.
+
+{
+
+  <Grid columns={{ initial: '1', xs: '2' }} my="6" gap="4">
+      <ThemesLinkCard
+        title="Color"
+        desc="Understand the color system and its application in your theme."
+        href="/themes/docs/theme/color"
+      />
+
+      <ThemesLinkCard
+        title="Typography"
+        desc="Learn how to use and customize the typographic elements of your theme."
+        href="/themes/docs/theme/typography"
+      />
+
+      <ThemesLinkCard
+        title="Spacing"
+        desc="Explore the spacing scale and the available scaling options."
+        href="/themes/docs/theme/spacing"
+      />
+
+      <ThemesLinkCard
+        title="Radius"
+        desc="Choose the radius setting in your theme that fits your style."
+        href="/themes/docs/theme/radius"
+      />
+
+      <ThemesLinkCard
+        title="Shadows"
+        desc="Use elevation, depth and shadows effectively and customize their properties."
+        href="/themes/docs/theme/shadows"
+      />
+
+      <ThemesLinkCard
+        title="Cursors"
+        desc="Customizing cursors used for interactive elements."
+        href="/themes/docs/theme/cursors"
+      />
+
+    </Grid>
+
+}
+
+radius.mdx
+---
+metaTitle: Radius
+metaDescription: Choosing the right radius setting in your theme.
+---
+
+# Radius
+
+<Description>Choosing the right radius setting in your theme.</Description>
+
+## Theme setting
+
+Theme `radius` setting manages the radius factor applied to the components:
+
+```jsx line="1"
+<Theme radius="medium">
+	<TextField.Root size="3" placeholder="Reply…">
+		<TextField.Slot side="right" px="1">
+			<Button size="2">Send</Button>
+		</TextField.Slot>
+	</TextField.Root>
+</Theme>
+```
+
+<Box my="5">
+	<ThemesRadiusExample />
+</Box>
+
+The resulting `border-radius` is contextual and differs depending on the component. For example, when set to `full`, a [Button](/themes/docs/components/button) becomes pill-shaped, while a [Checkbox](/themes/docs/components/checkbox) will never become fully rounded to prevent any confusion between it and a [Radio](/themes/docs/components/radio).
+
+```jsx live=true
+<Theme radius="full">
+	<Flex align="center" gap="3">
+		<Button>Save</Button>
+		<Switch defaultChecked />
+		<Checkbox defaultChecked />
+	</Flex>
+</Theme>
+```
+
+## Radius overrides
+
+Certain components allow you to override the radius factor using their own `radius` prop.
+
+```jsx live=true
+<Flex align="center" gap="3">
+	<Button radius="none">Save</Button>
+	<Button radius="small">Save</Button>
+	<Button radius="medium">Save</Button>
+	<Button radius="large">Save</Button>
+	<Button radius="full">Save</Button>
+</Flex>
+```
+
+Components that render panels, like Card, Dialog, and Popover, among others, won’t have the `radius` prop, but will inherit the radius setting from the theme. The `radius` prop is also unavailable on most text-based components.
+
+## Radius scale
+
+Radius values used in the components are derived from a 6-step scale.
+
+<Box mt="5" mb="6">
+	<ThemesRadiusScale />
+</Box>
+
+While you can’t use a specific step on a particular component directly—the `radius` prop is used to set just the radius factor—you can use the radius scale to style your own components.
+
+Radius tokens are accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are consistent with the rest of your theme.
+
+```css
+/* Radius values that automatically respond to the radius factor */
+var(--radius-1);
+var(--radius-2);
+var(--radius-3);
+var(--radius-4);
+var(--radius-5);
+var(--radius-6);
+
+/* A multiplier that controls the theme radius */
+var(--radius-factor);
+
+/*
+ * A variable used to calculate a fully rounded radius.
+ * Usually used within a CSS `max()` function.
+ */
+var(--radius-full);
+
+/*
+ * A variable used to calculate radius of a thumb element.
+ * Usually used within a CSS `max()` function.
+ */
+var(--radius-thumb);
+```
+
+releases.mdx
 ---
 metaTitle: Releases
 metaDescription: Radix Themes releases and their changelogs.
@@ -8890,7 +8968,7 @@ If you were using the following tokens for your custom components, make sure to 
 
 - Initial release! 🎉
 
-
+resources.mdx
 ---
 metaTitle: Resources
 metaDescription: Related assets and resources.
@@ -8909,7 +8987,116 @@ metaDescription: Related assets and resources.
 
 If you built something awesome for Radix Themes, feel free to reach out on [Twitter](https://twitter.com/radix_ui), [Discord](https://discord.com/invite/7Xb99uG), or [GitHub](https://github.com/radix-ui/themes) so that we can feature your work on this page.
 
+shadows.mdx
+---
+metaTitle: Shadows
+metaDescription: Understanding the shadow styles used in your theme.
+---
 
+# Shadows
+
+<Description>Understanding the shadow styles used in your theme.</Description>
+
+Shadows used in the components are derived from a 6-step scale. Refer to the [source code](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/shadow.css) for the actual values used to achieve these shadows.
+
+<Box mt="5" mb="6">
+	<ThemesShadowScale />
+</Box>
+
+#### Shadow tokens
+
+Shadow tokens can be accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are consistent with the rest of your theme.
+
+```css
+/* Inset shadow */
+var(--shadow-1);
+
+/* Shadows for variant="classic" panels, like Card */
+var(--shadow-2);
+var(--shadow-3);
+
+/* Shadows for smaller overlay panels, like Hover Card and Popover */
+var(--shadow-4);
+var(--shadow-5);
+
+/* Shadows for larger overlay panels, like Dialog */
+var(--shadow-6);
+```
+
+spacing.mdx
+---
+metaTitle: Spacing
+metaDescription: Overview of the space scale and scaling options.
+---
+
+# Spacing
+
+<Description>Overview of the space scale and scaling options.</Description>
+
+## Space scale
+
+Spacing values are derived from a 9-step scale, which is used for props such as margin and padding. These props accept numeric strings from `"1"` to `"9"`, which correspond to the steps in the scale below.
+
+<Box my="7">
+	<ThemesSpacingScale />
+</Box>
+
+<ThemesSpacingTable />
+
+#### Space scale tokens
+
+Space scale tokens can be also accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are consistent with the rest of your theme.
+
+```css
+/* Space scale */
+var(--space-1);
+var(--space-2);
+var(--space-3);
+var(--space-4);
+var(--space-5);
+var(--space-6);
+var(--space-7);
+var(--space-8);
+var(--space-9);
+```
+
+## Scaling
+
+Values which affect layout (spacing, font size, line height) scale relatively to each other based on the `scaling` value defined in your Theme. This setting allows you to scale the UI density uniformly across your entire application.
+
+```jsx line="1"
+<Theme scaling="100%">
+	<Card variant="surface">
+		<Flex gap="3" align="center">
+			<Avatar size="3" src={person.image} fallback={person.name} />
+			<Box>
+				<Text as="div" size="2" weight="bold">
+					{person.name}
+				</Text>
+				<Text as="div" size="2" color="gray">
+					Approved invoice <Link>#3461</Link>
+				</Text>
+			</Box>
+		</Flex>
+	</Card>
+</Theme>
+```
+
+<Box my="5">
+	<ThemesScalingExample />
+</Box>
+
+#### Scaling factor
+
+The scaling factor token can be accessed using the `--scaling` CSS variable. If you need to use different scaling factors in your app, you can use this token in your custom styles, ensuring they are consistent with the rest of your theme.
+
+```css
+.MyCustomComponent {
+	width: calc(200px * var(--scaling));
+}
+```
+
+styling.mdx
 ---
 metaTitle: Styling
 metaDescription: How to approach styling with Radix Themes.
@@ -9082,575 +9269,483 @@ import "@radix-ui/themes/layout/components.css";
 import "@radix-ui/themes/layout/utilities.css";
 ```
 
-
+text-area.mdx
 ---
-metaTitle: Breakpoints
-metaDescription: Built-in breakpoints allow you to easily build
-  adapative layouts.
+metaTitle: Text Area
+metaDescription: Captures multi-line user input.
+sourcePath: components/text-area
 ---
 
-# Breakpoints
-
-<Description>
-	Built-in breakpoints allow you to easily build adaptive layouts.
-</Description>
-
-## Available sizes
-
-Each breakpoint matches a fixed screen width. Values are `min-width` based and apply when the screen width is equal or greater.
-
-<ThemesBreakpointsTable />
-
-## Usage
-
-Most component size and layout props will accept an additional `Responsive` object shape for modifying the given prop across breakpoints.
-
-Each size maps to a corresponding key, the value of each will be applied when the screen size is greater than or equal to the named breakpoint.
-
-```jsx
-<Heading
-	size={{
-		initial: "3",
-		md: "5",
-		xl: "7",
-	}}
-/>
+```jsx live=true
+<TextArea placeholder="Reply to comment…" />
 ```
 
+## API Reference
 
----
-metaTitle: Color
-metaDescription: Understanding the color system and it’s application in your theme.
----
+This component is based on the `textarea` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
 
-# Color
+<ThemesPropsTable defs="textAreaPropDefs" />
 
-<Description>
-	Understanding the color system and its application in your theme.
-</Description>
+## Examples
 
-Radix Themes comes with a number of color scales, each with their own light, dark and alpha variants. Under the hood, the color system is powered by [Radix Colors](/colors).
+### Size
 
-## Accents
+Use the `size` prop to control the size.
 
-Accent color is the most dominant color in your theme. It is used for primary buttons, links and other interactive elements. `accentColor` is specified directly on the [Theme](/themes/docs/components/theme) component:
-
-```jsx
-<Theme accentColor="indigo">
-	<MyApp />
-</Theme>
-```
-
-#### Available accent colors
-
-There is a range of accent colors to choose from:
-
-<Box mt="5" mb="8">
-	<ThemesAccentSwatches />
-</Box>
-
-#### Accent scale anatomy
-
-Each accent is a 12-step scale that includes a solid and a transparent variant of each color. For example, here’s the `indigo` color scale:
-
-<Box mt="5" mb="8">
-	<ThemesColorScale type="accent" />
-</Box>
-
-#### Accent scale tokens
-
-Accent color tokens can be accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are accessible and consistent with the rest of your theme.
-
-```css
-/* Backgrounds */
-var(--accent-1);
-var(--accent-2);
-
-/* Interactive components */
-var(--accent-3);
-var(--accent-4);
-var(--accent-5);
-
-/* Borders and separators */
-var(--accent-6);
-var(--accent-7);
-var(--accent-8);
-
-/* Solid colors */
-var(--accent-9);
-var(--accent-10);
-
-/* Accessible text */
-var(--accent-11);
-var(--accent-12);
-
-/* Functional colors */
-var(--accent-surface);
-var(--accent-indicator);
-var(--accent-track);
-var(--accent-contrast);
-```
-
----
-
-## Grays
-
-You can also choose between a pure gray or a number of tinted grays. Your accent color will be automatically paired with a gray shade that compliments it. However, you can also specify a custom `grayColor` directly on the [Theme](/themes/docs/components/theme) component:
-
-```jsx
-<Theme grayColor="mauve">
-	<MyApp />
-</Theme>
-```
-
-#### Available gray colors
-
-There is 6 grays to choose from. The difference may seem subtle, but it is impactful especially on pages with a lot of text or in dense UIs.
-
-<Box mt="5" mb="8">
-	<ThemeGraySwatches />
-</Box>
-
-#### Gray scale anatomy
-
-Grays are based on the same 12-step color scale that includes a solid and a transparent variant of each color. For example, here’s the `slate` color scale:
-
-<Box mt="5" mb="8">
-	<ThemesColorScale type="gray" />
-</Box>
-
-#### Gray scale tokens
-
-Gray color tokens can be accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are accessible and consistent with the rest of your theme.
-
-```css
-/* Backgrounds */
-var(--gray-1);
-var(--gray-2);
-
-/* Interactive components */
-var(--gray-3);
-var(--gray-4);
-var(--gray-5);
-
-/* Borders and separators */
-var(--gray-6);
-var(--gray-7);
-var(--gray-8);
-
-/* Solid colors */
-var(--gray-9);
-var(--gray-10);
-
-/* Accessible text */
-var(--gray-11);
-var(--gray-12);
-
-/* Functional colors */
-var(--gray-surface);
-var(--gray-indicator);
-var(--gray-track);
-var(--gray-contrast);
-```
-
----
-
-## Color overrides
-
-When available, the `color` prop on the components can be used to override the theme accent.
-Nested components will automatically inherit the new accent color.
-
-```jsx live=true line=17
-<Theme accentColor="indigo">
-	<Flex align="start" direction={{ initial: "column", sm: "row" }} gap="4">
-		<Callout.Root>
-			<Callout.Icon>
-				<InfoCircledIcon />
-			</Callout.Icon>
-			<Callout.Text>
-				<Flex as="span" align="center" gap="4">
-					<Text>There are new commits.</Text>
-					<Button variant="surface" size="1" my="-2">
-						Refresh
-					</Button>
-				</Flex>
-			</Callout.Text>
-		</Callout.Root>
-
-		<Callout.Root color="gray">
-			<Callout.Icon>
-				<InfoCircledIcon />
-			</Callout.Icon>
-			<Callout.Text>
-				<Flex as="span" align="center" gap="4">
-					<Text>There are new commits.</Text>
-					<Button variant="surface" size="1" my="-2">
-						Refresh
-					</Button>
-				</Flex>
-			</Callout.Text>
-		</Callout.Root>
-	</Flex>
-</Theme>
-```
-
-#### Individual color tokens
-
-Individual colors can be accessed directly using similar CSS variables by their corresponding names. For example, the reds are accessed via `--red-1`, `--red-2`, and so on up to `--red-12`.
-
----
-
-## High contrast
-
-Most of the time, components with a `color` prop also provide a `highContrast` option that achieves appearance that stands out against the page background:
-
-```jsx live=true line="5"
-<Flex gap="4">
-	<Button variant="classic" color="gray">
-		Edit profile
-	</Button>
-	<Button variant="classic" color="gray" highContrast>
-		Edit profile
-	</Button>
+```jsx live=true
+<Flex direction="column" gap="3">
+	<Box maxWidth="200px">
+		<TextArea size="1" placeholder="Reply to comment…" />
+	</Box>
+	<Box maxWidth="250px">
+		<TextArea size="2" placeholder="Reply to comment…" />
+	</Box>
+	<Box maxWidth="300px">
+		<TextArea size="3" placeholder="Reply to comment…" />
+	</Box>
 </Flex>
 ```
 
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="250px">
+	<TextArea variant="surface" placeholder="Reply to comment…" />
+	<TextArea variant="classic" placeholder="Reply to comment…" />
+	<TextArea variant="soft" placeholder="Reply to comment…" />
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="250px">
+	<TextArea color="blue" variant="soft" placeholder="Reply to comment…" />
+	<TextArea color="green" variant="soft" placeholder="Reply to comment…" />
+	<TextArea color="red" variant="soft" placeholder="Reply to comment…" />
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value.
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="250px">
+	<TextArea radius="none" placeholder="Search the docs…" />
+	<TextArea radius="large" placeholder="Search the docs…" />
+	<TextArea radius="full" placeholder="Search the docs…" />
+</Flex>
+```
+
+### Resize
+
+Use the `resize` prop to enable resizing on one or both axis.
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="250px">
+	<TextArea resize="none" placeholder="Search the docs…" />
+	<TextArea resize="vertical" placeholder="Search the docs…" />
+	<TextArea resize="horizontal" placeholder="Search the docs…" />
+	<TextArea resize="both" placeholder="Search the docs…" />
+</Flex>
+```
+
+text-field.mdx
+---
+metaTitle: Text Field
+metaDescription: Captures user input with an optional slot for buttons and icons.
+sourcePath: components/text-field
 ---
 
-## Focus and selection
-
-Radix Themes automatically adjusts the focus and selection colors depending on the accent color of the current component. Most of the time, setting the `color` prop will intelligently change the focus and selection colors to avoid a mismatch of conflicting hues:
-
-```jsx live=true line="1,6,9"
-<Theme accentColor="indigo">
-	<Flex direction="column" gap="4">
-		<Text>
-			Complete your account setup in <Link href="#">settings</Link>
-		</Text>
-		<Text color="gray">
-			Complete your account setup in <Link href="#">settings</Link>
-		</Text>
-		<Text color="red">
-			Complete your account setup in <Link href="#">settings</Link>
-		</Text>
-	</Flex>
-</Theme>
+```jsx live=true
+<TextField.Root placeholder="Search the docs…">
+	<TextField.Slot>
+		<MagnifyingGlassIcon height="16" width="16" />
+	</TextField.Slot>
+</TextField.Root>
 ```
 
-#### Focus scale tokens
+## API Reference
 
-Focus color tokens can be accessed using CSS variables that follow a similar naming structure like the other scales, e.g. `--focus-1`, `--focus-2`, and so on up to `--focus-12`.
+### Root
 
-Most of the components use `--focus-8` for the focus outline color.
+Groups Slot and Input parts. This component is based on the `div` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
 
----
+<ThemesPropsTable defs="textFieldRootPropDefs" />
 
-## Alpha colors
+### Slot
 
-Every color has an alpha variant which is designed to appear visually the same when placed over the page background. This is a powerful tool that allows colors to look naturally when overlayed over another background. All numerical color steps have a corresponding alpha variant.
+Contains icons or buttons associated with an Input.
 
-```css
-/* Solid colors */
-var(--red-1);
-var(--red-2);
-...
-var(--red-12);
+<ThemesPropsTable defs="textFieldSlotPropDefs" />
 
-/* Alpha colors */
-var(--red-a1);
-var(--red-a2);
-...
-var(--red-a12);
-```
+## Examples
 
-Alpha colors are used automatically within Radix Themes components—no additional configuration is required.
+### Size
 
----
+Use the `size` prop to control the size.
 
-## Backgrounds
-
-A number of background colors are used to create a sense of visual hierarchy in Radix Themes UIs. These colors are used for backgrounds, cards, and other surfaces.
-
-```css
-/* Page background */
-var(--color-background);
-
-/* Panel backgrounds, such as cards, tables, popovers, dropdown menus, etc. */
-var(--color-panel-solid);
-var(--color-panel-translucent);
-
-/* Form component backgrounds, such as text fields, checkboxes, select, etc. */
-var(--color-surface);
-
-/* Dialog overlays */
-var(--color-overlay);
-```
-
-### Panel background
-
-The `panelBackground` prop controls whether panelled elements use a solid or a translucent background color. The default `translucent` value creates a subtle overlay effect:
-
-```jsx
-<Theme panelBackground="translucent">
-	<MyApp />
-</Theme>
-```
-
-<Box mt="5" mb="6">
-	<ThemesPanelCardExample panelBackground="translucent" />
-</Box>
-
-While `solid` is useful when you'd prefer to present information unobstructed.
-
-```jsx
-<Theme panelBackground="solid">
-	<MyApp />
-</Theme>
-```
-
-<Box mt="5" mb="6">
-	<ThemesPanelCardExample panelBackground="solid" />
-</Box>
-
----
-
-## Customization
-
-Radix Themes colors can be customized by overriding the corresponding CSS variables of the token system. Refer to the [source code](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/color.css) for the full list of the color tokens.
-
-Make sure that your CSS is applied after the Radix Themes styles so that it takes precedence.
-
-### Brand color
-
-You can replace a specific color with your brand color by remapping the corresponding token. Usually, you’d override **step 9** of the scale that you are using as your theme accent.
-
-```css
-.radix-themes {
-	--my-brand-color: #3052f6;
-	--indigo-9: var(--my-brand-color);
-	--indigo-a9: var(--my-brand-color);
-}
-```
-
-In this example, using solid-colored `indigo` components will now reference your custom color.
-
-### Custom palette
-
-You can use the [custom color palette tool](/colors/custom) to generate a custom palette based just on a couple reference colors. Once you are happy with the result, paste the generated CSS into your project. You can rename the generated colors to match the accent that you want to use in your theme.
-
-To generate dark theme colors, toggle the appearance to use the dark theme. Make sure to paste the generated CSS after your light theme color overrides.
-
-<Text as="div" align="center" my="6">
-	<Box asChild mb="2">
-		<Link asChild>
-			<NextLink href="/colors/custom">
-				<img
-					src="https://workos.imgix.net/images/4c48334e-feb3-4046-9569-bd695b174728.png?auto=format&fit=clip&q=80"
-					style={{
-						width: "100%",
-						display: "block",
-						borderRadius: "var(--radius-4)",
-					}}
-				/>
-			</NextLink>
-		</Link>
+```jsx live=true
+<Flex direction="column" gap="3">
+	<Box maxWidth="200px">
+		<TextField.Root size="1" placeholder="Search the docs…" />
 	</Box>
-	{<a href="/colors/custom">Create a custom palette →</a>}
+	<Box maxWidth="250px">
+		<TextField.Root size="2" placeholder="Search the docs…" />
+	</Box>
+	<Box maxWidth="300px">
+		<TextField.Root size="3" placeholder="Search the docs…" />
+	</Box>
+</Flex>
+```
+
+Use matching component sizes when composing Text Field with buttons. However, don’t use size 1 inputs with buttons—at this size, there is not enough vertical space to nest other interactive elements.
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="400px">
+	<Box maxWidth="200px">
+		<TextField.Root placeholder="Search the docs…" size="1">
+			<TextField.Slot>
+				<MagnifyingGlassIcon height="16" width="16" />
+			</TextField.Slot>
+		</TextField.Root>
+	</Box>
+
+	<Box maxWidth="250px">
+		<TextField.Root placeholder="Search the docs…" size="2">
+			<TextField.Slot>
+				<MagnifyingGlassIcon height="16" width="16" />
+			</TextField.Slot>
+			<TextField.Slot>
+				<IconButton size="1" variant="ghost">
+					<DotsHorizontalIcon height="14" width="14" />
+				</IconButton>
+			</TextField.Slot>
+		</TextField.Root>
+	</Box>
+
+	<Box maxWidth="300px">
+		<TextField.Root placeholder="Search the docs…" size="3">
+			<TextField.Slot>
+				<MagnifyingGlassIcon height="16" width="16" />
+			</TextField.Slot>
+			<TextField.Slot pr="3">
+				<IconButton size="2" variant="ghost">
+					<DotsHorizontalIcon height="16" width="16" />
+				</IconButton>
+			</TextField.Slot>
+		</TextField.Root>
+	</Box>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="250px">
+	<TextField.Root variant="surface" placeholder="Search the docs…" />
+	<TextField.Root variant="classic" placeholder="Search the docs…" />
+	<TextField.Root variant="soft" placeholder="Search the docs…" />
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="250px">
+	<TextField.Root
+		color="indigo"
+		variant="soft"
+		placeholder="Search the docs…"
+	/>
+	<TextField.Root color="green" variant="soft" placeholder="Search the docs…" />
+	<TextField.Root color="red" variant="soft" placeholder="Search the docs…" />
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value.
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="250px">
+	<TextField.Root radius="none" placeholder="Search the docs…" />
+	<TextField.Root radius="large" placeholder="Search the docs…" />
+	<TextField.Root radius="full" placeholder="Search the docs…" />
+</Flex>
+```
+
+text.mdx
+---
+metaTitle: Text
+metaDescription: Foundational text primitive.
+sourcePath: components/text
+---
+
+```jsx live=true
+<Text>The quick brown fox jumps over the lazy dog.</Text>
+```
+
+## API Reference
+
+This component is based on the `span` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+<ThemesPropsTable defs="textPropDefs" />
+
+## Examples
+
+### As another element
+
+Use the `as` prop to render text as a `p`, `label`, `div` or `span`. This prop is purely semantic and does not alter visual appearance.
+
+```jsx live=true
+<Text as="p">This is a <Strong>paragraph</Strong> element.</Text>
+<Text as="label">This is a <Strong>label</Strong> element.</Text>
+<Text as="div">This is a <Strong>div</Strong> element.</Text>
+<Text as="span">This is a <Strong>span</Strong> element.</Text>
+```
+
+### Size
+
+Use the `size` prop to control text size. This prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
+
+```jsx live=true scroll=true
+<Flex direction="column" gap="3">
+	<Text size="1">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="2">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="3">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="4">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="5">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="6">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="7">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="8">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="9">The quick brown fox jumps over the lazy dog.</Text>
+</Flex>
+```
+
+Sizes 2–4 are designed to work well for long-form content.
+
+```jsx live=true
+<Text as="p" mb="5" size="4">
+  The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
 </Text>
 
-### Color aliasing
+<Text as="p" mb="5" size="3">
+  The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
+</Text>
 
-You may prefer to use generic color names to refer to the color shades that you want to use. For example, it is common to refer to `crimson`, `jade`, and `indigo` as `red`, `green`, and `blue` respectively.
-
-In this case, you can remap Radix Themes tokens in place of one another and reclaim the color names you want to use:
-
-```css
-.radix-themes {
-	--red-1: var(--ruby-1);
-	--red-2: var(--ruby-2);
-	--red-3: var(--ruby-3);
-	--red-4: var(--ruby-4);
-	--red-5: var(--ruby-5);
-	--red-6: var(--ruby-6);
-	--red-7: var(--ruby-7);
-	--red-8: var(--ruby-8);
-	--red-9: var(--ruby-9);
-	--red-10: var(--ruby-10);
-	--red-11: var(--ruby-11);
-	--red-12: var(--ruby-12);
-
-	--red-a1: var(--ruby-a1);
-	--red-a2: var(--ruby-a2);
-	--red-a3: var(--ruby-a3);
-	--red-a4: var(--ruby-a4);
-	--red-a5: var(--ruby-a5);
-	--red-a6: var(--ruby-a6);
-	--red-a7: var(--ruby-a7);
-	--red-a8: var(--ruby-a8);
-	--red-a9: var(--ruby-a9);
-	--red-a10: var(--ruby-a10);
-	--red-a11: var(--ruby-a11);
-	--red-a12: var(--ruby-a12);
-
-	--red-surface: var(--ruby-surface);
-	--red-indicator: var(--ruby-indicator);
-	--red-track: var(--ruby-track);
-	--red-contrast: var(--ruby-contrast);
-}
+<Text as="p" size="2" color="gray">
+  The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
+</Text>
 ```
 
-In this example, using the `red` color in Radix Themes components and tokens would now reference the original `ruby` scale.
+Sizes 1–3 are designed to work well for UI labels.
 
----
+```jsx live=true
+<Grid align="center" columns="2" gap="5" p="3">
+	<Flex direction="column">
+		<Text size="3" weight="bold">
+			Get started
+		</Text>
+		<Text color="gray" size="2">
+			Start your next project in minutes
+		</Text>
+	</Flex>
 
-## Individual CSS files
+	<Flex direction="column">
+		<Text size="2" weight="bold">
+			Get started
+		</Text>
+		<Text color="gray" size="2">
+			Start your next project in minutes
+		</Text>
+	</Flex>
 
-Color definitions comprise around 20% of the total CSS size that Radix Themes ships with.
+	<Flex direction="column">
+		<Text size="2" weight="bold">
+			Get started
+		</Text>
+		<Text color="gray" size="1">
+			Start your next project in minutes
+		</Text>
+	</Flex>
 
-If you’d prefer to reduce your CSS bundle size and have access just to the colors you use, you can import the individual CSS files for each color module. Here’s a sample setup:
-
-```ts
-// Base theme tokens
-import "@radix-ui/themes/tokens/base.css";
-
-// Include just the colors you use, for example `ruby`, `teal`, and `slate`.
-// Remember to import the gray tint that matches your theme setting.
-import "@radix-ui/themes/tokens/colors/ruby.css";
-import "@radix-ui/themes/tokens/colors/teal.css";
-import "@radix-ui/themes/tokens/colors/slate.css";
-
-// Rest of the CSS
-import "@radix-ui/themes/components.css";
-import "@radix-ui/themes/utilities.css";
+	<Flex direction="column">
+		<Text size="1" weight="bold">
+			Get started
+		</Text>
+		<Text color="gray" size="1">
+			Start your next project in minutes
+		</Text>
+	</Flex>
+</Grid>
 ```
 
-Please note that the colors you didn’t import will still be accepted by the `color` prop in React. Also, make sure that your developer tooling [preserves](/themes/docs/overview/styling#nextjs-import-order) the order of the imported CSS files.
+### Weight
 
+Use the `weight` prop to set the text weight.
 
----
-metaTitle: Cursors
-metaDescription: Customizing cursors used for interactive elements.
----
+```jsx live=true scroll=true
+<Text weight="regular" as="div">
+  The quick brown fox jumps over the lazy dog.
+</Text>
 
-# Cursors
+<Text weight="medium" as="div">
+  The quick brown fox jumps over the lazy dog.
+</Text>
 
-<Description>Customizing cursors used for interactive elements.</Description>
+<Text weight="bold" as="div">
+  The quick brown fox jumps over the lazy dog.
+</Text>
+```
 
-## Default cursors
+### Align
 
-By default, interactive elements that don’t link to another page use the regular arrow cursor. This also matches the browser defaults. However, disabled elements use an explicit disabled cursor.
+Use the `align` prop to set text alignment.
+
+```jsx live=true
+<Text align="left" as="div">Left-aligned</Text>
+<Text align="center" as="div">Center-aligned</Text>
+<Text align="right" as="div">Right-aligned</Text>
+```
+
+### Trim
+
+Use the `trim` prop to trim the leading space at the start, end, or both sides of the text box.
+
+The prop works similarly to the upcoming [half-leading control](https://www.w3.org/TR/css-inline-3/#leading-trim) spec, but uses a common [negative margin workaround](https://seek-oss.github.io/capsize/) under the hood for cross-browser support.
 
 ```jsx live="true"
-<Flex align="center" gap="4" wrap="wrap">
-	<Flex align="center" gap="3" wrap="wrap">
-		<Button>Button</Button>
-		<Button asChild>
-			<a href="#">Link</a>
-		</Button>
-		<Button disabled>Disabled</Button>
-	</Flex>
-	<Button variant="ghost">Ghost button</Button>
-	<Link href="#" size="2">
-		Link
-	</Link>
-	<Checkbox defaultChecked />
-	<Switch defaultChecked />
-	<Switch defaultChecked disabled />
+<Flex direction="column" gap="3">
+	<Text
+		trim="normal"
+		style={{
+			background: "var(--gray-a2)",
+			borderTop: "1px dashed var(--gray-a7)",
+			borderBottom: "1px dashed var(--gray-a7)",
+		}}
+	>
+		Without trim
+	</Text>
+	<Text
+		trim="both"
+		style={{
+			background: "var(--gray-a2)",
+			borderTop: "1px dashed var(--gray-a7)",
+			borderBottom: "1px dashed var(--gray-a7)",
+		}}
+	>
+		With trim
+	</Text>
 </Flex>
 ```
 
-## Cursor tokens
+Trimming the leading is useful when dialing in vertical spacing in cards or other “boxy” components. Otherwise, padding looks larger on top and bottom than on the sides.
 
-Cursor settings can be accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are accessible and consistent with the rest of your theme.
+```jsx live="true"
+<Flex direction="column" gap="3">
+	<Box
+		style={{
+			background: "var(--gray-a2)",
+			border: "1px dashed var(--gray-a7)",
+		}}
+		p="4"
+	>
+		<Heading mb="1" size="3">
+			Without trim
+		</Heading>
+		<Text>
+			The goal of typography is to relate font size, line height, and line width
+			in a proportional way that maximizes beauty and makes reading easier and
+			more pleasant.
+		</Text>
+	</Box>
 
-```css
-/* Available cursor tokens */
-var(--cursor-button);
-var(--cursor-checkbox);
-var(--cursor-disabled);
-var(--cursor-link);
-var(--cursor-menu-item);
-var(--cursor-radio);
-var(--cursor-slider-thumb);
-var(--cursor-slider-thumb-active);
-var(--cursor-switch);
+	<Box
+		p="4"
+		style={{
+			background: "var(--gray-a2)",
+			border: "1px dashed var(--gray-a7)",
+		}}
+	>
+		<Heading mb="1" size="3" trim="start">
+			With trim
+		</Heading>
+		<Text trim="end">
+			The goal of typography is to relate font size, line height, and line width
+			in a proportional way that maximizes beauty and makes reading easier and
+			more pleasant.
+		</Text>
+	</Box>
+</Flex>
 ```
 
-## Customization
-
-It’s common to use a pointer cursor for interactive elements. Radix Themes cursors can be customized by overriding the corresponding CSS variables of the token system.
-
-Here’s an example of how you can customize the cursor tokens to set `cursor: pointer` for most interactive elements in the theme:
+The default trim values are configured for the system font stack that’s used by Radix Themes. If you are using custom fonts, you can [adjust](/themes/docs/theme/typography#customization) the trim values using the corresponding CSS variables.
 
 ```css
 .radix-themes {
-	--cursor-button: pointer;
-	--cursor-checkbox: pointer;
-	--cursor-disabled: default;
-	--cursor-link: pointer;
-	--cursor-menu-item: pointer;
-	--cursor-radio: pointer;
-	--cursor-slider-thumb: grab;
-	--cursor-slider-thumb-active: grabbing;
-	--cursor-switch: pointer;
+	--default-leading-trim-start: 0.42em;
+	--default-leading-trim-end: 0.36em;
+	--heading-leading-trim-start: 0.42em;
+	--heading-leading-trim-end: 0.36em;
 }
 ```
 
-Make sure that your CSS is applied after the Radix Themes styles so that it takes precedence.
+### Truncate
 
+Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
 
----
-metaTitle: Dark mode
-metaDescription: Using appearance to manage and integrate dark mode.
----
-
-# Dark mode
-
-<Description>Using appearance to manage and integrate dark mode.</Description>
-
-## Overview
-
-Light and dark modes are supported out of the box, allowing you to easily switch appearance without additional design or styling.
-
-<Box my="5">
-	<ThemesDarkModeExample />
-</Box>
-
-## Basic usage
-
-By default, the root `Theme` appearance is `light`. To set a different appearance pass it via the `appearance` prop. This will force the theme to use the specified setting.
-
-```jsx line=1
-<Theme appearance="dark">
-	<MyApp />
-</Theme>
+```jsx live=true line=2
+<Flex maxWidth="300px">
+	<Text truncate>
+		The goal of typography is to relate font size, line height, and line width
+		in a proportional way that maximizes beauty and makes reading easier and
+		more pleasant.
+	</Text>
+</Flex>
 ```
 
-## Inheriting system appearance
+### Wrap
 
-A common requirement is to inherit the appearance setting from a user’s system preferences.
+Use the `wrap` prop to control text wrapping.
 
-This is a deceptively complex problem to solve given SSR, SSG and client side hydration considerations. To make implementation easier, we recommend integrating with a theme switching library.
+```jsx live=true line=2
+<Flex maxWidth="270px">
+	<Text wrap="nowrap">
+		The goal of typography is to relate font size, line height, and line width
+		in a proportional way that maximizes beauty and makes reading easier and
+		more pleasant.
+	</Text>
+</Flex>
+```
 
-### With next-themes
+```jsx live=true line=2
+<Flex maxWidth="270px">
+	<Text wrap="balance">
+		The goal of typography is to relate font size, line height, and line width
+		in a proportional way that maximizes beauty and makes reading easier and
+		more pleasant.
+	</Text>
+</Flex>
+```
 
-Integration with `next-themes` is simple and straightforward because Radix Themes implements matching class names.
-
-To enable dark mode, use `<ThemeProvider>` from `next-themes` with `attribute="class"`.
-
-```jsx line=6
-import { Theme } from "@radix-ui/themes";
-import { ThemeProvider } from "next-themes";
-
-export default function () {
-	return (
-		<ThemeProvider attribute="class">
-			<Theme>
-				<MyApp />
-			</Theme>
-		</ThemeProvider>
-	);
-}
+```jsx live=true line=2
+<Flex maxWidth="270px">
+	<Text wrap="pretty">
+		The goal of typography is to relate font size, line height, and line width
+		in a proportional way that maximizes beauty and makes reading easier and
+		more pleasant.
+	</Text>
+</Flex>
 ```
 
 {
@@ -9660,341 +9755,235 @@ export default function () {
 		<InfoCircledIcon />
 	</Callout.Icon>
 	<Callout.Text>
-		<Strong>Do not</Strong> try to set{" "}
-		<Code>{"<Theme appearance={resolvedTheme}>"}</Code>. Instead, rely just on
-		class switching that <Code>next-themes</Code> provides. This way{" "}
-		<Code>next-themes</Code> can prevent the appearance flash during initial
-		render.
+		<Code>text-wrap: pretty</Code> is an experimental value that is{" "}
+		<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap#browser_compatibility">
+			not yet supported in all browsers
+		</a>
+		. However, it can be treated as a progressive enhancement for browsers that
+		do support it.
 	</Callout.Text>
 </Callout.Root>
 
 }
 
-### With other libraries
+### Color
 
-Any library that supports class switching is compatible. You’ll just need to ensure that the appended class names match those supported by Radix Themes:
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color). The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
 
-- `className="light"`
-- `className="light-theme"`
-- `className="dark"`
-- `className="dark-theme"`
-
-
----
-metaTitle: Theme overview
-metaDescription: Use the Theme component to change the look and feel of your UI.
----
-
-# Theme overview
-
-<Description>
-	Use the Theme component to change the look and feel of your UI.
-</Description>
-
-## Anatomy
-
-The [Theme component](/themes/docs/components/theme) defines the overall visual look of your application. It can be customized by passing a minimal set of configuration options.
-
-```jsx live=true
-<Theme
-	accentColor="mint"
-	grayColor="gray"
-	panelBackground="solid"
-	scaling="100%"
-	radius="full"
->
-	<ThemesVolumeControlExample />
-</Theme>
-```
-
-A well tuned set of defaults is provided to get you started, but don’t be afraid to play with all of the available options to find the right visual style for your application. Check out the [Playground](/themes/playground) to see what effect each option has.
-
-## Variants
-
-Variants are visual variations of a component which are used to create visual hierarchies and communicate relative importance.
-
-Each component offers a different set of variants, though all are designed to be consistent and complimentary with each other.
-
-```jsx live=true
-<Flex gap="3" align="center">
-	<Button variant="classic">
-		Get started <ArrowRightIcon />
-	</Button>
-	<Button variant="solid">
-		Get started <ArrowRightIcon />
-	</Button>
-	<Button variant="soft">
-		Get started <ArrowRightIcon />
-	</Button>
+```jsx live=true scroll=true
+<Flex direction="column">
+	<Text color="indigo">The quick brown fox jumps over the lazy dog.</Text>
+	<Text color="cyan">The quick brown fox jumps over the lazy dog.</Text>
+	<Text color="orange">The quick brown fox jumps over the lazy dog.</Text>
+	<Text color="crimson">The quick brown fox jumps over the lazy dog.</Text>
 </Flex>
 ```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live="true"
+<Flex direction="column">
+	<Text color="gray">The quick brown fox jumps over the lazy dog.</Text>
+	<Text color="gray" highContrast>
+		The quick brown fox jumps over the lazy dog.
+	</Text>
+</Flex>
+```
+
+### With formatting
+
+Compose `Text` with formatting components to add emphasis and structure to content.
+
+```jsx live="true"
+<Text as="p">
+	Look, such a helpful <Link href="#">link</Link>, an <Em>italic emphasis</Em>,
+	a piece of computer <Code>code</Code>, and even a hotkey combination{" "}
+	<Kbd>⇧⌘A</Kbd> within the text.
+</Text>
+```
+
+### With form controls
+
+Composing `Text` with a form control like [`Checkbox`](/themes/docs/components/checkbox), [`RadioGroup`](/themes/docs/components/radio-group), or [`Switch`](/themes/docs/components/switch) automatically centers the control with the first line of text, even when the text is multi-line.
+
+```jsx live="true"
+<Box maxWidth="300px">
+	<Text as="label" size="3">
+		<Flex gap="2">
+			<Checkbox defaultChecked /> I understand that these documents are
+			confidential and cannot be shared with a third party.
+		</Flex>
+	</Text>
+</Box>
+```
+
+theme.mdx
+---
+metaTitle: Theme
+metaDescription: Wraps all or part of a React tree to provide theme configuration.
+sourcePath: components/theme
+---
+
+## API Reference
+
+For an overview of theming see the [overview page](/themes/docs/theme/overview).
+
+<ThemesPropsTable defs="themePropDefs" />
 
 ## Examples
 
-Using a combination of component variants alongside customized theme settings allows you to create a multitude of unique-looking interfaces.
+### Basic configuration
 
-For example you could create:
-
-- [Music applications](/themes/example-music-app)
-- [Ecommerce product elements](/themes/example-ecommerce)
-- [SaaS dashboards](/themes/example-dashboard)
-
-Or any number of differing treatments and styles.
-
-<ThemesVariantsExample />
-
-## Tokens
-
-Tokens provide direct access to theme values and give you flexibility to build and customize your own themed components.
-
-For all available theme tokens see the [source code](https://github.com/radix-ui/themes/tree/main/packages/radix-ui-themes/src/styles/tokens), or read more about each type of token in the relevant theme pages.
-
-{
-
-  <Grid columns={{ initial: '1', xs: '2' }} my="6" gap="4">
-      <ThemesLinkCard
-        title="Color"
-        desc="Understand the color system and its application in your theme."
-        href="/themes/docs/theme/color"
-      />
-
-      <ThemesLinkCard
-        title="Typography"
-        desc="Learn how to use and customize the typographic elements of your theme."
-        href="/themes/docs/theme/typography"
-      />
-
-      <ThemesLinkCard
-        title="Spacing"
-        desc="Explore the spacing scale and the available scaling options."
-        href="/themes/docs/theme/spacing"
-      />
-
-      <ThemesLinkCard
-        title="Radius"
-        desc="Choose the radius setting in your theme that fits your style."
-        href="/themes/docs/theme/radius"
-      />
-
-      <ThemesLinkCard
-        title="Shadows"
-        desc="Use elevation, depth and shadows effectively and customize their properties."
-        href="/themes/docs/theme/shadows"
-      />
-
-      <ThemesLinkCard
-        title="Cursors"
-        desc="Customizing cursors used for interactive elements."
-        href="/themes/docs/theme/cursors"
-      />
-
-    </Grid>
-
-}
-
-
----
-metaTitle: Radius
-metaDescription: Choosing the right radius setting in your theme.
----
-
-# Radius
-
-<Description>Choosing the right radius setting in your theme.</Description>
-
-## Theme setting
-
-Theme `radius` setting manages the radius factor applied to the components:
-
-```jsx line="1"
-<Theme radius="medium">
-	<TextField.Root size="3" placeholder="Reply…">
-		<TextField.Slot side="right" px="1">
-			<Button size="2">Send</Button>
-		</TextField.Slot>
-	</TextField.Root>
-</Theme>
-```
-
-<Box my="5">
-	<ThemesRadiusExample />
-</Box>
-
-The resulting `border-radius` is contextual and differs depending on the component. For example, when set to `full`, a [Button](/themes/docs/components/button) becomes pill-shaped, while a [Checkbox](/themes/docs/components/checkbox) will never become fully rounded to prevent any confusion between it and a [Radio](/themes/docs/components/radio).
+Wrap a component tree in the `Theme` component to provide or modify configuration for all children.
 
 ```jsx live=true
-<Theme radius="full">
-	<Flex align="center" gap="3">
-		<Button>Save</Button>
-		<Switch defaultChecked />
-		<Checkbox defaultChecked />
-	</Flex>
-</Theme>
-```
-
-## Radius overrides
-
-Certain components allow you to override the radius factor using their own `radius` prop.
-
-```jsx live=true
-<Flex align="center" gap="3">
-	<Button radius="none">Save</Button>
-	<Button radius="small">Save</Button>
-	<Button radius="medium">Save</Button>
-	<Button radius="large">Save</Button>
-	<Button radius="full">Save</Button>
-</Flex>
-```
-
-Components that render panels, like Card, Dialog, and Popover, among others, won’t have the `radius` prop, but will inherit the radius setting from the theme. The `radius` prop is also unavailable on most text-based components.
-
-## Radius scale
-
-Radius values used in the components are derived from a 6-step scale.
-
-<Box mt="5" mb="6">
-	<ThemesRadiusScale />
-</Box>
-
-While you can’t use a specific step on a particular component directly—the `radius` prop is used to set just the radius factor—you can use the radius scale to style your own components.
-
-Radius tokens are accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are consistent with the rest of your theme.
-
-```css
-/* Radius values that automatically respond to the radius factor */
-var(--radius-1);
-var(--radius-2);
-var(--radius-3);
-var(--radius-4);
-var(--radius-5);
-var(--radius-6);
-
-/* A multiplier that controls the theme radius */
-var(--radius-factor);
-
-/*
- * A variable used to calculate a fully rounded radius.
- * Usually used within a CSS `max()` function.
- */
-var(--radius-full);
-
-/*
- * A variable used to calculate radius of a thumb element.
- * Usually used within a CSS `max()` function.
- */
-var(--radius-thumb);
-```
-
-
----
-metaTitle: Shadows
-metaDescription: Understanding the shadow styles used in your theme.
----
-
-# Shadows
-
-<Description>Understanding the shadow styles used in your theme.</Description>
-
-Shadows used in the components are derived from a 6-step scale. Refer to the [source code](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/shadow.css) for the actual values used to achieve these shadows.
-
-<Box mt="5" mb="6">
-	<ThemesShadowScale />
-</Box>
-
-#### Shadow tokens
-
-Shadow tokens can be accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are consistent with the rest of your theme.
-
-```css
-/* Inset shadow */
-var(--shadow-1);
-
-/* Shadows for variant="classic" panels, like Card */
-var(--shadow-2);
-var(--shadow-3);
-
-/* Shadows for smaller overlay panels, like Hover Card and Popover */
-var(--shadow-4);
-var(--shadow-5);
-
-/* Shadows for larger overlay panels, like Dialog */
-var(--shadow-6);
-```
-
-
----
-metaTitle: Spacing
-metaDescription: Overview of the space scale and scaling options.
----
-
-# Spacing
-
-<Description>Overview of the space scale and scaling options.</Description>
-
-## Space scale
-
-Spacing values are derived from a 9-step scale, which is used for props such as margin and padding. These props accept numeric strings from `"1"` to `"9"`, which correspond to the steps in the scale below.
-
-<Box my="7">
-	<ThemesSpacingScale />
-</Box>
-
-<ThemesSpacingTable />
-
-#### Space scale tokens
-
-Space scale tokens can be also accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are consistent with the rest of your theme.
-
-```css
-/* Space scale */
-var(--space-1);
-var(--space-2);
-var(--space-3);
-var(--space-4);
-var(--space-5);
-var(--space-6);
-var(--space-7);
-var(--space-8);
-var(--space-9);
-```
-
-## Scaling
-
-Values which affect layout (spacing, font size, line height) scale relatively to each other based on the `scaling` value defined in your Theme. This setting allows you to scale the UI density uniformly across your entire application.
-
-```jsx line="1"
-<Theme scaling="100%">
-	<Card variant="surface">
-		<Flex gap="3" align="center">
-			<Avatar size="3" src={person.image} fallback={person.name} />
-			<Box>
-				<Text as="div" size="2" weight="bold">
-					{person.name}
+<Box maxWidth="400px">
+	<Card size="2">
+		<Flex direction="column" gap="3">
+			<Grid gap="1">
+				<Text as="div" weight="bold" size="2" mb="1">
+					Feedback
 				</Text>
-				<Text as="div" size="2" color="gray">
-					Approved invoice <Link>#3461</Link>
-				</Text>
-			</Box>
+				<TextArea placeholder="Write your feedback…" />
+			</Grid>
+			<Flex asChild justify="between">
+				<label>
+					<Text color="gray" size="2">
+						Attach screenshot?
+					</Text>
+					<Switch size="1" defaultChecked />
+				</label>
+			</Flex>
+			<Grid columns="2" gap="2">
+				<Button variant="surface">Back</Button>
+				<Button>Send</Button>
+			</Grid>
 		</Flex>
 	</Card>
-</Theme>
-```
-
-<Box my="5">
-	<ThemesScalingExample />
 </Box>
-
-#### Scaling factor
-
-The scaling factor token can be accessed using the `--scaling` CSS variable. If you need to use different scaling factors in your app, you can use this token in your custom styles, ensuring they are consistent with the rest of your theme.
-
-```css
-.MyCustomComponent {
-	width: calc(200px * var(--scaling));
-}
 ```
 
+### Nesting
 
+Nest another theme to modify configuration for a specific subtree. Configuration is inherited from the parent.
+
+```jsx live=true scroll=true line=16,32
+<Card size="2">
+	<Flex gap="6">
+		<Flex direction="column" gap="3">
+			<Heading as="h5" size="2">
+				Global
+			</Heading>
+			<Grid gap="1">
+				<Text as="div" weight="bold" size="2" mb="1">
+					Feedback
+				</Text>
+				<TextArea placeholder="Write your feedback…" />
+			</Grid>
+			<Button>Send</Button>
+		</Flex>
+
+		<Theme __accentColor__="cyan" __radius__="full">
+			<Card size="2">
+				<Flex gap="6">
+					<Flex direction="column" gap="3">
+						<Heading as="h5" size="2">
+							Child
+						</Heading>
+						<Grid gap="1">
+							<Text as="div" weight="bold" size="2" mb="1">
+								Feedback
+							</Text>
+							<TextArea placeholder="Write your feedback…" />
+						</Grid>
+						<Button>Send</Button>
+					</Flex>
+
+					<Theme __accentColor__="orange">
+						<Card size="2">
+							<Flex direction="column" gap="3">
+								<Heading as="h5" size="2">
+									Grandchild
+								</Heading>
+								<Grid gap="1">
+									<Text as="div" weight="bold" size="2" mb="1">
+										Feedback
+									</Text>
+									<TextArea placeholder="Write your feedback…" />
+								</Grid>
+								<Button>Send</Button>
+							</Flex>
+						</Card>
+					</Theme>
+				</Flex>
+			</Card>
+		</Theme>
+	</Flex>
+</Card>
+```
+
+### Component overrides
+
+Override configuration per component by passing any supported prop directly to that component.
+
+```jsx live=true line=15,20
+<Box maxWidth="400px">
+	<Card size="2">
+		<Flex direction="column" gap="3">
+			<Grid gap="1">
+				<Text as="div" weight="bold" size="2" mb="1">
+					Feedback
+				</Text>
+				<TextArea placeholder="Write your feedback…" />
+			</Grid>
+			<Flex asChild justify="between">
+				<label>
+					<Text color="gray" size="2">
+						Attach screenshot?
+					</Text>
+					<Switch
+						size="1"
+						__color__="orange"
+						__radius__="full"
+						defaultChecked
+					/>
+				</label>
+			</Flex>
+			<Grid columns="2" gap="2">
+				<Button variant="surface">Back</Button>
+				<Button __color__="cyan" __radius__="full">
+					Send
+				</Button>
+			</Grid>
+		</Flex>
+	</Card>
+</Box>
+```
+
+tooltip.mdx
+---
+metaTitle: Tooltip
+metaDescription: Floating element that provides a control with contextual information via pointer or focus.
+sourcePath: components/tooltip
+---
+
+```jsx live=true
+<Tooltip content="Add to library">
+	<IconButton radius="full">
+		<PlusIcon />
+	</IconButton>
+</Tooltip>
+```
+
+## API Reference
+
+This component inherits and merges props from the Radix Tooltip primitive [Root](/primitives/docs/components/tooltip#root), [Portal](/primitives/docs/components/tooltip#portal) and [Content](/primitives/docs/components/tooltip#content) parts. It supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+<ThemesPropsTable defs="tooltipPropDefs" />
+
+typography.mdx
 ---
 metaTitle: Typography
 metaDescription: Guidance for using and tuning typography.
@@ -10143,4 +10132,15 @@ There’s a number of advanced typographic features that can be customized. Thes
 	--heading-letter-spacing: -0.01em;
 }
 ```
+
+visually-hidden.mdx
+---
+metaTitle: Visually Hidden
+metaDescription: Hides content from the screen in an accessible way.
+sourcePath: components/visually-hidden
+---
+
+## API Reference
+
+This component inherits all props and functionality from the [Visually Hidden primitive](/primitives/docs/utilities/visually-hidden) utility.
 
