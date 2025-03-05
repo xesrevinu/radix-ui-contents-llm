@@ -9557,7 +9557,7 @@ shadcn/ui hands you the actual component code. You have full control to customiz
 _In a typical library, if you need to change a button’s behavior, you have to override styles or wrap the component. With shadcn/ui, you simply edit the button code directly._
 
 <Accordion collapsible>
-  <AccordionItem value="faq-1">
+  <AccordionItem value="faq-1" className="border-none">
     <AccordionTrigger>
       How do I pull upstream updates in an Open Code approach?
     </AccordionTrigger>
@@ -11429,6 +11429,13 @@ You can test Tailwind v4 + React 19 today using the `canary` release of the CLI.
 </div>
 
 ## Upgrade Your Project
+
+<Callout className="bg-blue-50 mt-6 border-blue-600 dark:border-blue-900 dark:bg-blue-950 mb-6 [&_code]:bg-blue-100 dark:[&_code]:bg-blue-900">
+  **Important:** Before upgrading, please read the [Tailwind v4 Compatibility
+  Docs](https://tailwindcss.com/docs/compatibility) and make sure your project
+  is ready for the upgrade. Tailwind v4 uses bleeding-edge browser features and
+  is designed for modern browsers.
+</Callout>
 
 One of the major advantages of using `shadcn/ui` is that the code you end up with is exactly what you'd write yourself. There are no hidden abstractions.
 
