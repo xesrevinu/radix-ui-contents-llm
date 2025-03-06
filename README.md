@@ -65,8 +65,8 @@ This will:
 ### Summary
 
 - Total Files: 8
-- Total Size: 2.74 MB
-- Total Tokens: 689,918
+- Total Size: 2.75 MB
+- Total Tokens: 690,255
 
 #### radix-docs
 
@@ -90,13 +90,13 @@ This will:
 
 | File | Size | Tokens | Raw |
 | --- | --- | --- | --- |
-| [output/shadcn-docs.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/shadcn-docs.txt) | 339 kB | 98,537 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/shadcn-docs.txt) |
+| [output/shadcn-docs.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/shadcn-docs.txt) | 340 kB | 98,854 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/shadcn-docs.txt) |
 
 #### shadcn-components
 
 | File | Size | Tokens | Raw |
 | --- | --- | --- | --- |
-| [output/shadcn-components.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/shadcn-components.txt) | 1.04 MB | 240,063 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/shadcn-components.txt) |
+| [output/shadcn-components.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/shadcn-components.txt) | 1.04 MB | 240,083 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/shadcn-components.txt) |
 
 #### shadcn-blocks
 
