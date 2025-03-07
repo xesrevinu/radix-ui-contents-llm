@@ -9029,28 +9029,28 @@ Here's an example of a complex component that installs a page, two components, a
   "description": "A complex hello world component",
   "files": [
     {
-      "path": "registry/hello-world/page.tsx",
+      "path": "registry/new-york/hello-world/page.tsx",
       "type": "registry:page",
       "target": "app/hello/page.tsx"
     },
     {
-      "path": "registry/hello-world/components/hello-world.tsx",
+      "path": "registry/new-york/hello-world/components/hello-world.tsx",
       "type": "registry:component"
     },
     {
-      "path": "registry/hello-world/components/formatted-message.tsx",
+      "path": "registry/new-york/hello-world/components/formatted-message.tsx",
       "type": "registry:component"
     },
     {
-      "path": "registry/hello-world/hooks/use-hello.ts",
+      "path": "registry/new-york/hello-world/hooks/use-hello.ts",
       "type": "registry:hook"
     },
     {
-      "path": "registry/hello-world/lib/format-date.ts",
+      "path": "registry/new-york/hello-world/lib/format-date.ts",
       "type": "registry:utils"
     },
     {
-      "path": "registry/hello-world/hello.config.ts",
+      "path": "registry/new-york/hello-world/hello.config.ts",
       "type": "registry:file",
       "target": "~/hello.config.ts"
     }
@@ -9324,7 +9324,7 @@ This `registry.json` file must conform to the [registry schema specification](/d
 
 Add your first component. Here's an example of a simple `<HelloWorld />` component:
 
-```tsx title="registry/hello-world/hello-world.tsx" showLineNumbers
+```tsx title="registry/new-york/hello-world/hello-world.tsx" showLineNumbers
 import { Button } from "@/components/ui/button"
 
 export function HelloWorld() {
@@ -9333,15 +9333,17 @@ export function HelloWorld() {
 ```
 
 <Callout className="mt-6">
-  **Note:** This example places the component in the `registry` directory. You
-  can place it anywhere in your project as long as you set the correct path in
-  the `registry.json` file.
+  **Note:** This example places the component in the `registry/new-york`
+  directory. You can place it anywhere in your project as long as you set the
+  correct path in the `registry.json` file and you follow the `registry/[NAME]`
+  directory structure.
 </Callout>
 
 ```txt
 registry
-└── hello-world
-    └── hello-world.tsx
+└── new-york
+    └── hello-world
+        └── hello-world.tsx
 ```
 
 <Callout className="mt-6 [&_[data-rehype-pretty-code-title]]:pt-1 [&_pre]:mb-0">
@@ -9374,7 +9376,7 @@ To add your component to the registry, you need to add your component definition
       "description": "A simple hello world component.",
       "files": [
         {
-          "path": "registry/hello-world/hello-world.tsx",
+          "path": "registry/new-york/hello-world/hello-world.tsx",
           "type": "registry:component"
         }
       ]
@@ -9451,10 +9453,11 @@ To make your registry available to other developers, you can publish it by deplo
 
 Here are some guidelines to follow when building components for a registry.
 
+- Place your registry item in the `registry/[STYLE]/[NAME]` directory. I'm using `new-york` as an example. It can be anything you want as long as it's nested under the `registry` directory.
 - The following properties are required for the block definition: `name`, `description`, `type` and `files`.
 - Make sure to list all registry dependencies in `registryDependencies`. A registry dependency is the name of the component in the registry eg. `input`, `button`, `card`, etc or a URL to a registry item eg. `http://localhost:3000/r/editor.json`.
 - Make sure to list all dependencies in `dependencies`. A dependency is the name of the package in the registry eg. `zod`, `sonner`, etc. To set a version, you can use the `name@version` format eg. `zod@^3.20.0`.
-- **Imports should always use the `@/registry` path.** eg. `import { HelloWorld } from "@/registry/hello-world/hello-world"`
+- **Imports should always use the `@/registry` path.** eg. `import { HelloWorld } from "@/registry/new-york/hello-world/hello-world"`
 - Ideally, place your files within a registry item in `components`, `hooks`, `lib` directories.
 
 ## Install using the CLI
@@ -10707,11 +10710,11 @@ The `registry-item.json` schema is used to define your custom registry items.
   "description": "A simple hello world component.",
   "files": [
     {
-      "path": "registry/hello-world/hello-world.tsx",
+      "path": "registry/new-york/hello-world/hello-world.tsx",
       "type": "registry:component"
     },
     {
-      "path": "registry/hello-world/use-hello-world.ts",
+      "path": "registry/new-york/hello-world/use-hello-world.ts",
       "type": "registry:hook"
     }
   ]
@@ -10843,20 +10846,20 @@ The `files` property is used to specify the files of your registry item. Each fi
 {
   "files": [
     {
-      "path": "registry/hello-world/page.tsx",
+      "path": "registry/new-york/hello-world/page.tsx",
       "type": "registry:page",
       "target": "app/hello/page.tsx"
     },
     {
-      "path": "registry/hello-world/hello-world.tsx",
+      "path": "registry/new-york/hello-world/hello-world.tsx",
       "type": "registry:component"
     },
     {
-      "path": "registry/hello-world/use-hello-world.ts",
+      "path": "registry/new-york/hello-world/use-hello-world.ts",
       "type": "registry:hook"
     },
     {
-      "path": "registry/hello-world/.env",
+      "path": "registry/new-york/hello-world/.env",
       "type": "registry:file",
       "target": "~/.env"
     }
@@ -10985,7 +10988,7 @@ The `registry.json` schema is used to define your custom component registry.
       "description": "A simple hello world component.",
       "files": [
         {
-          "path": "registry/hello-world/hello-world.tsx",
+          "path": "registry/new-york/hello-world/hello-world.tsx",
           "type": "registry:component"
         }
       ]
@@ -11042,7 +11045,7 @@ The `items` in your registry. Each item must implement the [registry-item schema
       "description": "A simple hello world component.",
       "files": [
         {
-          "path": "registry/hello-world/hello-world.tsx",
+          "path": "registry/new-york/hello-world/hello-world.tsx",
           "type": "registry:component"
         }
       ]
