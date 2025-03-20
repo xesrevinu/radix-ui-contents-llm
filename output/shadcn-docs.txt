@@ -9884,7 +9884,7 @@ Components are styled using Tailwind CSS. You need to install Tailwind CSS in yo
 Add the following dependencies to your project:
 
 ```bash
-npm install tailwindcss-animate class-variance-authority clsx tailwind-merge lucide-react
+npm install class-variance-authority clsx tailwind-merge lucide-react tw-animate-css
 ```
 
 ### Configure path aliases
@@ -9910,8 +9910,7 @@ Add the following to your styles/globals.css file. You can learn more about usin
 
 ```css showLineNumbers title="src/styles/globals.css"
 @import "tailwindcss";
-
-@plugin 'tailwindcss-animate';
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -11669,6 +11668,24 @@ function AccordionItem({
 ```
 
 ## Changelog
+
+### March 19, 2025 - Deprecate `tailwindcss-animate`
+
+We've deprecated `tailwindcss-animate` in favor of `tw-animate-css`.
+
+New project will have `tw-animate-css` installed by default.
+
+For existing projects, follow the steps below to migrate.
+
+1. Remove `tailwindcss-animate` from your dependencies.
+2. Remove the `@plugin 'tailwindcss-animate'` from your globals.css file.
+3. Install `tw-animate-css` as a dev dependency.
+4. Add the `@import "tw-animate-css"` to your globals.css file.
+
+```diff showLineNumbers
+- @plugin 'tailwindcss-animate';
++ @import "tw-animate-css";
+```
 
 ### March 12, 2025 - New Dark Mode Colors
 
