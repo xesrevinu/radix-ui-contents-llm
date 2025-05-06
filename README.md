@@ -65,14 +65,14 @@ This will:
 ### Summary
 
 - Total Files: 8
-- Total Size: 2.91 MB
-- Total Tokens: 734,739
+- Total Size: 2.92 MB
+- Total Tokens: 736,665
 
 #### radix-docs
 
 | File | Size | Tokens | Raw |
 | --- | --- | --- | --- |
-| [output/radix-docs.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/radix-docs.txt) | 459 kB | 122,235 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/radix-docs.txt) |
+| [output/radix-docs.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/radix-docs.txt) | 466 kB | 124,161 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/radix-docs.txt) |
 
 #### radix-colors
 
