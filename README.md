@@ -66,7 +66,7 @@ This will:
 
 - Total Files: 8
 - Total Size: 2.92 MB
-- Total Tokens: 736,665
+- Total Tokens: 736,663
 
 #### radix-docs
 
@@ -84,7 +84,7 @@ This will:
 
 | File | Size | Tokens | Raw |
 | --- | --- | --- | --- |
-| [output/radix-themes.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/radix-themes.txt) | 286 kB | 77,902 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/radix-themes.txt) |
+| [output/radix-themes.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/radix-themes.txt) | 286 kB | 77,900 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/radix-themes.txt) |
 
 #### shadcn-docs
 
