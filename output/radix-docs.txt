@@ -10920,7 +10920,7 @@ password-toggle-field.mdx
 ---
 metaTitle: Password Toggle Field
 metaDescription: A password input field with an integrated button to toggle the value's visibility
-name: Password Toggle Field
+name: password-toggle-field
 ---
 
 # Password Toggle Field
