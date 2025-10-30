@@ -64,9 +64,9 @@ This will:
 
 ### Summary
 
-- Total Files: 8
-- Total Size: 3.05 MB
-- Total Tokens: 767,729
+- Total Files: 3
+- Total Size: 796 kB
+- Total Tokens: 214,428
 
 #### radix-docs
 
@@ -85,36 +85,6 @@ This will:
 | File | Size | Tokens | Raw |
 | --- | --- | --- | --- |
 | [output/radix-themes.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/radix-themes.txt) | 286 kB | 77,900 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/radix-themes.txt) |
-
-#### shadcn-docs
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/shadcn-docs.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/shadcn-docs.txt) | 377 kB | 113,078 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/shadcn-docs.txt) |
-
-#### shadcn-components
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/shadcn-components.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/shadcn-components.txt) | 1.17 MB | 272,256 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/shadcn-components.txt) |
-
-#### shadcn-blocks
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/shadcn-blocks.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/shadcn-blocks.txt) | 308 kB | 71,470 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/shadcn-blocks.txt) |
-
-#### shadcn-charts
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/shadcn-charts.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/shadcn-charts.txt) | 208 kB | 52,849 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/shadcn-charts.txt) |
-
-#### shadcn-examples
-
-| File | Size | Tokens | Raw |
-| --- | --- | --- | --- |
-| [output/shadcn-examples.txt](https://github.com/xesrevinu/radix-ui-contents-llm/blob/main/output/shadcn-examples.txt) | 187 kB | 43,648 | [Raw](https://raw.githubusercontent.com/xesrevinu/radix-ui-contents-llm/main/output/shadcn-examples.txt) |
 
 
 <!-- STATS_END -->
